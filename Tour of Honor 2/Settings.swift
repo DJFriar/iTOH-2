@@ -12,6 +12,7 @@ struct Settings: View {
     @State var showSettings = false
     @State var leftyMode = false
     @State var trophyHunter = false
+    @State var autoDarkMode = true
     @State var riderFlagNumber = ""
     @State var pillionFlagNumber = ""
     @State var submit = false
@@ -22,13 +23,17 @@ struct Settings: View {
                 Section(header: Text("Rider Details")) {
                     HStack {
                         Text("Rider Number")
+                        Spacer()
                         TextField("000", text: $riderFlagNumber)
+                            .frame(width: 70.0, height: 0.0)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
 
                     HStack {
                         Text("Pillion Number")
+                        Spacer()
                         TextField("000", text: $pillionFlagNumber)
+                            .frame(width: 70.0, height: 0.0)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                 }
@@ -39,6 +44,9 @@ struct Settings: View {
                     }
                     Toggle(isOn: $trophyHunter) {
                         Text("Enable Trophy Mode")
+                    }
+                    Toggle(isOn: $autoDarkMode) {
+                        Text("Enable Automatic Dark Mode")
                     }
                 }
                 

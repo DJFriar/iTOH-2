@@ -12,6 +12,7 @@ struct BonusList: View {
     var bonuses = sampleBonusData
     @State var showSettings = false
     @State var showBonuses = false
+    @State var bonusEarned = true
     
     var body: some View {
         NavigationView {
@@ -26,18 +27,31 @@ struct BonusList: View {
                             .cornerRadius(15)
                         
                         VStack(alignment: .leading) {
-                            Text(item.bonusCode)
-                                .font(.headline)
-                            Text(item.bonusName)
-//                                .lineLimit(1)
-//                                .lineSpacing(4)
+                            HStack {
+                                Text(item.bonusName)
+                                    .font(.headline)
+                                Spacer()
+                                Image(systemName: "checkmark.shield")
+                                    .foregroundColor((self.bonusEarned ? Color.black : Color.white))
+                            }
+                            Text("\(item.city), \(item.state)")
+                                //                                .lineLimit(1)
+                                //                                .lineSpacing(4)
                                 .font(.subheadline)
                                 .frame(height: 25.0)
-                            Text("\(item.city), \(item.state)")
-                                .font(.caption)
-                                .fontWeight(.bold)
-                                .foregroundColor(.gray)
-                                .padding(.top, 4)
+                            HStack {
+                                Text(item.bonusCategory)
+                                    .font(.caption)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.gray)
+                                    .padding(.top, 4)
+                                Spacer()
+                                Text(item.bonusCode)
+                                    .font(.caption)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.gray)
+                                    .padding(.top, 4)
+                            }
                         }
                     }
                 }
@@ -61,6 +75,7 @@ struct BonusData: Identifiable {
     var image: String
     var bonusName: String
     var bonusCode: String
+    var bonusCategory: String
     var city: String
     var state: String
 }
@@ -69,36 +84,43 @@ let sampleBonusData = [
     BonusData(image: "2019tx6",
               bonusName: "Something in Texas",
               bonusCode: "TX6",
+              bonusCategory: "Tour of Honor",
               city: "Texarkana",
               state: "TX"),
     BonusData(image: "2019ca1",
               bonusName: "Something in California",
               bonusCode: "CA1",
+              bonusCategory: "Tour of Honor",
               city: "Lompoc",
               state: "CA"),
     BonusData(image: "2019ma3",
               bonusName: "Something in Massachusetts",
               bonusCode: "MA3",
+              bonusCategory: "K9",
               city: "Walther",
               state: "MA"),
     BonusData(image: "2019tx5",
               bonusName: "Something else in Texas",
               bonusCode: "TX5",
+              bonusCategory: "Tour of Honor",
               city: "Pecos",
               state: "TX"),
     BonusData(image: "2019ca5",
               bonusName: "Something else in California",
               bonusCode: "CA5",
+              bonusCategory: "Huey",
               city: "San Diego",
               state: "CA"),
     BonusData(image: "2019nv4",
               bonusName: "Something in Nevada",
               bonusCode: "NV4",
+              bonusCategory: "Tour of Honor",
               city: "Reno",
               state: "NV"),
     BonusData(image: "2019fl7",
               bonusName: "Something in Florida",
               bonusCode: "FL7",
+              bonusCategory: "Gold Medal Family",
               city: "St. Augustine",
               state: "FL")
 ]
