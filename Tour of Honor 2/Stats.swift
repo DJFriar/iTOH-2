@@ -64,8 +64,12 @@ struct Stats: View {
     }
 }
 
+
 struct Stats_Previews: PreviewProvider {
     static var previews: some View {
-        Stats()
+        Group {
+            Stats().darkModeFix()
+            Stats().environment(\.colorScheme, .light)
+        }
     }
 }

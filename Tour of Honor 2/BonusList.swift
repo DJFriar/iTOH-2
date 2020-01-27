@@ -32,7 +32,7 @@ struct BonusList: View {
                                     .font(.headline)
                                 Spacer()
                                 Image(systemName: "checkmark.shield")
-                                    .foregroundColor((self.bonusEarned ? Color.black : Color.white))
+                                    .opacity(self.bonusEarned ? 100 : 0)
                             }
                             Text("\(item.city), \(item.state)")
                                 //                                .lineLimit(1)
@@ -133,6 +133,9 @@ let sampleBonusData = [
 
 struct BonusList_Previews: PreviewProvider {
     static var previews: some View {
-        BonusList()
+        Group {
+            BonusList().environment(\.colorScheme, .dark)
+            BonusList().environment(\.colorScheme, .light)
+        }
     }
 }

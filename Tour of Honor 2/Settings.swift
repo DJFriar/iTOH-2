@@ -68,6 +68,9 @@ struct Settings: View {
 
 struct Settings_Previews: PreviewProvider {
     static var previews: some View {
-        Settings().environment(\.colorScheme, .dark)
+        Group {
+            Settings().environment(\.colorScheme, .dark)
+            Settings().environment(\.colorScheme, .light)
+        }
     }
 }
