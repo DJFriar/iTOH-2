@@ -17,9 +17,9 @@ struct BonusList: View {
     var body: some View {
         NavigationView {
             List(bonuses) { item in
-                NavigationLink(destination: BonusDetail(bonusName: item.bonusName, bonusCode: item.bonusCode, city: item.city, image: item.image)) {
+                NavigationLink(destination: BonusDetail(bonusName: item.bonusName, bonusCode: item.bonusCode, city: item.city, sampleImage: item.sampleImage)) {
                     HStack(spacing: 12.0) {
-                        Image(item.image)
+                        Image(item.sampleImage)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 60, height: 60)
@@ -57,6 +57,7 @@ struct BonusList: View {
                 }
 //                .padding(.vertical, 8.0)
             }
+            
             .navigationBarTitle(Text("Bonuses"))
             .navigationBarItems(trailing:
                 Button(action: { self.showSettings.toggle() }) {
@@ -67,12 +68,13 @@ struct BonusList: View {
                 }
             )
         }
+        .saturation(self.bonusEarned ? 0 : 1)
     }
 }
 
 struct BonusData: Identifiable {
     var id = UUID()
-    var image: String
+    var sampleImage: String
     var bonusName: String
     var bonusCode: String
     var bonusCategory: String
@@ -81,53 +83,49 @@ struct BonusData: Identifiable {
 }
 
 let sampleBonusData = [
-    BonusData(image: "2019tx6",
+    BonusData(sampleImage: "2019tx6",
               bonusName: "Something in Texas",
               bonusCode: "TX6",
               bonusCategory: "Tour of Honor",
               city: "Texarkana",
               state: "TX"),
-    BonusData(image: "2019ca1",
+    BonusData(sampleImage: "2019ca1",
               bonusName: "Something in California",
               bonusCode: "CA1",
               bonusCategory: "Tour of Honor",
               city: "Lompoc",
               state: "CA"),
-    BonusData(image: "2019ma3",
+    BonusData(sampleImage: "2019ma3",
               bonusName: "Something in Massachusetts",
               bonusCode: "MA3",
               bonusCategory: "K9",
               city: "Walther",
               state: "MA"),
-    BonusData(image: "2019tx5",
+    BonusData(sampleImage: "2019tx5",
               bonusName: "Something else in Texas",
               bonusCode: "TX5",
               bonusCategory: "Tour of Honor",
               city: "Pecos",
               state: "TX"),
-    BonusData(image: "2019ca5",
+    BonusData(sampleImage: "2019ca5",
               bonusName: "Something else in California",
               bonusCode: "CA5",
               bonusCategory: "Huey",
               city: "San Diego",
               state: "CA"),
-    BonusData(image: "2019nv4",
+    BonusData(sampleImage: "2019nv4",
               bonusName: "Something in Nevada",
               bonusCode: "NV4",
               bonusCategory: "Tour of Honor",
               city: "Reno",
               state: "NV"),
-    BonusData(image: "2019fl7",
+    BonusData(sampleImage: "2019fl7",
               bonusName: "Something in Florida",
               bonusCode: "FL7",
               bonusCategory: "Gold Medal Family",
               city: "St. Augustine",
               state: "FL")
 ]
-
-
-
-
 
 
 

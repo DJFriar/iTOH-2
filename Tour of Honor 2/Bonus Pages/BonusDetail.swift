@@ -10,13 +10,16 @@ import SwiftUI
 
 struct BonusDetail: View {
     @State var submit = false
+    @State private var showImagePicker: Bool = false
+    @State private var primaryImage: Image? = nil
+    @State private var optionalImage: Image? = nil
     
     var bonusName = "Something in Nevada"
     var bonusCode = "NV4"
     var bonusCategory = "Tour of Honor"
     var city = "Reno"
     var state = "NV"
-    var image = "2019nv4"
+    var sampleImage = "2019nv4"
     
     var body: some View {
         VStack(spacing: 10.0) {
@@ -31,7 +34,7 @@ struct BonusDetail: View {
                 Spacer()
             }
             VStack(spacing: 0.0) {
-                Image(image)
+                Image(sampleImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(10)
@@ -56,14 +59,23 @@ struct BonusDetail: View {
                     .padding(.top, 10.0)
             }
             HStack {
-                Image("no_image_taken")
+                Button(action: {
+                    self.showImagePicker = true
+                }) {
+                    Image("no_image_taken")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(10)
+                }.sheet(isPresented: self.$showImagePicker) {
+                    PhotoCaptureView(showImagePicker: self.$showImagePicker, image: self.$primaryImage)
+                }
+                
+                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
                 Image("optional_2nd_Image")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(10)
+                }
             }
             HStack {
                 Button(action: { self.submit.toggle() }) {
