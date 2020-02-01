@@ -7,15 +7,40 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(
+        entity: Bonus.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Bonus.name, ascending: true),
+            NSSortDescriptor(keyPath: \Bonus.id, ascending: false)
+        ]
+    ) var bonuses: FetchedResults<Bonus>
+    
+    @State var showSettings = false
+    @State var showBonuses = false
+    
     var body: some View {
-        Text("Testing")
+        NavigationView {
+            List(bonuses, id: \.self) { bonus in
+                Text(bonus.name ?? "Unknown")
+            }
+        }
     }
+    
+    
+   
+    
 }
+    
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
+
