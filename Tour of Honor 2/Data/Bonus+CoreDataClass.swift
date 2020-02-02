@@ -30,10 +30,15 @@ public class Bonus: NSManagedObject, Identifiable {
         
         return Bonus(context: CoreData.stack.context)
     }
-    class func createBonus(name: String, order: Int?) -> Bonus {
+    class func createBonus(name: String, code: String, city: String, state: String, category: String, sampleImage: String, order: Int?) -> Bonus {
         
         let bonus = Bonus.newBonus()
         bonus.name = name
+        bonus.code = code
+        bonus.category = category
+        bonus.city = city
+        bonus.state = state
+        bonus.sampleImage = sampleImage
         bonus.order = Int32(order ?? 0)
         CoreData.stack.save()
         

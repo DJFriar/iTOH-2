@@ -18,7 +18,12 @@ extension Bonus {
     }
 
     @NSManaged public var id: UUID?
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
+    @NSManaged public var code: String
+    @NSManaged public var sampleImage: String
+    @NSManaged public var category: String
+    @NSManaged public var city: String
+    @NSManaged public var state: String
     @NSManaged public var order: Int32
 
 }
