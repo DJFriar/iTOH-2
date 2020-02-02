@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		639553E423E64DF50034A51E /* Bonus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */; };
+		639553E523E64DF50034A51E /* Bonus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E323E64DF50034A51E /* Bonus+CoreDataProperties.swift */; };
+		639553E823E64E1A0034A51E /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E723E64E1A0034A51E /* CoreData.swift */; };
+		639553EA23E650260034A51E /* BonusList2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E923E650260034A51E /* BonusList2.swift */; };
 		65C2C84A23DFC9F700430FCC /* CameraCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84923DFC9F700430FCC /* CameraCapture.swift */; };
 		65C2C84E23DFCD9F00430FCC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */; };
 		65C2C85023DFD18800430FCC /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */; };
@@ -27,6 +31,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bonus+CoreDataClass.swift"; sourceTree = "<group>"; };
+		639553E323E64DF50034A51E /* Bonus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bonus+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		639553E723E64E1A0034A51E /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		639553E923E650260034A51E /* BonusList2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusList2.swift; sourceTree = "<group>"; };
 		65C2C84923DFC9F700430FCC /* CameraCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCapture.swift; sourceTree = "<group>"; };
 		65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
@@ -59,6 +67,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		639553E623E64DFC0034A51E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */,
+				639553E323E64DF50034A51E /* Bonus+CoreDataProperties.swift */,
+				639553E723E64E1A0034A51E /* CoreData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		65C2C85123DFDF5800430FCC /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +99,7 @@
 		65C2C85323DFDF9500430FCC /* Bonus Pages */ = {
 			isa = PBXGroup;
 			children = (
+				639553E923E650260034A51E /* BonusList2.swift */,
 				65CE1F7F23AF71D6008FA854 /* BonusDetail.swift */,
 				65CE1F7D23AF71CC008FA854 /* BonusList.swift */,
 			);
@@ -106,6 +125,7 @@
 		65CE1F5D23AF705B008FA854 /* Tour of Honor 2 */ = {
 			isa = PBXGroup;
 			children = (
+				639553E623E64DFC0034A51E /* Data */,
 				65CE1F6F23AF705D008FA854 /* Info.plist */,
 				65CE1F6523AF705B008FA854 /* ContentView.swift */,
 				65CE1F8323B0680D008FA854 /* NavOverlay.swift */,
@@ -205,14 +225,18 @@
 			files = (
 				65C2C84E23DFCD9F00430FCC /* ImagePicker.swift in Sources */,
 				65CE1F6423AF705B008FA854 /* Tour_of_Honor_2.xcdatamodeld in Sources */,
+				639553E423E64DF50034A51E /* Bonus+CoreDataClass.swift in Sources */,
+				639553E823E64E1A0034A51E /* CoreData.swift in Sources */,
 				65C2C85023DFD18800430FCC /* PhotoCaptureView.swift in Sources */,
 				65CE1F8223AF7DFB008FA854 /* Stats.swift in Sources */,
 				65CE1F7C23AF71B5008FA854 /* Settings.swift in Sources */,
 				65CE1F7E23AF71CC008FA854 /* BonusList.swift in Sources */,
 				65CE1F8023AF71D6008FA854 /* BonusDetail.swift in Sources */,
+				639553EA23E650260034A51E /* BonusList2.swift in Sources */,
 				65CE1F5F23AF705B008FA854 /* AppDelegate.swift in Sources */,
 				65CE1F8423B0680D008FA854 /* NavOverlay.swift in Sources */,
 				65C2C84A23DFC9F700430FCC /* CameraCapture.swift in Sources */,
+				639553E523E64DF50034A51E /* Bonus+CoreDataProperties.swift in Sources */,
 				65CE1F6623AF705B008FA854 /* ContentView.swift in Sources */,
 				65CE1F6123AF705B008FA854 /* SceneDelegate.swift in Sources */,
 				65CE1F7623AF7099008FA854 /* TabBar.swift in Sources */,

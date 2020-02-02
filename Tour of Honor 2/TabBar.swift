@@ -31,6 +31,11 @@ struct TabBar : View {
                     Image(systemName: "flag")
                     Text("Bonuses")
                 })
+            BonusList2()
+            .tabItem({
+                Image(systemName: "flag")
+                Text("Bonuses")
+            })
         }
         .edgesIgnoringSafeArea(.top)
     }
