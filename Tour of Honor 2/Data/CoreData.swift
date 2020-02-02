@@ -104,19 +104,17 @@ class CoreData: NSObject {
                       //for i in 0...4 {
                       //    let _ = Bonus.createBonus(name: "Test \(i)", order: i)
                       //}
-                    for (i,bonus) in sampleBonusData.enumerated() {
-                        let _ = Bonus.createBonus(
-                          name: "test",
-                          code: "test",
-                          city: "test",
-                          state: "test",
-                          category: "Test",
-                          sampleImage: "test",
-                          order: i
-                      )
-                    }
+          
                       for (i,bonus) in sampleBonusData.enumerated() {
-                          //let _ = Bonus.createBonus( name: bonus.bonusName, code: bonus.bonusCode, city: bonus.city, state: bonus.state, category: bonus.bonusCategory, sampleImage: bonus.sampleImage,order: i)
+                          let _ = Bonus.createBonus(
+                                name: bonus.bonusName,
+                                code: bonus.bonusCode,
+                                city: bonus.city,
+                                state: bonus.state,
+                                category: bonus.bonusCategory,
+                                sampleImage: bonus.sampleImage,
+                              order: i
+                          )
                       }
                   }
                   
