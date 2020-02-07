@@ -23,13 +23,13 @@ struct BonusList2: View {
     @State var bonusEarned = true
 
     var body: some View {
-        //NavigationView {
+        NavigationView {
         //   List(bonuses, id: \.self) { bonus in
         //        Text(bonus.name ?? "Unknown")
         //    }
        // }
         NavigationView {
-                    List(bonuses) { item in
+            List(bonuses, id: \.self) { item in
                         NavigationLink(destination: BonusDetail(
                             bonusName: item.name,
                             bonusCode: item.code,
@@ -88,6 +88,7 @@ struct BonusList2: View {
                 }
                 .saturation(self.bonusEarned ? 0 : 1)
             }
+    }
     
 }
 

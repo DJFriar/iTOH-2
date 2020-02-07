@@ -102,7 +102,7 @@ class CoreData: NSObject {
 
                   if Bonus.count() == 0 {
                       //for i in 0...4 {
-                      //    let _ = Bonus.createBonus(name: "Test \(i)", order: i)
+                        //let _ = Bonus.createBonus(name: "Test \(i)", code: "code", city: "city", state:"state",category: "cat", sampleImage: "", order: i)
                       //}
           
                       for (i,bonus) in sampleBonusData.enumerated() {
@@ -113,7 +113,7 @@ class CoreData: NSObject {
                                 state: bonus.state,
                                 category: bonus.bonusCategory,
                                 sampleImage: bonus.sampleImage,
-                              order: i
+                                order: i
                           )
                       }
                   }
