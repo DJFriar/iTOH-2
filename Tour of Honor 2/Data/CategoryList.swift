@@ -51,7 +51,8 @@ struct CategoryPicker: View {
                 Spacer()
             }
         }
-        .padding(.top, statusBarHeight)
+        .padding(.top,80)
+//        .padding(.top, statusBarHeight)
     }
 }
 
@@ -61,7 +62,6 @@ struct FilterByCategory: View {
     var body: some View {
         VStack {
             HStack {
-//                Spacer()
                 Text("Category:").font(.callout)
                 Button(action: { self.showCategoryPicker.toggle() }) {
                     Text("All")
@@ -69,7 +69,6 @@ struct FilterByCategory: View {
             }
             .padding(.leading,8)
             .padding(.top,8)
-//            Spacer()
         }
     }
 }

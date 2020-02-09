@@ -27,7 +27,7 @@ struct BonusDetail: View {
         ScrollView {
             VStack(spacing: 5) {
                 Text(bonusName)
-                    .font(.largeTitle)
+                    .font(.title)
                     .fontWeight(.heavy)
                 HStack {
                     ZStack {
@@ -79,7 +79,6 @@ struct BonusDetail: View {
                         .sheet(isPresented: self.$showImagePicker) {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage)
                     }
-                    
                     Image("optional_2nd_Image")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -87,19 +86,10 @@ struct BonusDetail: View {
                         .gesture(TapGesture()
                             .onEnded({self.useExistingPhoto = false; self.showImagePicker = true}))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
-                        .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true}))
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true}))
                         .sheet(isPresented: self.$showImagePicker) {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage)
                     }
-                    
-                    //                    Button(action: {self.showImagePicker = true}) {
-                    //                        Image("optional_2nd_Image")
-                    //                            .resizable()
-                    //                            .aspectRatio(contentMode: .fit)
-                    //                            .cornerRadius(10)
-                    //                    }.sheet(isPresented: self.$showImagePicker) {
-                    //                        PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage)
-                    //                    }
                 }
                 HStack {
                     Button(action: { self.submit.toggle() }) {
@@ -115,13 +105,13 @@ struct BonusDetail: View {
                 Divider()
                 Text("Bonus Info")
                     .font(.headline)
-                Text("This is a paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here.")
+                Text("This is a paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here. This is a paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here. This is a paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here. This is a paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here. This is a paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here.")
                     .font(.body)
-                //                Text("This is another paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here.")
-                //                    .font(.body)
+//                Text("This is another paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here.")
+//                    .font(.body)
                 Spacer()
             }
-            .padding(30.0)
+            .padding(8)
         }
     }
 }

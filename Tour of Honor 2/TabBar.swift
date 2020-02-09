@@ -18,7 +18,7 @@ struct TabBar : View {
                 })
             Stats()
                 .tabItem({
-                    Image(systemName: "house")
+                    Image(systemName: "gamecontroller")
                     Text("Stats")
                 })
             Trophies()

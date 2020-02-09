@@ -51,7 +51,8 @@ struct StatePicker: View {
                 Spacer()
             }
         }
-        .padding(.top, statusBarHeight)
+        .padding(.top,80)
+        //        .padding(.top, statusBarHeight)
     }
 }
 
@@ -61,15 +62,13 @@ struct FilterByState: View {
     var body: some View {
         VStack {
             HStack {
-//                Spacer()
                 Text("State:").font(.callout)
                 Button(action: { self.showStatePicker.toggle() }) {
                     Text("All")
                 }
             }
-            .padding(.trailing,24)
+            .padding(.trailing,8)
             .padding(.top,8)
-//            Spacer()
         }
     }
 }
