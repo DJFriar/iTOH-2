@@ -54,7 +54,7 @@ struct BonusList: View {
                 }
                 .navigationBarTitle(Text("Bonuses"))
                 .navigationBarItems(trailing: HStack {
-                    FilterByCategory(showCategoryModal: $showCategoryModal)
+                    FilterByCategory(showCategoryPicker: $showCategoryPicker)
                     Spacer()
                     FilterByState(showStatePicker: $showStatePicker)
                 })
@@ -62,7 +62,7 @@ struct BonusList: View {
             .saturation(self.bonusEarned ? 0 : 1)
             // Currently, enabling either line 63 or 64 will break the NavigationLink. This is disabled here, but enabled on the Trophies page.
             //            StatePicker(showStatePicker: $showStatePicker)
-            CategoryModal(showCategoryModal: $showCategoryModal)
+            //            CategoryModal(showCategoryModal: $showCategoryModal)
         }
     }
 }

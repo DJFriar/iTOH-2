@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BonusDetail: View {
     @State var submit = false
-    @State public var useExistingPhoto: Bool = true
+    @State public var useExistingPhoto: Bool = false
     @State private var showImagePicker: Bool = false
     @State private var primaryImage: Image? = nil
     @State private var optionalImage: Image? = nil
@@ -68,27 +68,28 @@ struct BonusDetail: View {
                         .padding(.top, 10.0)
                 }
                 HStack {
-                    Button(action: {}) {
-                        Image("no_image_taken")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .cornerRadius(10)
-                            .gesture(TapGesture()
-                                .onEnded({_ in self.showImagePicker = false}))
-                            .gesture(LongPressGesture(minimumDuration: 1)
-                                .onEnded({_ in self.showImagePicker = true}))
-                    }.sheet(isPresented: self.$showImagePicker) {
-                        PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage)
+                    Image("no_image_taken")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(10)
+                        .gesture(TapGesture()
+                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true}))
+                        .gesture(LongPressGesture(minimumDuration: 0.5)
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true}))
+                        .sheet(isPresented: self.$showImagePicker) {
+                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage)
                     }
                     
-                    
-                    Button(action: {self.showPhotoModal = true}) {
-                        Image("optional_2nd_Image")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .cornerRadius(10)
-                    }.sheet(isPresented: self.$showPhotoModal) {
-                        PhotoModal()
+                    Image("optional_2nd_Image")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(10)
+                        .gesture(TapGesture()
+                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true}))
+                        .gesture(LongPressGesture(minimumDuration: 0.5)
+                        .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true}))
+                        .sheet(isPresented: self.$showImagePicker) {
+                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage)
                     }
                     
                     //                    Button(action: {self.showImagePicker = true}) {
