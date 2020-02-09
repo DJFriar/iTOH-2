@@ -34,6 +34,8 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
 
 struct ImagePicker: UIViewControllerRepresentable {
     
+    @Binding var showImagePicker: Bool
+    @Binding var useExistingPhoto: Bool
     @Binding var isShown: Bool
     @Binding var image: Image?
     
@@ -48,7 +50,11 @@ struct ImagePicker: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
+        if !useExistingPhoto {
+            picker.sourceType = .camera
+        } else {
+            picker.sourceType = .photoLibrary
+        }
         return picker
     }
-    
 }

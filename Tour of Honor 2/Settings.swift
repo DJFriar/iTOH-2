@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct Settings: View {
+    let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"]! as? String
+    let appBuild = Bundle.main.infoDictionary!["CFBundleVersion"]! as? String
     @State var showSettings = false
     @State var leftyMode = false
     @State var trophyHunter = false
@@ -17,8 +19,19 @@ struct Settings: View {
     @State var pillionFlagNumber = ""
     @State var submit = false
     
+    // Set Device Info
+    let systemVersion = UIDevice.current.systemVersion
+    let modelName = UIDevice.current.modelName
+    
     var body: some View {
-        NavigationView {
+        VStack {
+            HStack {
+                Text("Settings")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                Spacer()
+            }
+            .padding(.leading,8)
             Form {
                 Section(header: Text("Rider Details")) {
                     HStack {
@@ -27,26 +40,26 @@ struct Settings: View {
                         TextField("000", text: $riderFlagNumber)
                             .frame(width: 70.0, height: 0.0)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .keyboardType(/*@START_MENU_TOKEN@*/.numberPad/*@END_MENU_TOKEN@*/)
+                        
                     }
-
+                    
                     HStack {
                         Text("Pillion Number")
                         Spacer()
                         TextField("000", text: $pillionFlagNumber)
                             .frame(width: 70.0, height: 0.0)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .keyboardType(/*@START_MENU_TOKEN@*/.numberPad/*@END_MENU_TOKEN@*/)
                     }
                 }
                 
                 Section(header: Text("App Preferences")) {
-                    Toggle(isOn: $leftyMode) {
-                        Text("Right Hand Layout")
+                    Toggle(isOn: $autoDarkMode) {
+                        Text("Enable Automatic Dark Mode")
                     }
                     Toggle(isOn: $trophyHunter) {
                         Text("Enable Trophy Mode")
-                    }
-                    Toggle(isOn: $autoDarkMode) {
-                        Text("Enable Automatic Dark Mode")
                     }
                 }
                 
@@ -59,6 +72,9 @@ struct Settings: View {
                 })
             }
             .navigationBarTitle("Settings")
+            Text("iTOH Version \(appVersion!).\(appBuild!)").font(.caption)
+            Text("\(modelName) on iOS \(systemVersion)").font(.caption)
+            
         }
     }
 }
@@ -68,6 +84,7 @@ struct Settings_Previews: PreviewProvider {
         Group {
             Settings().environment(\.colorScheme, .dark)
             Settings().environment(\.colorScheme, .light)
+            Settings().previewDevice("iPhone SE")
         }
     }
 }
