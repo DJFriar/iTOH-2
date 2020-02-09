@@ -59,9 +59,6 @@ struct Settings: View {
                 })
             }
             .navigationBarTitle("Settings")
-            .navigationBarItems(
-                trailing: Button(action: { self.showSettings.toggle() }) { Image(systemName: "gear") }
-            )
         }
     }
 }

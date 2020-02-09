@@ -55,18 +55,9 @@ struct BonusList: View {
                         }
                     }
                 }
-//                .padding(.vertical, 8.0)
             }
-            
             .navigationBarTitle(Text("Bonuses"))
-            .navigationBarItems(trailing:
-                Button(action: { self.showSettings.toggle() }) {
-                    Image(systemName: "gear")
-                        .sheet(isPresented: self.$showSettings) {
-                            Text("Settings")
-                    }
-                }
-            )
+            //            .navigationBarHidden(true)
         }
         .saturation(self.bonusEarned ? 0 : 1)
     }
