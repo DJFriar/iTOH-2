@@ -15,6 +15,7 @@ struct BonusList: View {
     @State var bonusEarned = true
     @State var showStatePicker = false
     @State var showCategoryPicker = false
+    @State var showCategoryModal = false
     
     var body: some View {
         ZStack {
@@ -53,7 +54,7 @@ struct BonusList: View {
                 }
                 .navigationBarTitle(Text("Bonuses"))
                 .navigationBarItems(trailing: HStack {
-                    FilterByCategory(showCategoryPicker: $showCategoryPicker)
+                    FilterByCategory(showCategoryModal: $showCategoryModal)
                     Spacer()
                     FilterByState(showStatePicker: $showStatePicker)
                 })
@@ -61,7 +62,7 @@ struct BonusList: View {
             .saturation(self.bonusEarned ? 0 : 1)
             // Currently, enabling either line 63 or 64 will break the NavigationLink. This is disabled here, but enabled on the Trophies page.
             //            StatePicker(showStatePicker: $showStatePicker)
-            //            CategoryPicker(showCategoryPicker: $showCategoryPicker)
+            CategoryModal(showCategoryModal: $showCategoryModal)
         }
     }
 }
