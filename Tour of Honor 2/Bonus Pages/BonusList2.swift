@@ -80,8 +80,8 @@ struct BonusList2: View {
                 })
             }
             .saturation(self.bonusEarned ? 0 : 1)
-            StatePicker(showStatePicker: $showStatePicker)
-            CategoryPicker(showCategoryPicker: $showCategoryPicker)
+//            StatePicker(showStatePicker: $showStatePicker)
+//            CategoryPicker(showCategoryPicker: $showCategoryPicker)
             
         }
     }

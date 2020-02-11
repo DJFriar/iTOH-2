@@ -72,9 +72,15 @@ struct Settings: View {
                 })
             }
             .navigationBarTitle("Settings")
+            Text("Submit App Feedback").padding(.bottom,8)
             Text("iTOH Version \(appVersion!).\(appBuild!)").font(.caption)
-            Text("\(modelName) on iOS \(systemVersion)").font(.caption)
-            
+            Text("\(modelName) on iOS \(systemVersion)").font(.caption).padding(.bottom,8)
+//            HStack {
+//                Image("branding_stripe")
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fit)
+//            }
+//            .frame(width: nil, height: 4)
         }
     }
 }

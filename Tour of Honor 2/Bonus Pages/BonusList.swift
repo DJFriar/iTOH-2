@@ -60,9 +60,9 @@ struct BonusList: View {
                 })
             }
             .saturation(self.bonusEarned ? 0 : 1)
-            // Currently, enabling either line 63 or 64 will break the NavigationLink. This is disabled here, but enabled on the Trophies page.
-            //            StatePicker(showStatePicker: $showStatePicker)
-            //            CategoryModal(showCategoryModal: $showCategoryModal)
+            // Currently, enabling either line 63 or 64 will break the NavigationLink. This is enabled here, but disabled on the Trophies & BonusList2 page.
+            StatePicker(showStatePicker: $showStatePicker)
+            CategoryPicker(showCategoryPicker: $showCategoryPicker)
         }
     }
 }
