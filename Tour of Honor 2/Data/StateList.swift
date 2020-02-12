@@ -73,15 +73,68 @@ struct FilterByState: View {
     }
 }
 
+struct RegionMenu: View {
+    var image = "creditcard"
+    var text = "My Account"
+    var body: some View {
+        return HStack {
+            Spacer()
+            Text(text)
+                .foregroundColor(.primary)
+                .font(.headline)
+        }
+    }
+}
+
 struct RegionList : Identifiable {
     var id = UUID()
     var regionName : String
 }
 
 let regionValues = [
+    RegionList(regionName: "Alabama"),
+    RegionList(regionName: "Alaska"),
+    RegionList(regionName: "Arizona"),
+    RegionList(regionName: "Arkansas"),
+    RegionList(regionName: "California"),
+    RegionList(regionName: "Colorado"),
     RegionList(regionName: "Dakotas"),
+    RegionList(regionName: "Florida"),
+    RegionList(regionName: "Georgia"),
+    RegionList(regionName: "Hawaii"),
+    RegionList(regionName: "Idaho"),
+    RegionList(regionName: "Illinois"),
+    RegionList(regionName: "Indiana"),
+    RegionList(regionName: "Iowa"),
+    RegionList(regionName: "Kansas"),
+    RegionList(regionName: "Kentucky"),
+    RegionList(regionName: "Louisiana"),
+    RegionList(regionName: "Michigan"),
     RegionList(regionName: "Mid-Atlantic"),
-    RegionList(regionName: "New England")
+    RegionList(regionName: "Minnesota"),
+    RegionList(regionName: "Mississippi"),
+    RegionList(regionName: "Missouri"),
+    RegionList(regionName: "Montana"),
+    RegionList(regionName: "Nebraska"),
+    RegionList(regionName: "Nevada"),
+    RegionList(regionName: "New England"),
+    RegionList(regionName: "New Mexico"),
+    RegionList(regionName: "New York"),
+    RegionList(regionName: "North Carolina"),
+    RegionList(regionName: "Ohio"),
+    RegionList(regionName: "Oklahoma"),
+    RegionList(regionName: "Oregon"),
+    RegionList(regionName: "Pennsylvania"),
+    RegionList(regionName: "South Carolina"),
+    RegionList(regionName: "Tennessee"),
+    RegionList(regionName: "Texas"),
+    RegionList(regionName: "Utah"),
+    RegionList(regionName: "Virginia"),
+    RegionList(regionName: "Washington"),
+    RegionList(regionName: "West Virginia"),
+    RegionList(regionName: "Wisconsin"),
+    RegionList(regionName: "Wyoming")
+
 ]
 
 struct StateList : Identifiable {

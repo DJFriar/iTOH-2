@@ -15,6 +15,7 @@ struct Trophies: View {
     @State var bonusEarned = true
     @State var showStatePicker = false
     @State var showCategoryPicker = false
+    @State var showRegionFilterModal = false
     
     var body: some View {
         ZStack {
@@ -63,14 +64,15 @@ struct Trophies: View {
                 }
                 .navigationBarTitle(Text("Trophies"))
                 .navigationBarItems(trailing: HStack {
-                    FilterByCategory(showCategoryPicker: $showCategoryPicker)
-                    //                    FilterByState(showStatePicker: $showStatePicker)
+                    Button(action: { self.showRegionFilterModal.toggle() }) {
+                        // If the filter is active, we should make this image "line.horizontal.3.decrease.circle.fill" instead.
+                        Image(systemName: "line.horizontal.3.decrease.circle")
+                    }.sheet(isPresented: $showRegionFilterModal) {
+                        RegionFilterModal(showRegionFilterModal: .constant(true))
+                    }
                 })
             }
             .saturation(self.bonusEarned ? 0 : 1)
-            // Currently, enabling either line 73 or 74 will break the NavigationLink. This is enabled here, but disabled on the BonusViews.
-            //            StatePicker(showStatePicker: $showStatePicker)
-            CategoryPicker(showCategoryPicker: $showCategoryPicker)
         }
     }
 }

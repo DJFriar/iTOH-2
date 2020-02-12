@@ -23,67 +23,66 @@ struct BonusList2: View {
     @State var bonusEarned = true
     @State var showStatePicker = false
     @State var showCategoryPicker = false
+    @State var showBonusFilterModal = false
     
     var body: some View {
-        ZStack {
-            NavigationView {
-                List(bonuses, id: \.self) { item in
-                    NavigationLink(destination: BonusDetail(
-                        bonusName: item.name,
-                        bonusCode: item.code,
-                        city: item.city,
-                        sampleImage: item.sampleImage
-                    )) {
-                        HStack(spacing: 12.0) {
-                            Image(item.sampleImage)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 60, height: 60)
-                                .background(Color.white)
-                                .cornerRadius(15)
-                            
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text(item.name)
-                                        .font(.headline)
-                                    Spacer()
-                                    Image(systemName: "checkmark.shield")
-                                        .opacity(self.bonusEarned ? 100 : 0)
-                                }
-                                Text("\(item.city), \(item.state)")
-                                    //                                .lineLimit(1)
-                                    //                                .lineSpacing(4)
-                                    .font(.subheadline)
-                                    .frame(height: 25.0)
-                                HStack {
-                                    Text(item.category)
-                                        .font(.caption)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.gray)
-                                        .padding(.top, 4)
-                                    Spacer()
-                                    Text(item.code)
-                                        .font(.caption)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.gray)
-                                        .padding(.top, 4)
-                                }
+        NavigationView {
+            List(bonuses, id: \.self) { item in
+                NavigationLink(destination: BonusDetail(
+                    bonusName: item.name,
+                    bonusCode: item.code,
+                    city: item.city,
+                    sampleImage: item.sampleImage
+                )) {
+                    HStack(spacing: 12.0) {
+                        Image(item.sampleImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 60, height: 60)
+                            .background(Color.white)
+                            .cornerRadius(15)
+                        
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text(item.name)
+                                    .font(.headline)
+                                Spacer()
+                                Image(systemName: "checkmark.shield")
+                                    .opacity(self.bonusEarned ? 100 : 0)
+                            }
+                            Text("\(item.city), \(item.state)")
+                                //                                .lineLimit(1)
+                                //                                .lineSpacing(4)
+                                .font(.subheadline)
+                                .frame(height: 25.0)
+                            HStack {
+                                Text(item.category)
+                                    .font(.caption)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.gray)
+                                    .padding(.top, 4)
+                                Spacer()
+                                Text(item.code)
+                                    .font(.caption)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.gray)
+                                    .padding(.top, 4)
                             }
                         }
                     }
                 }
-                .navigationBarTitle(Text("Bonuses"))
-                .navigationBarItems(trailing: HStack {
-                    FilterByCategory(showCategoryPicker: $showCategoryPicker)
-                    Spacer()
-                    FilterByState(showStatePicker: $showStatePicker)
-                })
             }
-            .saturation(self.bonusEarned ? 0 : 1)
-//            StatePicker(showStatePicker: $showStatePicker)
-//            CategoryPicker(showCategoryPicker: $showCategoryPicker)
-            
+            .navigationBarTitle(Text("Bonuses"))
+            .navigationBarItems(trailing: HStack {
+                Button(action: { self.showBonusFilterModal.toggle() }) {
+                    // If the filter is active, we should make this image "line.horizontal.3.decrease.circle.fill" instead.
+                    Image(systemName: "line.horizontal.3.decrease.circle")
+                }.sheet(isPresented: $showBonusFilterModal) {
+                    BonusFilterModal(showBonusFilterModal: .constant(true))
+                }
+            })
         }
+        .saturation(self.bonusEarned ? 0 : 1)
     }
 }
 

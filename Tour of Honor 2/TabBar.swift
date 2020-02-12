@@ -26,10 +26,10 @@ struct TabBar : View {
                     Image(systemName: "sparkles")
                     Text("Trophies")
                 })
-            BonusList()
+            NationalParks()
                 .tabItem({
-                    Image(systemName: "flag")
-                    Text("Bonuses")
+                    Image(systemName: "shield")
+                    Text("Parks")
                 })
             BonusList2()
             .tabItem({
