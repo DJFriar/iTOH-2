@@ -15,6 +15,9 @@
 		6561FAC423F3B83600F786AE /* BonusFilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6561FAC323F3B83600F786AE /* BonusFilterModal.swift */; };
 		6561FAC623F3D60100F786AE /* RegionFilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6561FAC523F3D60100F786AE /* RegionFilterModal.swift */; };
 		6561FAC823F3DA6A00F786AE /* NationalParks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6561FAC723F3DA6A00F786AE /* NationalParks.swift */; };
+		6561FACC23F4A95000F786AE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACB23F4A95000F786AE /* GameKit.framework */; };
+		6561FACE23F4A95D00F786AE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACD23F4A95D00F786AE /* StoreKit.framework */; };
+		6561FAD023F4AAFC00F786AE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACF23F4AAFC00F786AE /* CloudKit.framework */; };
 		65C2C84E23DFCD9F00430FCC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */; };
 		65C2C85023DFD18800430FCC /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */; };
 		65CE1F5F23AF705B008FA854 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE1F5E23AF705B008FA854 /* AppDelegate.swift */; };
@@ -46,6 +49,10 @@
 		6561FAC323F3B83600F786AE /* BonusFilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusFilterModal.swift; sourceTree = "<group>"; };
 		6561FAC523F3D60100F786AE /* RegionFilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionFilterModal.swift; sourceTree = "<group>"; };
 		6561FAC723F3DA6A00F786AE /* NationalParks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalParks.swift; sourceTree = "<group>"; };
+		6561FAC923F4A6F800F786AE /* Tour of Honor 2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tour of Honor 2.entitlements"; sourceTree = "<group>"; };
+		6561FACB23F4A95000F786AE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		6561FACD23F4A95D00F786AE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		6561FACF23F4AAFC00F786AE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
 		65CE1F5B23AF705B008FA854 /* Tour of Honor 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tour of Honor 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6561FAD023F4AAFC00F786AE /* CloudKit.framework in Frameworks */,
+				6561FACC23F4A95000F786AE /* GameKit.framework in Frameworks */,
+				6561FACE23F4A95D00F786AE /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +113,16 @@
 				65CE1F8123AF7DFB008FA854 /* Stats.swift */,
 			);
 			path = "Other Screens";
+			sourceTree = "<group>";
+		};
+		6561FACA23F4A95000F786AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6561FACF23F4AAFC00F786AE /* CloudKit.framework */,
+				6561FACD23F4A95D00F786AE /* StoreKit.framework */,
+				6561FACB23F4A95000F786AE /* GameKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		65C2C85123DFDF5800430FCC /* Camera */ = {
@@ -140,6 +160,7 @@
 			children = (
 				65CE1F5D23AF705B008FA854 /* Tour of Honor 2 */,
 				65CE1F5C23AF705B008FA854 /* Products */,
+				6561FACA23F4A95000F786AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +175,7 @@
 		65CE1F5D23AF705B008FA854 /* Tour of Honor 2 */ = {
 			isa = PBXGroup;
 			children = (
+				6561FAC923F4A6F800F786AE /* Tour of Honor 2.entitlements */,
 				65CE1F6F23AF705D008FA854 /* Info.plist */,
 				6561FAC123F2785900F786AE /* CategoryPickerModal.swift */,
 				65CE1F6523AF705B008FA854 /* ContentView.swift */,
@@ -434,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Tour of Honor 2/Tour of Honor 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
@@ -446,7 +469,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.tommyc.Tour-of-Honor-2";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.tommyc.iTOH-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -457,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Tour of Honor 2/Tour of Honor 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_ACTIVITY_MODE = "";
 				DEVELOPMENT_ASSET_PATHS = "\"Tour of Honor 2/Preview Content\"";
@@ -468,7 +492,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.tommyc.Tour-of-Honor-2";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.tommyc.iTOH-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
