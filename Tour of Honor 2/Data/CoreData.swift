@@ -40,83 +40,58 @@ class CoreData: NSObject {
     }
     // MARK: - Database setup
        
-       public class func initialDbSetup() -> Void {
-                 
-                
-                 struct BonusData: Identifiable {
-                     var id = UUID()
-                     var sampleImage: String
-                     var bonusName: String
-                     var bonusCode: String
-                     var bonusCategory: String
-                     var city: String
-                     var state: String
+    public class func initialDbSetup() -> Void {
+        if Bonus.count() == 0 {
+                 let url = URL(string: "https://focused-dijkstra-8bf0a6.netlify.com/bonuses.json")
+                 let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                 guard let dataResponse = data,
+                           error == nil else {
+                           print(error?.localizedDescription ?? "Response Error")
+                           return }
+                     do{
+                         let json = dataResponse
+
+                         struct BonusEntry: Codable {
+                            var sampleImage: String?
+                            var bonusName: String
+                            var bonusCode: String
+                            var bonusCategory: String
+                            var city: String
+                            var state: String
+                         }
+
+                         let decoder = JSONDecoder()
+                         let bonuses = try decoder.decode([BonusEntry].self, from: json)
+
+                         print("The following bonuses are available:")
+                        for (i,bonus) in bonuses.enumerated() {
+                             print("\t\(bonus.bonusName) (\(bonus.bonusCode) )")
+                             if let sampleImage = bonus.sampleImage {
+                                 print("\t\t\(sampleImage)")
+                             }
+                            let _ = Bonus.createBonus(
+                                  name: bonus.bonusName,
+                                  code: bonus.bonusCode,
+                                  city: bonus.city,
+                                  state: bonus.state,
+                                  category: bonus.bonusCategory,
+                                  sampleImage: bonus.sampleImage ?? "",
+                                  order: i
+                            )
+                         }
+                         
+                      } catch let parsingError {
+                         print("Error", parsingError)
+                    }
+                        
                  }
-
-                 let sampleBonusData = [
-                     BonusData(sampleImage: "2019tx6",
-                               bonusName: "Something in Texas",
-                               bonusCode: "TX6",
-                               bonusCategory: "Tour of Honor",
-                               city: "Texarkana",
-                               state: "TX"),
-                     BonusData(sampleImage: "2019ca1",
-                               bonusName: "Something in California",
-                               bonusCode: "CA1",
-                               bonusCategory: "Tour of Honor",
-                               city: "Lompoc",
-                               state: "CA"),
-                     BonusData(sampleImage: "2019ma3",
-                               bonusName: "Something in Massachusetts",
-                               bonusCode: "MA3",
-                               bonusCategory: "K9",
-                               city: "Walther",
-                               state: "MA"),
-                     BonusData(sampleImage: "2019tx5",
-                               bonusName: "Something else in Texas",
-                               bonusCode: "TX5",
-                               bonusCategory: "Tour of Honor",
-                               city: "Pecos",
-                               state: "TX"),
-                     BonusData(sampleImage: "2019ca5",
-                               bonusName: "Something else in California",
-                               bonusCode: "CA5",
-                               bonusCategory: "Huey",
-                               city: "San Diego",
-                               state: "CA"),
-                     BonusData(sampleImage: "2019nv4",
-                               bonusName: "Something in Nevada",
-                               bonusCode: "NV4",
-                               bonusCategory: "Tour of Honor",
-                               city: "Reno",
-                               state: "NV"),
-                     BonusData(sampleImage: "2019fl7",
-                               bonusName: "Something in Florida",
-                               bonusCode: "FL7",
-                               bonusCategory: "Gold Medal Family",
-                               city: "St. Augustine",
-                               state: "FL")
-                 ]
+             task.resume()
+        }
+                
+                 
 
 
-
-                  if Bonus.count() == 0 {
-                      //for i in 0...4 {
-                        //let _ = Bonus.createBonus(name: "Test \(i)", code: "code", city: "city", state:"state",category: "cat", sampleImage: "", order: i)
-                      //}
-          
-                      for (i,bonus) in sampleBonusData.enumerated() {
-                          let _ = Bonus.createBonus(
-                                name: bonus.bonusName,
-                                code: bonus.bonusCode,
-                                city: bonus.city,
-                                state: bonus.state,
-                                category: bonus.bonusCategory,
-                                sampleImage: bonus.sampleImage,
-                                order: i
-                          )
-                      }
-                  }
+                 
                   
              }
        
