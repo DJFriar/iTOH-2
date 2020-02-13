@@ -75,7 +75,7 @@ class CoreData: NSObject {
                                   city: bonus.city,
                                   state: bonus.state,
                                   category: bonus.bonusCategory,
-                                  sampleImage: bonus.sampleImage ?? "",
+                                  sampleImage: "",
                                   order: i
                             )
                          }
