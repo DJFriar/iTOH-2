@@ -13,8 +13,8 @@ struct BonusList2: View {
     @FetchRequest(
         entity: Bonus.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \Bonus.name, ascending: true),
-            NSSortDescriptor(keyPath: \Bonus.id, ascending: false)
+            NSSortDescriptor(keyPath: \Bonus.code, ascending: true),
+            NSSortDescriptor(keyPath: \Bonus.name, ascending: false)
         ]
     ) var bonuses: FetchedResults<Bonus>
     
