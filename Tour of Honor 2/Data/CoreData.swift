@@ -66,9 +66,7 @@ class CoreData: NSObject {
                          print("The following bonuses are available:")
                         for (i,bonus) in bonuses.enumerated() {
                              print("\t\(bonus.bonusName) (\(bonus.bonusCode) )")
-                             if let sampleImage = bonus.sampleImage {
-                                 print("\t\t\(sampleImage)")
-                             }
+
                             let _ = Bonus.createBonus(
                                   name: bonus.bonusName,
                                   code: bonus.bonusCode,
