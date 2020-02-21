@@ -102,6 +102,7 @@ struct BonusDetail: View {
                             .multilineTextAlignment(.center)
                     }
                 }
+                .padding(.vertical,8)
                 Divider()
                 Text("Bonus Info")
                     .font(.headline)

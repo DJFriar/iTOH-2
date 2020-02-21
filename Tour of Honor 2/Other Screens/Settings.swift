@@ -40,8 +40,7 @@ struct Settings: View {
                         TextField("000", text: $riderFlagNumber)
                             .frame(width: 70.0, height: 0.0)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(/*@START_MENU_TOKEN@*/.numberPad/*@END_MENU_TOKEN@*/)
-                        
+                            .keyboardType(.numbersAndPunctuation)
                     }
                     
                     HStack {
@@ -50,7 +49,7 @@ struct Settings: View {
                         TextField("000", text: $pillionFlagNumber)
                             .frame(width: 70.0, height: 0.0)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .keyboardType(/*@START_MENU_TOKEN@*/.numberPad/*@END_MENU_TOKEN@*/)
+                            .keyboardType(.numbersAndPunctuation)
                     }
                 }
                 
@@ -75,12 +74,6 @@ struct Settings: View {
             Text("Submit App Feedback").padding(.bottom,8)
             Text("iTOH Version \(appVersion!).\(appBuild!)").font(.caption)
             Text("\(modelName) on iOS \(systemVersion)").font(.caption).padding(.bottom,8)
-//            HStack {
-//                Image("branding_stripe")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//            }
-//            .frame(width: nil, height: 4)
         }
     }
 }
