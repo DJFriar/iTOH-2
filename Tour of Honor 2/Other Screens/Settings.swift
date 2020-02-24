@@ -65,6 +65,7 @@ struct Settings: View {
                 Button(action: { self.submit.toggle() }) {
                     Text("Save Settings")
                         .multilineTextAlignment(.center)
+                    
                 }
                 .alert(isPresented: $submit, content: {
                     Alert(title: Text("Details Saved"), message: Text("Rider: \(riderFlagNumber)"))
