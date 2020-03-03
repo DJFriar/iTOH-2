@@ -27,7 +27,7 @@ struct BonusList2: View {
     
     var body: some View {
         NavigationView {
-            List(bonuses, id: \.self) { item in
+            List(bonuses, id: \.self) { item in 
                 NavigationLink(destination: BonusDetail(
                     bonusName: item.name,
                     bonusCode: item.code,
@@ -42,7 +42,8 @@ struct BonusList2: View {
                             .frame(width: 60, height: 60)
                             .background(Color.white)
                             .cornerRadius(15)
-                        
+                            .saturation(item.captured ? 1 : 0)
+
                         VStack(alignment: .leading) {
                             HStack {
                                 Text(item.name)

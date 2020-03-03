@@ -70,6 +70,7 @@ public class Bonus: NSManagedObject, Identifiable {
                  print("Reset: \(code)")
                  bonusRecord.setValue(false, forKey: "captured")
              }
+             CoreData.stack.save()
         }
 
         
