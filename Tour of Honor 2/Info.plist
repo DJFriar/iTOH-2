@@ -17,11 +17,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>0.9</string>
 	<key>CFBundleVersion</key>
-	<string>370</string>
+	<string>375</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Used to capture photos of your bonuses.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Used to properly tag your photos with their location.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Used to let you choose photos you already took of your bonuses.</string>
 	<key>UIApplicationSceneManifest</key>

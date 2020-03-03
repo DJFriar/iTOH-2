@@ -19,6 +19,7 @@
 		6561FACC23F4A95000F786AE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACB23F4A95000F786AE /* GameKit.framework */; };
 		6561FACE23F4A95D00F786AE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACD23F4A95D00F786AE /* StoreKit.framework */; };
 		6561FAD023F4AAFC00F786AE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACF23F4AAFC00F786AE /* CloudKit.framework */; };
+		65795E47240E08D80036B4EA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65795E46240E08D80036B4EA /* LocationManager.swift */; };
 		65C2C84E23DFCD9F00430FCC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */; };
 		65C2C85023DFD18800430FCC /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */; };
 		65CE1F5F23AF705B008FA854 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE1F5E23AF705B008FA854 /* AppDelegate.swift */; };
@@ -55,6 +56,7 @@
 		6561FACB23F4A95000F786AE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		6561FACD23F4A95D00F786AE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6561FACF23F4AAFC00F786AE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		65795E46240E08D80036B4EA /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
 		65CE1F5B23AF705B008FA854 /* Tour of Honor 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tour of Honor 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +184,7 @@
 				6561FAC123F2785900F786AE /* CategoryPickerModal.swift */,
 				65CE1F6523AF705B008FA854 /* ContentView.swift */,
 				650D8FD823FF91E4009B0E24 /* SendEmail.swift */,
+				65795E46240E08D80036B4EA /* LocationManager.swift */,
 				65DBD66B23F0117200BC5B66 /* CustomModifiers.swift */,
 				65DBD66823F00CEF00BC5B66 /* DeviceDetector.swift */,
 				65CE1F7523AF7099008FA854 /* TabBar.swift */,
@@ -325,6 +328,7 @@
 				65DBD66C23F0117200BC5B66 /* CustomModifiers.swift in Sources */,
 				65DBD66123F002A900BC5B66 /* BonusDataArray.swift in Sources */,
 				65DBD66923F00CEF00BC5B66 /* DeviceDetector.swift in Sources */,
+				65795E47240E08D80036B4EA /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import CoreLocation
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -47,6 +48,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        
+        //MARK: Location Data
+        // Used to start getting the users location
+        let locationManager = CLLocationManager()
+        
+        // For use when the app is open
+        locationManager.requestWhenInUseAuthorization()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

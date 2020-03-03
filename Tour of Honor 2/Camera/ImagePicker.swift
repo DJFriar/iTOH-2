@@ -8,8 +8,10 @@
 
 import Foundation
 import SwiftUI
+import Photos
+import CoreLocation
 
-class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate {
     
     @Binding var isShown: Bool
     @Binding var image: Image?

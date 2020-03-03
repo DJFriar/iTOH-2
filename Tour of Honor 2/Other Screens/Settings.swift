@@ -19,6 +19,16 @@ struct Settings: View {
     @State var pillionFlagNumber = ""
     @State var submit = false
     
+    // Used for Location Tracking
+    @ObservedObject var locationManager = LocationManager()
+    var userLatitude: String {
+        return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
+    }
+
+    var userLongitude: String {
+        return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+    }
+    
     // Set Device Info
     let systemVersion = UIDevice.current.systemVersion
     let modelName = UIDevice.current.modelName
@@ -72,6 +82,10 @@ struct Settings: View {
                 })
             }
             .navigationBarTitle("Settings")
+            HStack {
+            Text("latitude: \(userLatitude)").font(.caption)
+            Text("longitude: \(userLongitude)").font(.caption)
+            }
             Text("Submit App Feedback").padding(.bottom,8)
             Text("iTOH Version \(appVersion!).\(appBuild!)").font(.caption)
             Text("\(modelName) on iOS \(systemVersion)").font(.caption).padding(.bottom,8)
