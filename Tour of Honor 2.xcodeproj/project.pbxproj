@@ -22,6 +22,7 @@
 		6561FACE23F4A95D00F786AE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACD23F4A95D00F786AE /* StoreKit.framework */; };
 		6561FAD023F4AAFC00F786AE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACF23F4AAFC00F786AE /* CloudKit.framework */; };
 		65795E47240E08D80036B4EA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65795E46240E08D80036B4EA /* LocationManager.swift */; };
+		65795E49240E12BC0036B4EA /* ImageWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65795E48240E12BC0036B4EA /* ImageWriter.swift */; };
 		65C2C84E23DFCD9F00430FCC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */; };
 		65C2C85023DFD18800430FCC /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */; };
 		65CE1F5F23AF705B008FA854 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE1F5E23AF705B008FA854 /* AppDelegate.swift */; };
@@ -61,6 +62,7 @@
 		6561FACD23F4A95D00F786AE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6561FACF23F4AAFC00F786AE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		65795E46240E08D80036B4EA /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		65795E48240E12BC0036B4EA /* ImageWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWriter.swift; sourceTree = "<group>"; };
 		65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
 		65CE1F5B23AF705B008FA854 /* Tour of Honor 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tour of Honor 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */,
+				65795E48240E12BC0036B4EA /* ImageWriter.swift */,
 				65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */,
 			);
 			path = Camera;
@@ -225,7 +228,6 @@
 				65CE1F5723AF705B008FA854 /* Sources */,
 				65CE1F5823AF705B008FA854 /* Frameworks */,
 				65CE1F5923AF705B008FA854 /* Resources */,
-				65DBD66A23F00E7E00BC5B66 /* Increment Build Number */,
 			);
 			buildRules = (
 			);
@@ -282,27 +284,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		65DBD66A23F00E7E00BC5B66 /* Increment Build Number */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Increment Build Number";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		65CE1F5723AF705B008FA854 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -334,6 +315,7 @@
 				65CE1F7623AF7099008FA854 /* TabBar.swift in Sources */,
 				65CE1F7A23AF71A9008FA854 /* Trophies.swift in Sources */,
 				65DBD66C23F0117200BC5B66 /* CustomModifiers.swift in Sources */,
+				65795E49240E12BC0036B4EA /* ImageWriter.swift in Sources */,
 				65DBD66123F002A900BC5B66 /* BonusDataArray.swift in Sources */,
 				65DBD66923F00CEF00BC5B66 /* DeviceDetector.swift in Sources */,
 				65795E47240E08D80036B4EA /* LocationManager.swift in Sources */,
