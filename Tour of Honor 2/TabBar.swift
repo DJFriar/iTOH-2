@@ -26,11 +26,6 @@ struct TabBar : View {
                     Image(systemName: "sparkles")
                     Text("Trophies")
                 })
-            MailView()
-            .tabItem({
-                Image(systemName: "tray.and.arrow.up")
-                Text("Email Test")
-            })
             NationalParks()
                 .tabItem({
                     Image(systemName: "shield")

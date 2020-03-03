@@ -32,7 +32,8 @@ struct BonusList2: View {
                     bonusName: item.name,
                     bonusCode: item.code,
                     city: item.city,
-                    sampleImage: item.sampleImage
+                    sampleImage: item.sampleImage,
+                    captured: item.captured
                 )) {
                     HStack(spacing: 12.0) {
                         Image(item.sampleImage)
@@ -48,7 +49,7 @@ struct BonusList2: View {
                                     .font(.headline)
                                 Spacer()
                                 Image(systemName: "checkmark.shield")
-                                    .opacity(self.bonusEarned ? 100 : 0)
+                                    .opacity(item.captured ? 100 : 0)
                             }
                             Text("\(item.city), \(item.state)")
                                 //                                .lineLimit(1)
@@ -82,7 +83,6 @@ struct BonusList2: View {
                 }
             })
         }
-        .saturation(self.bonusEarned ? 0 : 1)
     }
 }
 

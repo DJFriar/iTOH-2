@@ -10,6 +10,7 @@
 import Foundation
 import CoreData
 
+
 @objc(Bonus)
 public class Bonus: NSManagedObject, Identifiable {
     class func count() -> Int {
@@ -40,8 +41,46 @@ public class Bonus: NSManagedObject, Identifiable {
         bonus.state = state
         bonus.sampleImage = sampleImage
         bonus.order = Int32(order ?? 0)
+        bonus.captured = false
         CoreData.stack.save()
         
         return bonus
     }
+    
+    class func updateBonus(code: String) -> Bool {
+        print("test \(code)")
+        return true
+    }
+    
+    class func updateCapturedFlag(state: Bool, code: String) -> Bool {
+      
+        let moc = CoreData.stack.context
+        let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+        bonusesFetch.predicate = NSPredicate(format: "code = %@", code)
+
+       do {
+        let fetchedBonuses = try moc.fetch(bonusesFetch) as! [Bonus]
+        print(fetchedBonuses)
+        if let bonusRecord = fetchedBonuses.first {
+            print(bonusRecord.name)
+             if (state){
+                 print("Submitted: \(code)")
+                bonusRecord.setValue(true, forKey: "captured")
+             } else {
+                 print("Reset: \(code)")
+                 bonusRecord.setValue(false, forKey: "captured")
+             }
+        }
+
+        
+       } catch {
+           fatalError("Failed to fetch bonuses: \(error)")
+       }
+        
+        
+        return true
+    }
+    
+    
+    
 }

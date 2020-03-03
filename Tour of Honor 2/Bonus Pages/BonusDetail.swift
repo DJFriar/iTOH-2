@@ -16,12 +16,14 @@ struct BonusDetail: View {
     @State private var optionalImage: Image? = nil
     @State private var showPhotoModal: Bool = false
     
-    var bonusName = "Something in Nevada"
-    var bonusCode = "NV4"
-    var bonusCategory = "Tour of Honor"
-    var city = "Reno"
-    var state = "NV"
-    var sampleImage = "2019nv4"
+    var id = "t"
+    var bonusName = ""
+    var bonusCode = ""
+    var bonusCategory = ""
+    var city = ""
+    var state = ""
+    var sampleImage = ""
+    var captured = false
     
     var body: some View {
         ScrollView {
@@ -33,6 +35,7 @@ struct BonusDetail: View {
                     ZStack {
                         HStack {
                             Image(systemName: "checkmark.shield")
+                                .opacity(captured ? 100 : 0)
                             Spacer()
                         }
                         HStack {
@@ -92,28 +95,29 @@ struct BonusDetail: View {
                     }
                 }
                 HStack {
-                    Button(action: { self.submit.toggle() }) {
+                    Button(action: { self.removeCapturedBonus() }) {
                         Text("Reset Bonus")
                             .multilineTextAlignment(.center)
                     }
                     Spacer()
-                    Button(action: { self.submit.toggle() }) {
+                    Button(action: { self.submitCapturedBonus() }) {
                         Text("Submit Bonus")
                             .multilineTextAlignment(.center)
                     }
                 }
                 .padding(.vertical,8)
-                Divider()
-                Text("Bonus Info")
-                    .font(.headline)
-                Text("This is a paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here. This is a paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here. This is a paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here. This is a paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here. This is a paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here.")
-                    .font(.body)
-//                Text("This is another paragraph to describe the bonus details and test the word wrapping of the text field. Nifty details about the bonus itself would go here.")
-//                    .font(.body)
+                
                 Spacer()
             }
             .padding(8)
         }
+    }
+    func submitCapturedBonus(){
+        Bonus.updateCapturedFlag(state: true, code: bonusCode)
+    }
+    func removeCapturedBonus(){
+        Bonus.updateCapturedFlag(state: false,code: bonusCode)
+
     }
 }
 

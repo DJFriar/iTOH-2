@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		635E9FE7240E059300A46077 /* TrophyList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E9FE5240E059300A46077 /* TrophyList+CoreDataClass.swift */; };
+		635E9FE8240E059300A46077 /* TrophyList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E9FE6240E059300A46077 /* TrophyList+CoreDataProperties.swift */; };
 		639553E423E64DF50034A51E /* Bonus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */; };
 		639553E523E64DF50034A51E /* Bonus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E323E64DF50034A51E /* Bonus+CoreDataProperties.swift */; };
 		639553E823E64E1A0034A51E /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E723E64E1A0034A51E /* CoreData.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		635E9FE5240E059300A46077 /* TrophyList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrophyList+CoreDataClass.swift"; sourceTree = "<group>"; };
+		635E9FE6240E059300A46077 /* TrophyList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrophyList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bonus+CoreDataClass.swift"; sourceTree = "<group>"; };
 		639553E323E64DF50034A51E /* Bonus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bonus+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		639553E723E64E1A0034A51E /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 		639553E623E64DFC0034A51E /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				635E9FE5240E059300A46077 /* TrophyList+CoreDataClass.swift */,
+				635E9FE6240E059300A46077 /* TrophyList+CoreDataProperties.swift */,
 				639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */,
 				639553E323E64DF50034A51E /* Bonus+CoreDataProperties.swift */,
 				65DBD66023F002A900BC5B66 /* BonusDataArray.swift */,
@@ -305,6 +311,7 @@
 				65C2C84E23DFCD9F00430FCC /* ImagePicker.swift in Sources */,
 				65CE1F6423AF705B008FA854 /* Tour_of_Honor_2.xcdatamodeld in Sources */,
 				639553E423E64DF50034A51E /* Bonus+CoreDataClass.swift in Sources */,
+				635E9FE8240E059300A46077 /* TrophyList+CoreDataProperties.swift in Sources */,
 				639553E823E64E1A0034A51E /* CoreData.swift in Sources */,
 				65C2C85023DFD18800430FCC /* PhotoCaptureView.swift in Sources */,
 				65CE1F8223AF7DFB008FA854 /* Stats.swift in Sources */,
@@ -318,6 +325,7 @@
 				65CE1F5F23AF705B008FA854 /* AppDelegate.swift in Sources */,
 				6561FAC223F2785900F786AE /* CategoryPickerModal.swift in Sources */,
 				639553E523E64DF50034A51E /* Bonus+CoreDataProperties.swift in Sources */,
+				635E9FE7240E059300A46077 /* TrophyList+CoreDataClass.swift in Sources */,
 				65CE1F6623AF705B008FA854 /* ContentView.swift in Sources */,
 				6561FAC823F3DA6A00F786AE /* NationalParks.swift in Sources */,
 				65CE1F6123AF705B008FA854 /* SceneDelegate.swift in Sources */,
