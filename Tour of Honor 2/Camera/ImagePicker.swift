@@ -27,7 +27,15 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
         image = Image(uiImage: uiImage)
         isShown = false
         print(uiImage.size)
-        UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)
+        print("-----")
+        print(info)
+        print("-----")
+        print(UIImagePickerController.InfoKey.originalImage)
+        print("-----")
+
+
+        let imageSaver = ImageWriter()
+        imageSaver.writeToPhotoAlbum(image: uiImage)
 
     }
     
