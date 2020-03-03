@@ -26,7 +26,9 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
         let uiImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         image = Image(uiImage: uiImage)
         isShown = false
-        
+        print(uiImage.size)
+        UIImageWriteToSavedPhotosAlbum(uiImage, nil, nil, nil)
+
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
