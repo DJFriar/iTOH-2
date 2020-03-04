@@ -41,55 +41,10 @@ class CoreData: NSObject {
     // MARK: - Database setup
        
     public class func initialDbSetup() -> Void {
-        print(UserDefaultsConfig.hasSeenAppIntroduction) 
-        print(UserDefaultsConfig.riderFlagNumber)
-        print(UserDefaultsConfig.pillionFlagNumber)
-
-
+        
         print("Loaded \(Bonus.count()) bonuses.")
         if Bonus.count() == 0 {
-                 let url = URL(string: "https://focused-dijkstra-8bf0a6.netlify.com/bonuses.json")
-                 let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-                 guard let dataResponse = data,
-                           error == nil else {
-                           print(error?.localizedDescription ?? "Response Error")
-                           return }
-                     do{
-                         let json = dataResponse
-
-                         struct BonusEntry: Codable {
-                            var sampleImage: String?
-                            var bonusName: String
-                            var bonusCode: String
-                            var bonusCategory: String
-                            var city: String
-                            var state: String
-                         }
-
-                         let decoder = JSONDecoder()
-                         let bonuses = try decoder.decode([BonusEntry].self, from: json)
-
-                         print("The following bonuses are available:")
-                        for (i,bonus) in bonuses.enumerated() {
-                             print("\t\(bonus.bonusName) (\(bonus.bonusCode) )")
-
-                            let _ = Bonus.createBonus(
-                                  name: bonus.bonusName,
-                                  code: bonus.bonusCode,
-                                  city: bonus.city,
-                                  state: bonus.state,
-                                  category: bonus.bonusCategory,
-                                  sampleImage: "2019ca1",
-                                  order: i
-                            )
-                         }
-                         
-                      } catch let parsingError {
-                         print("Error", parsingError)
-                    }
-                        
-                 }
-             task.resume()
+            Bonus.forceLoadData()
         }
                 
                  

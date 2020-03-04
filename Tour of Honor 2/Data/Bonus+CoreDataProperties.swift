@@ -24,6 +24,7 @@ extension Bonus {
     @NSManaged public var category: String
     @NSManaged public var city: String
     @NSManaged public var state: String
+    @NSManaged public var gps: String
     @NSManaged public var order: Int32
     @NSManaged public var captured: Bool
 
