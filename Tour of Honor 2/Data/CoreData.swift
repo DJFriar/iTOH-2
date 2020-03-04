@@ -41,6 +41,11 @@ class CoreData: NSObject {
     // MARK: - Database setup
        
     public class func initialDbSetup() -> Void {
+        print(UserDefaultsConfig.hasSeenAppIntroduction) 
+        print(UserDefaultsConfig.riderFlagNumber)
+        print(UserDefaultsConfig.pillionFlagNumber)
+
+
         print("Loaded \(Bonus.count()) bonuses.")
         if Bonus.count() == 0 {
                  let url = URL(string: "https://focused-dijkstra-8bf0a6.netlify.com/bonuses.json")
