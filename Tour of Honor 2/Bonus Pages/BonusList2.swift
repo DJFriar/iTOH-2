@@ -17,6 +17,7 @@ struct BonusList2: View {
             NSSortDescriptor(keyPath: \Bonus.name, ascending: false)
         ]
     ) var bonuses: FetchedResults<Bonus>
+
     
     @State var showSettings = false
     @State var showBonuses = false

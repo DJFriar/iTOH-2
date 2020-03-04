@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Setup DB
         CoreData.initialDbSetup()
 
+        // Setup Imagery
+        ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".png")
+        
         return true
     }
 

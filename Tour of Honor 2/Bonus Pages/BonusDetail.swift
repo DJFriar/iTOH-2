@@ -16,14 +16,21 @@ struct BonusDetail: View {
     @State private var optionalImage: Image? = nil
     @State private var showPhotoModal: Bool = false
     
-    var id = "t"
-    var bonusName = ""
-    var bonusCode = ""
-    var bonusCategory = ""
-    var city = ""
-    var state = ""
-    var sampleImage = ""
+    var PriImageName = "no_image_taken"
+    var OptImageName = "optional_2nd_Image"
+    var priImageMissing = ImageReader.getImageFromDocDir(named: "no_image_taken.png")
+    var optImageMissing = ImageReader.getImageFromDocDir(named: "optional_2nd_Image.png")
+    var takenPriImage = ImageReader.getImageFromDocDir(named: "copy.jpg")
+    
+    var id = "x"
+    var bonusName = "x"
+    var bonusCode = "x"
+    var bonusCategory = "x"
+    var city = "x"
+    var state = "x"
+    var sampleImage = "x"
     var captured = false
+    
     
     var body: some View {
         ScrollView {
@@ -71,7 +78,7 @@ struct BonusDetail: View {
                         .padding(.top, 10.0)
                 }
                 HStack {
-                    Image("no_image_taken")
+                    Image(uiImage: priImageMissing!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)
@@ -82,7 +89,7 @@ struct BonusDetail: View {
                         .sheet(isPresented: self.$showImagePicker) {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage)
                     }
-                    Image("optional_2nd_Image")
+                    Image(uiImage: optImageMissing!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)
@@ -118,6 +125,11 @@ struct BonusDetail: View {
     func removeCapturedBonus(){
         Bonus.updateCapturedFlag(state: false,code: bonusCode)
 
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
 }
 

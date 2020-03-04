@@ -23,6 +23,10 @@
 		6561FAD023F4AAFC00F786AE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACF23F4AAFC00F786AE /* CloudKit.framework */; };
 		65795E47240E08D80036B4EA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65795E46240E08D80036B4EA /* LocationManager.swift */; };
 		65795E49240E12BC0036B4EA /* ImageWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65795E48240E12BC0036B4EA /* ImageWriter.swift */; };
+		6581CA8C240F580700887782 /* ImageReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581CA8B240F580700887782 /* ImageReader.swift */; };
+		6581CA90240F76CA00887782 /* optional_2nd_Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 6581CA8D240F76C900887782 /* optional_2nd_Image.png */; };
+		6581CA91240F76CA00887782 /* sample_image_missing.png in Resources */ = {isa = PBXBuildFile; fileRef = 6581CA8E240F76CA00887782 /* sample_image_missing.png */; };
+		6581CA92240F76CA00887782 /* no_image_taken.png in Resources */ = {isa = PBXBuildFile; fileRef = 6581CA8F240F76CA00887782 /* no_image_taken.png */; };
 		65C2C84E23DFCD9F00430FCC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */; };
 		65C2C85023DFD18800430FCC /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */; };
 		65CE1F5F23AF705B008FA854 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE1F5E23AF705B008FA854 /* AppDelegate.swift */; };
@@ -63,6 +67,10 @@
 		6561FACF23F4AAFC00F786AE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		65795E46240E08D80036B4EA /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		65795E48240E12BC0036B4EA /* ImageWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWriter.swift; sourceTree = "<group>"; };
+		6581CA8B240F580700887782 /* ImageReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReader.swift; sourceTree = "<group>"; };
+		6581CA8D240F76C900887782 /* optional_2nd_Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optional_2nd_Image.png; sourceTree = "<group>"; };
+		6581CA8E240F76CA00887782 /* sample_image_missing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_image_missing.png; sourceTree = "<group>"; };
+		6581CA8F240F76CA00887782 /* no_image_taken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_image_taken.png; sourceTree = "<group>"; };
 		65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
 		65CE1F5B23AF705B008FA854 /* Tour of Honor 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tour of Honor 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +150,7 @@
 			children = (
 				65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */,
 				65795E48240E12BC0036B4EA /* ImageWriter.swift */,
+				6581CA8B240F580700887782 /* ImageReader.swift */,
 				65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */,
 			);
 			path = Camera;
@@ -188,6 +197,9 @@
 		65CE1F5D23AF705B008FA854 /* Tour of Honor 2 */ = {
 			isa = PBXGroup;
 			children = (
+				6581CA8F240F76CA00887782 /* no_image_taken.png */,
+				6581CA8D240F76C900887782 /* optional_2nd_Image.png */,
+				6581CA8E240F76CA00887782 /* sample_image_missing.png */,
 				6561FAC923F4A6F800F786AE /* Tour of Honor 2.entitlements */,
 				65CE1F6F23AF705D008FA854 /* Info.plist */,
 				6561FAC123F2785900F786AE /* CategoryPickerModal.swift */,
@@ -276,9 +288,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6581CA90240F76CA00887782 /* optional_2nd_Image.png in Resources */,
 				65CE1F6E23AF705D008FA854 /* LaunchScreen.storyboard in Resources */,
+				6581CA92240F76CA00887782 /* no_image_taken.png in Resources */,
 				65CE1F6B23AF705D008FA854 /* Preview Assets.xcassets in Resources */,
 				65CE1F6823AF705D008FA854 /* Assets.xcassets in Resources */,
+				6581CA91240F76CA00887782 /* sample_image_missing.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +324,7 @@
 				635E9FE7240E059300A46077 /* TrophyList+CoreDataClass.swift in Sources */,
 				65CE1F6623AF705B008FA854 /* ContentView.swift in Sources */,
 				6561FAC823F3DA6A00F786AE /* NationalParks.swift in Sources */,
+				6581CA8C240F580700887782 /* ImageReader.swift in Sources */,
 				65CE1F6123AF705B008FA854 /* SceneDelegate.swift in Sources */,
 				6561FAC423F3B83600F786AE /* BonusFilterModal.swift in Sources */,
 				650D8FD923FF91E4009B0E24 /* SendEmail.swift in Sources */,

@@ -35,6 +35,7 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
 
 
         let imageSaver = ImageWriter()
+        imageSaver.writeToAppData(image: uiImage)
         imageSaver.writeToPhotoAlbum(image: uiImage)
 
     }

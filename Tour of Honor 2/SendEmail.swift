@@ -14,6 +14,8 @@ import MessageUI
 /// Main View
 struct MailView: View {
 
+    var takenImage = ImageReader.getImageFromDocDir(named: "copy.jpg")
+    
     /// The delegate required by `MFMailComposeViewController`
     private let mailComposeDelegate = MailDelegate()
 
@@ -24,6 +26,8 @@ struct MailView: View {
     var body: some View {
         VStack {
             Spacer()
+//            Image(uiImage: takenImage!)
+//            Image("no_image_taken")
             Button(action: {
                 self.presentMailCompose()
             }) {
