@@ -88,8 +88,3 @@ struct BonusList2: View {
     }
 }
 
-struct Bonuses_Previews: PreviewProvider {
-    static var previews: some View {
-        BonusList2()
-    }
-}
