@@ -26,5 +26,6 @@ extension Bonus {
     @NSManaged public var state: String
     @NSManaged public var order: Int32
     @NSManaged public var captured: Bool
+    @NSManaged public var gps: String
 
 }

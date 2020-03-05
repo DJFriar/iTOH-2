@@ -94,6 +94,16 @@ struct Settings: View {
             Text("Submit App Feedback").padding(.bottom,8)
             Text("iTOH Version \(appVersion!).\(appBuild!)").font(.caption)
             Text("\(modelName) on iOS \(systemVersion)").font(.caption).padding(.bottom,8)
+            HStack{
+                Button(action: { Bonus.nukeData()}) {
+                    Text("Nuke Bonus Data")
+                        .multilineTextAlignment(.center)
+                }
+                Button(action: { Bonus.forceLoadData()}) {
+                    Text("Load Bonus Data")
+                        .multilineTextAlignment(.center)
+                }
+            }
         }
     }
 }
