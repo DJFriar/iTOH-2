@@ -32,7 +32,10 @@ struct BonusList: View {
                 NavigationLink(destination: BonusDetail(
                     bonusName: item.name,
                     bonusCode: item.code,
+                    bonusCategory: item.category,
                     city: item.city,
+                    state: item.state,
+                    gps: item.gps,
                     sampleImage: item.sampleImage,
                     captured: item.captured
                 )) {
