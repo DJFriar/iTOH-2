@@ -12,11 +12,10 @@ struct Settings: View {
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"]! as? String
     let appBuild = Bundle.main.infoDictionary!["CFBundleVersion"]! as? String
     @State var showSettings = false
-    @State var leftyMode = false
-    @State var trophyHunter = false
-    @State var autoDarkMode = true
-    @State var riderFlagNumber = ""
-    @State var pillionFlagNumber = ""
+    @State var trophyHunter = UserDefaultsConfig.trophyHunter
+    @State var autoDarkMode = UserDefaultsConfig.autoDarkMode
+    @State var riderFlagNumber = UserDefaultsConfig.riderFlagNumber
+    @State var pillionFlagNumber = UserDefaultsConfig.pillionFlagNumber
     @State var submit = false
     
     // Used for Location Tracking
@@ -72,7 +71,13 @@ struct Settings: View {
                     }
                 }
                 
-                Button(action: { self.submit.toggle() }) {
+                Button(action: {
+                    self.submit.toggle()
+                    UserDefaultsConfig.riderFlagNumber = self.riderFlagNumber
+                    UserDefaultsConfig.pillionFlagNumber = self.pillionFlagNumber
+                    UserDefaultsConfig.trophyHunter = self.trophyHunter
+                    UserDefaultsConfig.autoDarkMode = self.autoDarkMode
+                }) {
                     Text("Save Settings")
                         .multilineTextAlignment(.center)
                     

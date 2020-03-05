@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10D411A32411786B004FCBDD /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D411A22411786B004FCBDD /* UserDefaults.swift */; };
 		635E9FE7240E059300A46077 /* TrophyList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E9FE5240E059300A46077 /* TrophyList+CoreDataClass.swift */; };
 		635E9FE8240E059300A46077 /* TrophyList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E9FE6240E059300A46077 /* TrophyList+CoreDataProperties.swift */; };
 		639553E423E64DF50034A51E /* Bonus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10D411A22411786B004FCBDD /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = "Tour of Honor 2/Data/UserDefaults.swift"; sourceTree = "<group>"; };
 		635E9FE5240E059300A46077 /* TrophyList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrophyList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		635E9FE6240E059300A46077 /* TrophyList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrophyList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bonus+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		65CE1F5223AF705B008FA854 = {
 			isa = PBXGroup;
 			children = (
+				10D411A22411786B004FCBDD /* UserDefaults.swift */,
 				65CE1F5D23AF705B008FA854 /* Tour of Honor 2 */,
 				65CE1F5C23AF705B008FA854 /* Products */,
 				6561FACA23F4A95000F786AE /* Frameworks */,
@@ -322,6 +325,7 @@
 				6561FAC823F3DA6A00F786AE /* NationalParks.swift in Sources */,
 				6581CA8C240F580700887782 /* ImageReader.swift in Sources */,
 				65CE1F6123AF705B008FA854 /* SceneDelegate.swift in Sources */,
+				10D411A32411786B004FCBDD /* UserDefaults.swift in Sources */,
 				6561FAC423F3B83600F786AE /* BonusFilterModal.swift in Sources */,
 				650D8FD923FF91E4009B0E24 /* SendEmail.swift in Sources */,
 				65CE1F7623AF7099008FA854 /* TabBar.swift in Sources */,
