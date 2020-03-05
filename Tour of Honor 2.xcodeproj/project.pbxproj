@@ -12,7 +12,6 @@
 		639553E423E64DF50034A51E /* Bonus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */; };
 		639553E523E64DF50034A51E /* Bonus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E323E64DF50034A51E /* Bonus+CoreDataProperties.swift */; };
 		639553E823E64E1A0034A51E /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E723E64E1A0034A51E /* CoreData.swift */; };
-		639553EA23E650260034A51E /* BonusList2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E923E650260034A51E /* BonusList2.swift */; };
 		650D8FD923FF91E4009B0E24 /* SendEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D8FD823FF91E4009B0E24 /* SendEmail.swift */; };
 		6561FAC223F2785900F786AE /* CategoryPickerModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6561FAC123F2785900F786AE /* CategoryPickerModal.swift */; };
 		6561FAC423F3B83600F786AE /* BonusFilterModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6561FAC323F3B83600F786AE /* BonusFilterModal.swift */; };
@@ -55,7 +54,6 @@
 		639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bonus+CoreDataClass.swift"; sourceTree = "<group>"; };
 		639553E323E64DF50034A51E /* Bonus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bonus+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		639553E723E64E1A0034A51E /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
-		639553E923E650260034A51E /* BonusList2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusList2.swift; sourceTree = "<group>"; };
 		650D8FD823FF91E4009B0E24 /* SendEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmail.swift; sourceTree = "<group>"; };
 		6561FAC123F2785900F786AE /* CategoryPickerModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerModal.swift; sourceTree = "<group>"; };
 		6561FAC323F3B83600F786AE /* BonusFilterModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusFilterModal.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 			children = (
 				65CE1F7F23AF71D6008FA854 /* BonusDetail.swift */,
 				65CE1F7D23AF71CC008FA854 /* BonusList.swift */,
-				639553E923E650260034A51E /* BonusList2.swift */,
 				6561FAC723F3DA6A00F786AE /* NationalParks.swift */,
 				65CE1F7923AF71A9008FA854 /* Trophies.swift */,
 			);
@@ -317,7 +314,6 @@
 				6561FAC623F3D60100F786AE /* RegionFilterModal.swift in Sources */,
 				65CE1F7E23AF71CC008FA854 /* BonusList.swift in Sources */,
 				65CE1F8023AF71D6008FA854 /* BonusDetail.swift in Sources */,
-				639553EA23E650260034A51E /* BonusList2.swift in Sources */,
 				65CE1F5F23AF705B008FA854 /* AppDelegate.swift in Sources */,
 				6561FAC223F2785900F786AE /* CategoryPickerModal.swift in Sources */,
 				639553E523E64DF50034A51E /* Bonus+CoreDataProperties.swift in Sources */,
