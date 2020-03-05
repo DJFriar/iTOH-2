@@ -1,98 +1,77 @@
 //
-//  Bonuses.swift
+//  BonusList.swift
 //  Tour of Honor 2
 //
-//  Created by Keisha Perry on 2/1/20.
-//  Copyright © 2020 Tommy Craft. All rights reserved.
+//  Created by Tommy Craft on 12/22/19.
+//  Copyright © 2019 Tommy Craft. All rights reserved.
 //
 
 import SwiftUI
 
 struct BonusList: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(
-        entity: Bonus.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Bonus.code, ascending: true),
-            NSSortDescriptor(keyPath: \Bonus.name, ascending: false)
-        ]
-    ) var bonuses: FetchedResults<Bonus>
-
-    
+    var bonuses = sampleBonusData
     @State var showSettings = false
     @State var showBonuses = false
     @State var bonusEarned = true
     @State var showStatePicker = false
     @State var showCategoryPicker = false
-    @State var showBonusFilterModal = false
+    @State var showCategoryModal = false
     
     var body: some View {
-        NavigationView {
-            List(bonuses, id: \.self) { item in
-                NavigationLink(destination: BonusDetail(
-                    bonusName: item.name,
-                    bonusCode: item.code,
-                    bonusCategory: item.category,
-                    city: item.city,
-                    state: item.state,
-                    gps: item.gps,
-                    sampleImage: item.sampleImage,
-                    captured: item.captured
-                )) {
-                    HStack(spacing: 12.0) {
-                        Image(item.sampleImage)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 60, height: 60)
-                            .background(Color.white)
-                            .cornerRadius(15)
-                            .saturation(item.captured ? 1 : 0)
-
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text(item.name)
-                                    .font(.headline)
-                                Spacer()
-                                Image(systemName: "checkmark.shield")
-                                    .opacity(item.captured ? 100 : 0)
-                            }
-                            Text("\(item.city), \(item.state)")
-                                //                                .lineLimit(1)
-                                //                                .lineSpacing(4)
-                                .font(.subheadline)
-                                .frame(height: 25.0)
-                            HStack {
-                                Text(item.category)
-                                    .font(.caption)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.gray)
-                                    .padding(.top, 4)
-                                Spacer()
-                                Text(item.code)
-                                    .font(.caption)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.gray)
-                                    .padding(.top, 4)
+        ZStack {
+            NavigationView {
+                List(bonuses) { item in
+                    NavigationLink(destination: BonusDetail(bonusName: item.bonusName, bonusCode: item.bonusCode, city: item.city, sampleImage: item.sampleImage)) {
+                        HStack(spacing: 12.0) {
+                            Image(item.sampleImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 60, height: 60)
+                                .background(Color.white)
+                                .cornerRadius(15)
+                            
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text(item.bonusName)
+                                        .font(.headline)
+                                    Spacer()
+                                    Image(systemName: "checkmark.shield")
+                                        .opacity(self.bonusEarned ? 100 : 0)
+                                }
+                                Text("\(item.city), \(item.state)")
+                                    .font(.subheadline)
+                                    .frame(height: 25.0)
+                                HStack {
+                                    Text(item.bonusCategory)
+                                        .modifier(RowViewLine3())
+                                    Spacer()
+                                    Text(item.bonusCode)
+                                        .modifier(RowViewLine3())
+                                }
                             }
                         }
                     }
                 }
+                .navigationBarTitle(Text("Bonuses"))
+                .navigationBarItems(trailing: HStack {
+                    FilterByCategory(showCategoryPicker: $showCategoryPicker)
+                    Spacer()
+                    FilterByState(showStatePicker: $showStatePicker)
+                })
             }
-            .navigationBarTitle(Text("Bonuses"))
-            .navigationBarItems(trailing: HStack {
-                Button(action: { self.showBonusFilterModal.toggle() }) {
-                    // If the filter is active, we should make this image "line.horizontal.3.decrease.circle.fill" instead.
-                    Image(systemName: "line.horizontal.3.decrease.circle")
-                }.sheet(isPresented: $showBonusFilterModal) {
-                    BonusFilterModal(showBonusFilterModal: .constant(true))
-                }
-            })
+            .saturation(self.bonusEarned ? 0 : 1)
+            // Currently, enabling either line 63 or 64 will break the NavigationLink. This is enabled here, but disabled on the Trophies & BonusList2 page.
+            StatePicker(showStatePicker: $showStatePicker)
+            CategoryPicker(showCategoryPicker: $showCategoryPicker)
         }
     }
 }
 
-struct Bonuses_Previews: PreviewProvider {
+struct BonusList_Previews: PreviewProvider {
     static var previews: some View {
-        BonusList()
+        Group {
+            BonusList().environment(\.colorScheme, .dark)
+            BonusList().environment(\.colorScheme, .light)
+        }
     }
 }

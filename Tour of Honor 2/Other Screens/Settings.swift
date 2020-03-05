@@ -11,17 +11,13 @@ import SwiftUI
 struct Settings: View {
     let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"]! as? String
     let appBuild = Bundle.main.infoDictionary!["CFBundleVersion"]! as? String
-    let defaults = UserDefaults.standard
-
     @State var showSettings = false
     @State var leftyMode = false
-    @State var trophyHunter = UserDefaultsConfig.trophyHunter
-    @State var autoDarkMode = UserDefaultsConfig.autoDarkMode
-    @State var riderFlagNumber = UserDefaultsConfig.riderFlagNumber
-    @State var pillionFlagNumber = UserDefaultsConfig.pillionFlagNumber
-
+    @State var trophyHunter = false
+    @State var autoDarkMode = true
+    @State var riderFlagNumber = ""
+    @State var pillionFlagNumber = ""
     @State var submit = false
-    
     
     // Used for Location Tracking
     @ObservedObject var locationManager = LocationManager()
@@ -33,7 +29,6 @@ struct Settings: View {
         return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
     }
     
-   
     // Set Device Info
     let systemVersion = UIDevice.current.systemVersion
     let modelName = UIDevice.current.modelName
@@ -77,14 +72,7 @@ struct Settings: View {
                     }
                 }
                 
-                Button(action: {
-                    self.submit.toggle()
-                    UserDefaultsConfig.riderFlagNumber = self.riderFlagNumber
-                    UserDefaultsConfig.pillionFlagNumber = self.pillionFlagNumber
-                    UserDefaultsConfig.trophyHunter = self.trophyHunter
-                    UserDefaultsConfig.autoDarkMode = self.autoDarkMode
-                    
-                }) {
+                Button(action: { self.submit.toggle() }) {
                     Text("Save Settings")
                         .multilineTextAlignment(.center)
                     
@@ -101,19 +89,8 @@ struct Settings: View {
             Text("Submit App Feedback").padding(.bottom,8)
             Text("iTOH Version \(appVersion!).\(appBuild!)").font(.caption)
             Text("\(modelName) on iOS \(systemVersion)").font(.caption).padding(.bottom,8)
-            HStack{
-                Button(action: { Bonus.nukeData()}) {
-                    Text("Nuke Bonus Data")
-                        .multilineTextAlignment(.center)
-                }
-                Button(action: { Bonus.forceLoadData()}) {
-                    Text("Load Bonus Data")
-                        .multilineTextAlignment(.center)
-                }
-            }
         }
     }
-
 }
 
 struct Settings_Previews: PreviewProvider {

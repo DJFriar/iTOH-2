@@ -28,7 +28,6 @@ struct BonusDetail: View {
     var bonusCategory = "x"
     var city = "x"
     var state = "x"
-    var gps = "x"
     var sampleImage = "x"
     var captured = false
     
@@ -48,9 +47,6 @@ struct BonusDetail: View {
                         }
                         HStack {
                             Text("\(city), \(state)")
-                                .lineLimit(nil)
-                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
-                            Text("\(gps)")
                                 .lineLimit(nil)
                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                         }
