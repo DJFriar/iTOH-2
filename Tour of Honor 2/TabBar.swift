@@ -9,7 +9,12 @@
 import SwiftUI
 
 struct TabBar : View {
+    
+    @EnvironmentObject var filters: UserFilters
+
     var body: some View {
+
+        
         TabView {
             Settings()
                 .tabItem({
@@ -42,21 +47,18 @@ struct TabBar : View {
                 Text("Bonuses")
             })
         }
-            .overlay(
-                VStack {
-                    Spacer()
-                    Image("branding_stripe")
-                    .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(.bottom,50)
-                }
-                
-//                Rectangle()
-//                .foregroundColor(.red)
-//                    .frame(width: nil, height: 4)
-            )
+//            .overlay(
+//                VStack {
+//                    Spacer()
+//                    Image("branding_stripe")
+//                    .resizable()
+//                        .aspectRatio(contentMode: .fit)
+//                        .padding(.bottom,50)
+//                }
+//            )
         .edgesIgnoringSafeArea(.top)
     }
+    
 }
 
 struct TabBar_Previews: PreviewProvider {

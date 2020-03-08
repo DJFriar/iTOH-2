@@ -43,3 +43,18 @@ struct UserDefault<T> {
         }
     }
 }
+class UserFilters: ObservableObject {
+    @Published var category = ""
+    @Published var state = ""
+    @Published var showing = true
+}
+class ActiveBonus: ObservableObject {
+    @Published var category = ""
+    @Published var name = ""
+    @Published var code = ""
+    @Published var state = ""
+    @Published var city = ""
+    @Published var captured = false
+    @Published var sampleImage = ""
+    @Published var gps = ""
+}
