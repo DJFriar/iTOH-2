@@ -13,7 +13,6 @@ struct BonusList: View {
     @EnvironmentObject var filters: UserFilters
     @State private var showingCategoryFilter = false
     @State private var showingStateFilter = false
-    @State var showFilterPicker = true
 
     var body: some View {
         VStack {

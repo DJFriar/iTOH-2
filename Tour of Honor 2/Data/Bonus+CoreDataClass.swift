@@ -152,7 +152,29 @@ public class Bonus: NSManagedObject, Identifiable {
            
            return true
        }
-    
+    class func getBonusesKey(key:String) -> [String] {
+      
+       let moc = CoreData.stack.context
+         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+    bonusesFetch.propertiesToFetch = ["\(key)"]
+        do {
+         let fetchedBonuses = try moc.fetch(bonusesFetch) as! [Bonus]
+         print(fetchedBonuses)
+            var elements = ["Tour of Honor"]
+            for bonus in fetchedBonuses {
+            if elements.contains("\(bonus.category)") {
+               } else {
+                elements.append("\(bonus.category)")
+               }
+
+            }
+            
+            print(elements)
+            return elements
+        } catch {
+            fatalError("Failed to fetch bonuses: \(error)")
+        }
+    }
     
     
 }
