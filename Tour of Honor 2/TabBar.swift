@@ -47,16 +47,18 @@ struct TabBar : View {
                 Text("Bonuses")
             })
         }
-//            .overlay(
-//                VStack {
-//                    Spacer()
-//                    Image("branding_stripe")
-//                    .resizable()
-//                        .aspectRatio(contentMode: .fit)
-//                        .padding(.bottom,50)
-//                }
-//            )
+                        .background(Color.primary)
+            .overlay(
+                VStack {
+                    Spacer()
+                    Image("branding_stripe")
+                    .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(.bottom,50)
+                }
+            )
         .edgesIgnoringSafeArea(.top)
+
     }
     
 }

@@ -31,6 +31,7 @@
 		6581CA90240F76CA00887782 /* optional_2nd_Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 6581CA8D240F76C900887782 /* optional_2nd_Image.png */; };
 		6581CA91240F76CA00887782 /* sample_image_missing.png in Resources */ = {isa = PBXBuildFile; fileRef = 6581CA8E240F76CA00887782 /* sample_image_missing.png */; };
 		6581CA92240F76CA00887782 /* no_image_taken.png in Resources */ = {isa = PBXBuildFile; fileRef = 6581CA8F240F76CA00887782 /* no_image_taken.png */; };
+		65BAAF5C2416DFE9004383FE /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BAAF5B2416DFE9004383FE /* BlurView.swift */; };
 		65C2C84E23DFCD9F00430FCC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */; };
 		65C2C85023DFD18800430FCC /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */; };
 		65CE1F5F23AF705B008FA854 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE1F5E23AF705B008FA854 /* AppDelegate.swift */; };
@@ -79,6 +80,7 @@
 		6581CA8D240F76C900887782 /* optional_2nd_Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optional_2nd_Image.png; sourceTree = "<group>"; };
 		6581CA8E240F76CA00887782 /* sample_image_missing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_image_missing.png; sourceTree = "<group>"; };
 		6581CA8F240F76CA00887782 /* no_image_taken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_image_taken.png; sourceTree = "<group>"; };
+		65BAAF5B2416DFE9004383FE /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
 		65CE1F5B23AF705B008FA854 /* Tour of Honor 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tour of Honor 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,6 +223,7 @@
 				65DBD66B23F0117200BC5B66 /* CustomModifiers.swift */,
 				65DBD66823F00CEF00BC5B66 /* DeviceDetector.swift */,
 				65CE1F7523AF7099008FA854 /* TabBar.swift */,
+				65BAAF5B2416DFE9004383FE /* BlurView.swift */,
 				65CE1F6723AF705D008FA854 /* Assets.xcassets */,
 				65C2C85323DFDF9500430FCC /* Bonus Pages */,
 				65C2C85123DFDF5800430FCC /* Camera */,
@@ -321,6 +324,7 @@
 				639553E423E64DF50034A51E /* Bonus+CoreDataClass.swift in Sources */,
 				635E9FE8240E059300A46077 /* TrophyList+CoreDataProperties.swift in Sources */,
 				639553E823E64E1A0034A51E /* CoreData.swift in Sources */,
+				65BAAF5C2416DFE9004383FE /* BlurView.swift in Sources */,
 				65C2C85023DFD18800430FCC /* PhotoCaptureView.swift in Sources */,
 				65CE1F8223AF7DFB008FA854 /* Stats.swift in Sources */,
 				65DBD65D23EFF0BF00BC5B66 /* StateList.swift in Sources */,

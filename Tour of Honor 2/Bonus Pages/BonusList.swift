@@ -15,9 +15,16 @@ struct BonusList: View {
     @State private var showingStateFilter = false
 
     var body: some View {
-        VStack {
-            FilteredList(categoryFilter: self.filters.category, stateFilter: self.filters.state)
-            FilterMenuBar()
+        ZStack {
+            VStack {
+                FilteredList(categoryFilter: self.filters.category, stateFilter: self.filters.state)
+            }
+            VStack {
+                Spacer()
+                FilterMenuBar()
+                    .background(Color.clear)
+            }
+        
         }
 
     
