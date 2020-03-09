@@ -22,7 +22,7 @@ struct BonusList: View {
             VStack {
                 Spacer()
                 FilterMenuBar()
-                    .background(Color.clear)
+                    .background(BlurView(style: .systemThinMaterial).opacity(0.8))
             }
         
         }
