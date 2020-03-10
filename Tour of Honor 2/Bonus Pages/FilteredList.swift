@@ -85,6 +85,9 @@ struct FilteredList: View {
         self.activeBonus.captured = bonus.captured
         self.activeBonus.sampleImage = bonus.sampleImage
         self.activeBonus.gps = bonus.gps
+        self.activeBonus.primaryImage = bonus.primaryImage
+        self.activeBonus.alternateImage = bonus.alternateImage
+
     }
     init(categoryFilter: String, stateFilter: String) {
         

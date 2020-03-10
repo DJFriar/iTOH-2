@@ -27,5 +27,7 @@ extension Bonus {
     @NSManaged public var order: Int32
     @NSManaged public var captured: Bool
     @NSManaged public var gps: String
+    @NSManaged public var primaryImage: String
+    @NSManaged public var alternateImage: String
 
 }

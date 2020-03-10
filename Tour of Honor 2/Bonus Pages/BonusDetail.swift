@@ -95,7 +95,7 @@ struct BonusDetail: View {
                         .padding(.top, 10.0)
                 }
                 HStack {
-                    Image(uiImage: priImageMissing!)
+                    Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.primaryImage) ?? priImageMissing!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)
@@ -107,7 +107,7 @@ struct BonusDetail: View {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage, testMe: self.$testMe, imagePriority: self.$imagePriority)
                             .modifier(SystemServices())
                     }
-                    Image(uiImage: optImageMissing!)
+                    Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.alternateImage) ?? optImageMissing!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)

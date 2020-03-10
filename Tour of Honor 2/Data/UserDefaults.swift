@@ -57,4 +57,6 @@ class ActiveBonus: ObservableObject {
     @Published var captured = false
     @Published var sampleImage = ""
     @Published var gps = ""
+    @Published var primaryImage = ""
+    @Published var alternateImage = ""
 }

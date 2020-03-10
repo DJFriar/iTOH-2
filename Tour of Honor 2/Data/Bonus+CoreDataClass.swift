@@ -52,7 +52,31 @@ public class Bonus: NSManagedObject, Identifiable {
         print("test \(code)")
         return true
     }
-    
+    class func updateBonusKey(code: String, key: String, newVal: String) -> Bool {
+         let moc = CoreData.stack.context
+         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+         bonusesFetch.predicate = NSPredicate(format: "code = %@", code)
+
+        do {
+         let fetchedBonuses = try moc.fetch(bonusesFetch) as! [Bonus]
+         print(fetchedBonuses)
+         if let bonusRecord = fetchedBonuses.first {
+             print(bonusRecord.name)
+              
+                print("Updated: key \(key) to value \(newVal)")
+                bonusRecord.setValue(newVal, forKey: key)
+              
+              CoreData.stack.save()
+         }
+
+         
+        } catch {
+            fatalError("Failed to fetch bonuses: \(error)")
+        }
+         
+         
+         return true
+    }
     class func updateCapturedFlag(state: Bool, code: String) -> Bool {
       
         let moc = CoreData.stack.context

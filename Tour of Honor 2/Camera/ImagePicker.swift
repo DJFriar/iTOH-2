@@ -42,7 +42,17 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
         let imageSaver = ImageWriter()
         imageSaver.writeToAppData(image: uiImage, testMe: testMe, imagePriority: imagePriority)
         imageSaver.writeToPhotoAlbum(image: uiImage)
-
+        let filename = "2020_\(UserDefaultsConfig.riderFlagNumber)_\(testMe)_\(imagePriority).jpg"
+        switch imagePriority {
+        case "1":
+            Bonus.updateBonusKey(code: testMe, key: "primaryImage", newVal: filename )
+        case "2":
+            Bonus.updateBonusKey(code: testMe, key: "alternateImage", newVal: filename )
+        default:
+            print("not sure which image that was...")
+        }
+        
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
