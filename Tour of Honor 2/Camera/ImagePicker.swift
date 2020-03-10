@@ -15,10 +15,12 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
     
     @Binding var isShown: Bool
     @Binding var image: Image?
-    
-    init(isShown: Binding<Bool>, image: Binding<Image?>) {
+    var testMe: String
+
+    init(isShown: Binding<Bool>, image: Binding<Image?>, testMe: String) {
         _isShown = isShown
         _image = image
+        self.testMe = testMe
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -26,11 +28,12 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
         let uiImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         image = Image(uiImage: uiImage)
         isShown = false
-        print(uiImage.size)
+        //print(uiImage.size)
+        //print(info)
+        //print("-----")
+        //print(UIImagePickerController.InfoKey.originalImage)
         print("-----")
-        print(info)
-        print("-----")
-        print(UIImagePickerController.InfoKey.originalImage)
+        print(self.testMe)
         print("-----")
 
 
@@ -51,13 +54,14 @@ struct ImagePicker: UIViewControllerRepresentable {
     @Binding var useExistingPhoto: Bool
     @Binding var isShown: Bool
     @Binding var image: Image?
+    @Binding var testMe: String
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
         
     }
     
     func makeCoordinator() -> ImagePickerCoordinator {
-        return ImagePickerCoordinator(isShown: $isShown, image: $image)
+        return ImagePickerCoordinator(isShown: $isShown, image: $image, testMe: testMe)
     }
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {

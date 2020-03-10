@@ -19,6 +19,7 @@ struct BonusDetail: View {
     @State private var primaryImage: Image? = nil
     @State private var optionalImage: Image? = nil
     @State private var showPhotoModal: Bool = false
+    @State private var testMe: String = ""
     @Environment(\.presentationMode) var presentationMode
 
     var PriImageName = "no_image_taken"
@@ -27,15 +28,7 @@ struct BonusDetail: View {
     var optImageMissing = ImageReader.getImageFromDocDir(named: "optional_2nd_Image.png")
     var takenPriImage = ImageReader.getImageFromDocDir(named: "copy.jpg")
     
-    var id = "x"
-    var bonusName = "x"
-    var bonusCode = "x"
-    var bonusCategory = "x"
-    var city = "x"
-    var state = "x"
-    var gps = "x"
-    var sampleImage = "x"
-    var captured = false
+
     
     
     var body: some View {
@@ -110,22 +103,24 @@ struct BonusDetail: View {
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)
                         .gesture(TapGesture()
-                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true}))
+                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.testMe = self.activeBonus.code}))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
-                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true}))
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code}))
                         .sheet(isPresented: self.$showImagePicker) {
-                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage)
+                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage, testMe: self.$testMe)
+                            .modifier(SystemServices())
                     }
                     Image(uiImage: optImageMissing!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)
                         .gesture(TapGesture()
-                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true}))
+                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.testMe = self.activeBonus.code}))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
-                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true}))
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code}))
                         .sheet(isPresented: self.$showImagePicker) {
-                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage)
+                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage, testMe: self.$testMe)
+                            .modifier(SystemServices())
                     }
                 }
                 HStack {
