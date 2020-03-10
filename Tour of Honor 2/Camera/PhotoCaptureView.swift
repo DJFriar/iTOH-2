@@ -15,14 +15,15 @@ struct PhotoCaptureView: View {
     @Binding var showImagePicker: Bool
     @Binding var image: Image?
     @Binding var testMe: String
+    @Binding var imagePriority: String
     
     var body: some View {
-        ImagePicker(showImagePicker: $showImagePicker, useExistingPhoto: $useExistingPhoto, isShown: $showImagePicker, image: $image, testMe: $testMe)
+        ImagePicker(showImagePicker: $showImagePicker, useExistingPhoto: $useExistingPhoto, isShown: $showImagePicker, image: $image, testMe: $testMe, imagePriority: $imagePriority)
     }
 }
 
 struct PhotoCaptureView_Previews: PreviewProvider {
     static var previews: some View {
-        PhotoCaptureView(useExistingPhoto: .constant(false), showImagePicker: .constant(false), image: .constant(Image("")),testMe: .constant(""))
+        PhotoCaptureView(useExistingPhoto: .constant(false), showImagePicker: .constant(false), image: .constant(Image("")),testMe: .constant(""), imagePriority: .constant(""))
     }
 }

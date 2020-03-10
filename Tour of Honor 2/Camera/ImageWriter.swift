@@ -10,13 +10,17 @@ import UIKit
 import Foundation
 
 class ImageWriter: NSObject {
+    var riderFlagNumber = UserDefaultsConfig.riderFlagNumber
+    var testMe: String = "XXX"
+    var imagePriority: String = "X"
+    
     func writeToPhotoAlbum(image: UIImage) {
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError), nil)
     }
     
-    func writeToAppData(image: UIImage) {
+    func writeToAppData(image: UIImage, testMe: String, imagePriority: String) {
         if let data = image.jpegData(compressionQuality: 0.8) {
-            let filename = getDocumentsDirectory().appendingPathComponent("copy.jpg")
+            let filename = getDocumentsDirectory().appendingPathComponent("2020_\(riderFlagNumber)_\(testMe)_\(imagePriority).jpg")
             try? data.write(to: filename)
             print("image written ... I think")
         }

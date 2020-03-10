@@ -495,7 +495,7 @@
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEVELOPMENT_ASSET_PATHS = "\"Tour of Honor 2/Preview Content\"";
-				DEVELOPMENT_TEAM = 69B2NZ3KF6;
+				DEVELOPMENT_TEAM = 8XHY7EQ7TE;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Tour of Honor 2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -503,7 +503,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.keishaperry.iTOH-2";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.tommyc.iTOH-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -518,7 +518,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_ACTIVITY_MODE = "";
 				DEVELOPMENT_ASSET_PATHS = "\"Tour of Honor 2/Preview Content\"";
-				DEVELOPMENT_TEAM = 69B2NZ3KF6;
+				DEVELOPMENT_TEAM = 8XHY7EQ7TE;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Tour of Honor 2/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -526,7 +526,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.keishaperry.iTOH-2";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.tommyc.iTOH-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

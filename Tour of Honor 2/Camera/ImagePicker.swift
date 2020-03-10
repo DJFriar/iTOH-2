@@ -16,11 +16,13 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
     @Binding var isShown: Bool
     @Binding var image: Image?
     var testMe: String
+    var imagePriority: String
 
-    init(isShown: Binding<Bool>, image: Binding<Image?>, testMe: String) {
+    init(isShown: Binding<Bool>, image: Binding<Image?>, testMe: String, imagePriority: String) {
         _isShown = isShown
         _image = image
         self.testMe = testMe
+        self.imagePriority = imagePriority
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -38,7 +40,7 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
 
 
         let imageSaver = ImageWriter()
-        imageSaver.writeToAppData(image: uiImage)
+        imageSaver.writeToAppData(image: uiImage, testMe: testMe, imagePriority: imagePriority)
         imageSaver.writeToPhotoAlbum(image: uiImage)
 
     }
@@ -55,13 +57,14 @@ struct ImagePicker: UIViewControllerRepresentable {
     @Binding var isShown: Bool
     @Binding var image: Image?
     @Binding var testMe: String
+    @Binding var imagePriority: String
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
         
     }
     
     func makeCoordinator() -> ImagePickerCoordinator {
-        return ImagePickerCoordinator(isShown: $isShown, image: $image, testMe: testMe)
+        return ImagePickerCoordinator(isShown: $isShown, image: $image, testMe: testMe, imagePriority: imagePriority)
     }
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
