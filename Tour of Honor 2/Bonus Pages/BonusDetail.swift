@@ -25,6 +25,7 @@ struct BonusDetail: View {
 
     var PriImageName = "no_image_taken"
     var OptImageName = "optional_2nd_Image"
+    var sampleImageMissing = ImageReader.getImageFromDocDir(named: "sample_image_missing.png")
     var priImageMissing = ImageReader.getImageFromDocDir(named: "no_image_taken.png")
     var optImageMissing = ImageReader.getImageFromDocDir(named: "optional_2nd_Image.png")
     var takenPriImage = ImageReader.getImageFromDocDir(named: "copy.jpg")
@@ -70,7 +71,7 @@ struct BonusDetail: View {
                         }
                 }
                 VStack(spacing: 0.0) {
-                    Image(self.activeBonus.sampleImage)
+                    Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.sampleImage) ?? sampleImageMissing!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)

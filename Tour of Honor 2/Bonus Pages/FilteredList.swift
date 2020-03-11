@@ -11,6 +11,7 @@ import SwiftUI
 struct FilteredList: View {
     var fetchRequest: FetchRequest<Bonus>
     var bonuses: FetchedResults<Bonus> { fetchRequest.wrappedValue }
+    var sampleImageMissing = ImageReader.getImageFromDocDir(named: "sample_image_missing.png")
     @EnvironmentObject var filters: UserFilters
     @EnvironmentObject var activeBonus: ActiveBonus
 
@@ -21,7 +22,7 @@ struct FilteredList: View {
             List(bonuses, id: \.self) { item in
                 Button(action: { self.setupBonusData(bonus:item) }) {
                 HStack(spacing: 12.0) {
-                    Image(item.sampleImage)
+                    Image(uiImage: self.sampleImageMissing!)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 60, height: 60)

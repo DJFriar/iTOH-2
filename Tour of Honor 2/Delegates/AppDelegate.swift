@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Setup Imagery
         ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".png")
+        ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".jpg")
         
         return true
     }

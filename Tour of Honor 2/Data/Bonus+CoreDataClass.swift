@@ -40,7 +40,7 @@ public class Bonus: NSManagedObject, Identifiable {
         bonus.city = city
         bonus.state = state
         bonus.gps = gps
-        bonus.sampleImage = sampleImage
+        bonus.sampleImage = "2020\(code).jpg".lowercased()
         bonus.order = Int32(order ?? 0)
         bonus.captured = false
         CoreData.stack.save()
