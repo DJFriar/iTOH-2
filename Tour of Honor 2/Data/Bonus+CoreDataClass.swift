@@ -41,6 +41,8 @@ public class Bonus: NSManagedObject, Identifiable {
         bonus.state = state
         bonus.gps = gps
         bonus.sampleImage = "2020\(code).jpg".lowercased()
+        bonus.primaryImage = "no_image_taken.png"
+        bonus.alternateImage = "optional_2nd_Image.png"
         bonus.order = Int32(order ?? 0)
         bonus.captured = false
         CoreData.stack.save()

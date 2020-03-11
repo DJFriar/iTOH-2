@@ -38,6 +38,7 @@ class ImageWriter: NSObject {
                         if let documentsURL = documentsURL {
                             let sourceURL = Bundle.main.bundleURL.appendingPathComponent(fileName)
                             let destURL = documentsURL.appendingPathComponent(fileName)
+                            print("destURL: \(destURL)")
                             do { try FileManager.default.copyItem(at: sourceURL, to: destURL) } catch { }
                         }
                     }

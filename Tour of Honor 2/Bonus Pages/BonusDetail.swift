@@ -13,6 +13,8 @@ struct BonusDetail: View {
     @EnvironmentObject var activeBonus: ActiveBonus
 
     @State var submit = false
+    @State var primaryChanged = false
+    @State var alternateChanged = false
     @State var showFilterPicker = false
     @State public var useExistingPhoto: Bool = false
     @State private var showImagePicker: Bool = false
@@ -23,13 +25,9 @@ struct BonusDetail: View {
     @State private var imagePriority: String = ""
     @Environment(\.presentationMode) var presentationMode
 
-    var PriImageName = "no_image_taken"
-    var OptImageName = "optional_2nd_Image"
+
     var sampleImageMissing = ImageReader.getImageFromDocDir(named: "sample_image_missing.png")
-    var priImageMissing = ImageReader.getImageFromDocDir(named: "no_image_taken.png")
-    var optImageMissing = ImageReader.getImageFromDocDir(named: "optional_2nd_Image.png")
-    var takenPriImage = ImageReader.getImageFromDocDir(named: "copy.jpg")
-    
+  
     var body: some View {
 
             VStack(spacing: 5) {
@@ -96,29 +94,31 @@ struct BonusDetail: View {
                         .padding(.top, 10.0)
                 }
                 HStack {
-                    Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.primaryImage) ?? priImageMissing!)
+                    Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.primaryImage)!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)
                         .gesture(TapGesture()
-                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "1"; self.testMe = self.activeBonus.code}))
+                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "1"; self.testMe = self.activeBonus.code; }))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
-                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code}))
-                        .sheet(isPresented: self.$showImagePicker) {
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code; }))
+                        .sheet(isPresented: self.$showImagePicker, onDismiss: {self.primaryChanged = true}) {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage, testMe: self.$testMe, imagePriority: self.$imagePriority)
                             .modifier(SystemServices())
+
                     }
-                    Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.alternateImage) ?? optImageMissing!)
+                    Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.alternateImage)!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)
                         .gesture(TapGesture()
-                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "2"; self.testMe = self.activeBonus.code}))
+                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "2"; self.testMe = self.activeBonus.code;}))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
-                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code}))
-                        .sheet(isPresented: self.$showImagePicker) {
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code;}))
+                        .sheet(isPresented: self.$showImagePicker, onDismiss: {self.alternateChanged = true;}) {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage, testMe: self.$testMe,  imagePriority: self.$imagePriority)
                             .modifier(SystemServices())
+                            
                     }
                 }
                 HStack {

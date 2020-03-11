@@ -11,6 +11,7 @@ import SwiftUI
 struct FilteredList: View {
     var fetchRequest: FetchRequest<Bonus>
     var bonuses: FetchedResults<Bonus> { fetchRequest.wrappedValue }
+    var testimage: UIImage?
     var sampleImageMissing = ImageReader.getImageFromDocDir(named: "sample_image_missing.png")
     @EnvironmentObject var filters: UserFilters
     @EnvironmentObject var activeBonus: ActiveBonus
@@ -18,11 +19,16 @@ struct FilteredList: View {
     @State var showingBonusDetail = false
  
     var body: some View {
+//        VStack{
+//
+//            Image(uiImage: self.showBonusImage(code: "ak1") ?? self.sampleImageMissing! )
+//        }
         NavigationView{
             List(bonuses, id: \.self) { item in
                 Button(action: { self.setupBonusData(bonus:item) }) {
                 HStack(spacing: 12.0) {
-                    Image(uiImage: self.sampleImageMissing!)
+                    Image(uiImage: self.showBonusImage(code: item.code.lowercased()) ?? self.sampleImageMissing! )
+                        .renderingMode(.original)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 60, height: 60)
@@ -64,14 +70,14 @@ struct FilteredList: View {
                     .modifier(SystemServices())
                 }
                 }
-                
+
             .navigationBarTitle(Text("Bonuses"))
             .navigationBarItems(trailing: HStack {
                 Button(action: { self.filters.category = ""; self.filters.state = ""; }) {
                     Text("Clear filters")
                 }
             })
-            
+
         }
     
 
@@ -91,20 +97,35 @@ struct FilteredList: View {
         self.activeBonus.alternateImage = bonus.alternateImage
 
     }
+    func showBonusImage(code: String) -> UIImage?{
+        var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+          documentsPath.append("/2020\(code).jpg")
+          let url = URL(fileURLWithPath: documentsPath)
+        print("-------------")
+        print(url)
+        print("-------------")
+          do {
+              let imageData = try Data.init(contentsOf: url)
+                return UIImage(data: imageData)
+          } catch {
+              print(error.localizedDescription)
+            return nil
+          }
+    }
     init(categoryFilter: String, stateFilter: String) {
         
-        print("category filter: \(categoryFilter)")
-        print("state filter: \(stateFilter)")
+        //print("category filter: \(categoryFilter)")
+        //print("state filter: \(stateFilter)")
         
         if (categoryFilter.count > 0 && stateFilter.count > 0){
-            var predicate = NSPredicate(format: "category BEGINSWITH %@ AND state BEGINSWITH %@", categoryFilter, stateFilter)
+            let predicate = NSPredicate(format: "category BEGINSWITH %@ AND state BEGINSWITH %@", categoryFilter, stateFilter)
             fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [], predicate: predicate)
 
         } else if (categoryFilter.count > 0 && stateFilter.count <= 0){
-            var predicate = NSPredicate(format: "category BEGINSWITH %@", categoryFilter)
+            let predicate = NSPredicate(format: "category BEGINSWITH %@", categoryFilter)
             fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [], predicate: predicate)
         } else if (categoryFilter.count <= 0 && stateFilter.count > 0){
-            var predicate = NSPredicate(format: "state BEGINSWITH %@", stateFilter)
+            let predicate = NSPredicate(format: "state BEGINSWITH %@", stateFilter)
             fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [], predicate: predicate)
         } else {
             fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [])
@@ -112,13 +133,23 @@ struct FilteredList: View {
         }
     
 
-        
-
+        var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+          documentsPath.append("/copy.jpg")
+          let url = URL(fileURLWithPath: documentsPath)
+        print("-------------")
+        print(url)
+        print("-------------")
+          do {
+              let imageData = try Data.init(contentsOf: url)
+                testimage = UIImage(data: imageData)
+          } catch {
+              print(error.localizedDescription)
+          }
           //var predicate = NSCompoundPredicate(type:.and, subpredicates:[
             //    NSPredicate(format: "lastName BEGINSWITH %@", lastNameFilter),
             //    NSPredicate(format: "firstName BEGINSWITH %@", firstNameFilter)])
         //            var predicate = NSPredicate(format: "lastName BEGINSWITH %@", lastNameFilter)
         
-        print(fetchRequest)
+        //print(fetchRequest)
     }
 }
