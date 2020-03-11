@@ -29,5 +29,6 @@ extension Bonus {
     @NSManaged public var gps: String
     @NSManaged public var primaryImage: String
     @NSManaged public var alternateImage: String
+    @NSManaged public var submitted: Bool
 
 }

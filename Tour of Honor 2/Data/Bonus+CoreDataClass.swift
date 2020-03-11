@@ -52,7 +52,7 @@ public class Bonus: NSManagedObject, Identifiable {
         print("test \(code)")
         return true
     }
-    class func updateBonusKey(code: String, key: String, newVal: String) -> Bool {
+    class func updateBonusKey(code: String, key: String, newVal: Any) -> Bool {
          let moc = CoreData.stack.context
          let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
          bonusesFetch.predicate = NSPredicate(format: "code = %@", code)

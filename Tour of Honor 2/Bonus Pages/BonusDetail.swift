@@ -55,7 +55,7 @@ struct BonusDetail: View {
                 HStack {
                     ZStack {
                         HStack {
-                            Image(systemName: "checkmark.shield")
+                            Image(systemName: self.activeBonus.submitted ? "checkmark.shield.fill" : "checkmark.shield")
                                 .opacity(self.activeBonus.captured ? 100 : 0)
                             Spacer()
                         }
@@ -138,11 +138,13 @@ struct BonusDetail: View {
     }
    
     func submitCapturedBonus(){
-        Bonus.updateCapturedFlag(state: true, code: self.activeBonus.code)
+        Bonus.updateBonusKey(code: self.activeBonus.code, key: "submitted", newVal: true)
     }
     
     func removeCapturedBonus(){
-        Bonus.updateCapturedFlag(state: false,code: self.activeBonus.code)
+        Bonus.updateBonusKey(code: self.activeBonus.code, key: "submitted", newVal: false)
+        Bonus.updateBonusKey(code: self.activeBonus.code, key: "captured", newVal: false)
+//        Bonus.updateCapturedFlag(state: false,code: self.activeBonus.code)
     }
     
     func getDocumentsDirectory() -> URL {

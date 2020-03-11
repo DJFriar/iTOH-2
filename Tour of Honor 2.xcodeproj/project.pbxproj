@@ -231,8 +231,8 @@
 				65C2C85223DFDF7C00430FCC /* Delegates */,
 				65CE1F6C23AF705D008FA854 /* LaunchScreen.storyboard */,
 				6561FAC023F277B700F786AE /* Other Screens */,
-				65CE1F6923AF705D008FA854 /* Preview Content */,
 				65CE1F6223AF705B008FA854 /* Tour_of_Honor_2.xcdatamodeld */,
+				65CE1F6923AF705D008FA854 /* Preview Content */,
 			);
 			path = "Tour of Honor 2";
 			sourceTree = "<group>";

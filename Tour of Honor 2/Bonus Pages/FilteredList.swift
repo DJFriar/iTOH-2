@@ -27,14 +27,14 @@ struct FilteredList: View {
                         .frame(width: 60, height: 60)
                         .background(Color.white)
                         .cornerRadius(15)
-                        .saturation(item.captured ? 1 : 0)
+                        .saturation(item.submitted ? 1 : 0)
 
                     VStack(alignment: .leading) {
                         HStack {
                             Text(item.name)
                                 .font(.headline)
                             Spacer()
-                            Image(systemName: "checkmark.shield")
+                            Image(systemName: item.submitted ? "checkmark.shield.fill" : "checkmark.shield")
                                 .opacity(item.captured ? 100 : 0)
                         }
                         Text("\(item.city), \(item.state)")
@@ -83,6 +83,7 @@ struct FilteredList: View {
         self.activeBonus.state = bonus.state
         self.activeBonus.city = bonus.city
         self.activeBonus.captured = bonus.captured
+        self.activeBonus.submitted = bonus.submitted
         self.activeBonus.sampleImage = bonus.sampleImage
         self.activeBonus.gps = bonus.gps
         self.activeBonus.primaryImage = bonus.primaryImage

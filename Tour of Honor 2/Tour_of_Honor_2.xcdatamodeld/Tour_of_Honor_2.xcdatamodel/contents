@@ -13,6 +13,7 @@
         <attribute name="primaryImage" optional="YES" attributeType="String"/>
         <attribute name="sampleImage" optional="YES" attributeType="String"/>
         <attribute name="state" optional="YES" attributeType="String"/>
+        <attribute name="submitted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <entity name="TrophyList" representedClassName="TrophyList" syncable="YES">
         <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -20,7 +21,7 @@
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Bonus" positionX="-63" positionY="-18" width="128" height="223"/>
+        <element name="Bonus" positionX="-63" positionY="-18" width="128" height="238"/>
         <element name="TrophyList" positionX="-63" positionY="54" width="128" height="28"/>
     </elements>
 </model>

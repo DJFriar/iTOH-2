@@ -41,6 +41,7 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
 
         let imageSaver = ImageWriter()
         imageSaver.writeToAppData(image: uiImage, testMe: testMe, imagePriority: imagePriority)
+        Bonus.updateCapturedFlag(state: true, code: testMe)
         imageSaver.writeToPhotoAlbum(image: uiImage)
         let filename = "2020_\(UserDefaultsConfig.riderFlagNumber)_\(testMe)_\(imagePriority).jpg"
         switch imagePriority {
