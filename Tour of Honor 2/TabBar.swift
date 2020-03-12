@@ -31,7 +31,7 @@ struct TabBar : View {
                     Image(systemName: "sparkles")
                     Text("Trophies")
                 })
-            MailView()
+            MailViewTest()
                 .tabItem({
                     Image(systemName: "shield")
                     Text("Send Email")

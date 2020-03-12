@@ -2,116 +2,60 @@
 //  SendEmail.swift
 //  Tour of Honor 2
 //
-//  Created by Tommy Craft on 2/20/20.
+//  Created by Tommy Craft on 3/12/20.
 //  Copyright © 2020 Tommy Craft. All rights reserved.
 //
-// Medium link: https://medium.com/@florentmorin/messageui-swiftui-and-uikit-integration-82d91159b0bd
-// Sample source code: https://github.com/florentmorin/SwiftUIAndMessageUI
+// Based on the 2nd answer provided at: https://stackoverflow.com/questions/56784722/swiftui-send-email
 
 import SwiftUI
+import UIKit
 import MessageUI
 
-/// Main View
-struct MailView: View {
+struct MailView: UIViewControllerRepresentable {
 
-    var takenImage = ImageReader.getImageFromDocDir(named: "copy.jpg")
-    
-    /// The delegate required by `MFMailComposeViewController`
-    private let mailComposeDelegate = MailDelegate()
+    @Environment(\.presentationMode) var presentation
+    @Binding var result: Result<MFMailComposeResult, Error>?
 
-    /// The delegate required by `MFMessageComposeViewController`
-//    private let messageComposeDelegate = MessageDelegate()
+    class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
 
+        @Binding var presentation: PresentationMode
+        @Binding var result: Result<MFMailComposeResult, Error>?
 
-    var body: some View {
-        VStack {
-            Spacer()
-//            Image(uiImage: takenImage!)
-//            Image("no_image_taken")
-            Button(action: {
-                self.presentMailCompose()
-            }) {
-                Text("Send email")
-            }
-            Spacer()
-            Button(action: {
-                self.presentMailCompose()
-            }) {
-                Text("Send message")
-            }
-            Spacer()
+        init(presentation: Binding<PresentationMode>,
+             result: Binding<Result<MFMailComposeResult, Error>?>) {
+            _presentation = presentation
+            _result = result
         }
-    }
-
-}
-
-// MARK: The mail part
-extension MailView {
-
-    /// Delegate for view controller as `MFMailComposeViewControllerDelegate`
-    private class MailDelegate: NSObject, MFMailComposeViewControllerDelegate {
 
         func mailComposeController(_ controller: MFMailComposeViewController,
                                    didFinishWith result: MFMailComposeResult,
                                    error: Error?) {
-            
-             // Something custom goes here
-            
-            controller.dismiss(animated: true)
+            defer {
+                $presentation.wrappedValue.dismiss()
+            }
+            guard error == nil else {
+                self.result = .failure(error!)
+                return
+            }
+            self.result = .success(result)
         }
-
     }
 
-    /// Present an mail compose view controller modally in UIKit environment
-    private func presentMailCompose() {
-        guard MFMailComposeViewController.canSendMail() else {
-            return
-        }
-        let vc = UIApplication.shared.keyWindow?.rootViewController
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(presentation: presentation,
+                           result: $result)
+    }
 
-        let composeVC = MFMailComposeViewController()
-        composeVC.mailComposeDelegate = mailComposeDelegate
+    func makeUIViewController(context: UIViewControllerRepresentableContext<MailView>) -> MFMailComposeViewController {
+        let vc = MFMailComposeViewController()
+        vc.setToRecipients(["photos@tourofhonor.com"])
+        vc.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+        vc.mailComposeDelegate = context.coordinator
+        return vc
+    }
 
-        composeVC.setSubject("Subject Testing")
-        composeVC.setMessageBody("Body Testing", isHTML: true)
-        composeVC.setToRecipients(["photos@tourofhonor.com"])
+    func updateUIViewController(_ uiViewController: MFMailComposeViewController,
+                                context: UIViewControllerRepresentableContext<MailView>) {
 
-        vc?.present(composeVC, animated: true)
     }
 }
-
-// MARK: The message part
-//extension MailView {
-//
-//    /// Delegate for view controller as `MFMessageComposeViewControllerDelegate`
-//    private class MessageDelegate: NSObject, MFMessageComposeViewControllerDelegate {
-//        func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-//            // Customize here
-//            controller.dismiss(animated: true)
-//        }
-//
-//    }
-//
-//    /// Present an message compose view controller modally in UIKit environment
-//    private func presentMessageCompose() {
-//        guard MFMessageComposeViewController.canSendText() else {
-//            return
-//        }
-//        let vc = UIApplication.shared.keyWindow?.rootViewController
-//
-//        let composeVC = MFMessageComposeViewController()
-//        composeVC.messageComposeDelegate = messageComposeDelegate
-//
-//
-//
-//        vc?.present(composeVC, animated: true)
-//    }
-//}
-
-#if DEBUG
-struct MailView_Previews : PreviewProvider {
-    static var previews: some View {
-        MailView()
-    }
-}
-#endif
