@@ -45,6 +45,7 @@ public class Bonus: NSManagedObject, Identifiable {
         bonus.alternateImage = "optional_2nd_Image.png"
         bonus.order = Int32(order ?? 0)
         bonus.captured = false
+        bonus.submitted = false
         CoreData.stack.save()
         
         return bonus

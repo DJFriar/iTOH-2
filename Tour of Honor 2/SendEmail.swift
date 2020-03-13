@@ -52,7 +52,17 @@ struct MailView: UIViewControllerRepresentable {
         let vc = MFMailComposeViewController()
         vc.setToRecipients(["testing@tommyc.net"])
         vc.setSubject("2020_\(riderFlagNumber)_\(activeBonus.category)_\(activeBonus.city)_\(activeBonus.state)_\(activeBonus.code)")
-        vc.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+        vc.setMessageBody("", isHTML: true)
+        
+        // Add Primary Image
+        let imageData1 = (ImageReader.getImageFromDocDir(named: activeBonus.primaryImage)?.jpegData(compressionQuality: 0.7))!
+        vc.addAttachmentData(imageData1, mimeType: "image/jpeg", fileName: activeBonus.primaryImage)
+        // Add Optional Image
+        if activeBonus.alternateImage != "optional_2nd_Image.png" {
+            let imageData2 = (ImageReader.getImageFromDocDir(named: activeBonus.alternateImage)?.jpegData(compressionQuality: 0.7))!
+            vc.addAttachmentData(imageData2, mimeType: "image/jpeg", fileName: activeBonus.primaryImage)
+        }
+        
         vc.mailComposeDelegate = context.coordinator
         return vc
     }
