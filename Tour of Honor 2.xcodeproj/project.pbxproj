@@ -373,7 +373,6 @@
 		65E3D2D2241890DD005AA8CB /* 2020tn7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65E3D280241890DD005AA8CB /* 2020tn7.jpg */; };
 		65E3D2D3241890DD005AA8CB /* 2020wv4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65E3D281241890DD005AA8CB /* 2020wv4.jpg */; };
 		65E3D2D5241A9E3A005AA8CB /* SendEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E3D2D4241A9E3A005AA8CB /* SendEmail.swift */; };
-		65E3D2D7241A9EC5005AA8CB /* SendEmailTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E3D2D6241A9EC5005AA8CB /* SendEmailTestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -746,7 +745,6 @@
 		65E3D280241890DD005AA8CB /* 2020tn7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2020tn7.jpg; sourceTree = "<group>"; };
 		65E3D281241890DD005AA8CB /* 2020wv4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2020wv4.jpg; sourceTree = "<group>"; };
 		65E3D2D4241A9E3A005AA8CB /* SendEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmail.swift; sourceTree = "<group>"; };
-		65E3D2D6241A9EC5005AA8CB /* SendEmailTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailTestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -861,7 +859,6 @@
 				6561FAC123F2785900F786AE /* CategoryPickerModal.swift */,
 				65CE1F6523AF705B008FA854 /* ContentView.swift */,
 				65E3D2D4241A9E3A005AA8CB /* SendEmail.swift */,
-				65E3D2D6241A9EC5005AA8CB /* SendEmailTestView.swift */,
 				65795E46240E08D80036B4EA /* LocationManager.swift */,
 				65DBD66B23F0117200BC5B66 /* CustomModifiers.swift */,
 				65DBD66823F00CEF00BC5B66 /* DeviceDetector.swift */,
@@ -1615,7 +1612,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				65C2C84E23DFCD9F00430FCC /* ImagePicker.swift in Sources */,
-				65E3D2D7241A9EC5005AA8CB /* SendEmailTestView.swift in Sources */,
 				65CE1F6423AF705B008FA854 /* Tour_of_Honor_2.xcdatamodeld in Sources */,
 				639553E423E64DF50034A51E /* Bonus+CoreDataClass.swift in Sources */,
 				635E9FE8240E059300A46077 /* TrophyList+CoreDataProperties.swift in Sources */,
