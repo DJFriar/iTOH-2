@@ -15,6 +15,8 @@ struct MailView: UIViewControllerRepresentable {
 
     @Environment(\.presentationMode) var presentation
     @Binding var result: Result<MFMailComposeResult, Error>?
+    @State var riderFlagNumber = UserDefaultsConfig.riderFlagNumber
+    @EnvironmentObject var activeBonus: ActiveBonus
 
     class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
 
@@ -48,7 +50,8 @@ struct MailView: UIViewControllerRepresentable {
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<MailView>) -> MFMailComposeViewController {
         let vc = MFMailComposeViewController()
-        vc.setToRecipients(["photos@tourofhonor.com"])
+        vc.setToRecipients(["testing@tommyc.net"])
+        vc.setSubject("2020_\(riderFlagNumber)_\(activeBonus.category)_\(activeBonus.city)_\(activeBonus.state)_\(activeBonus.code)")
         vc.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
         vc.mailComposeDelegate = context.coordinator
         return vc

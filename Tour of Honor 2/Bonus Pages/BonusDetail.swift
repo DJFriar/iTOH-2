@@ -8,6 +8,7 @@
 
 import SwiftUI
 import MessageUI
+import UIKit
 
 struct BonusDetail: View {
     @EnvironmentObject var filters: UserFilters
@@ -141,6 +142,7 @@ struct BonusDetail: View {
                 .disabled(!MFMailComposeViewController.canSendMail())
                 .sheet(isPresented: $isShowingMailView) {
                     MailView(result: self.$result)
+                    .modifier(SystemServices())
                 }
             }
             .padding(.vertical,8)
@@ -174,3 +176,54 @@ struct BonusDetail_Previews: PreviewProvider {
         }
     }
 }
+
+//struct MailView: UIViewControllerRepresentable {
+//
+//    @Environment(\.presentationMode) var presentation
+//    @Binding var result: Result<MFMailComposeResult, Error>?
+//    @State var riderFlagNumber = UserDefaultsConfig.riderFlagNumber
+//
+//    class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
+//
+//        @Binding var presentation: PresentationMode
+//        @Binding var result: Result<MFMailComposeResult, Error>?
+//
+//        init(presentation: Binding<PresentationMode>,
+//             result: Binding<Result<MFMailComposeResult, Error>?>) {
+//            _presentation = presentation
+//            _result = result
+//        }
+//
+//        func mailComposeController(_ controller: MFMailComposeViewController,
+//                                   didFinishWith result: MFMailComposeResult,
+//                                   error: Error?) {
+//            defer {
+//                $presentation.wrappedValue.dismiss()
+//            }
+//            guard error == nil else {
+//                self.result = .failure(error!)
+//                return
+//            }
+//            self.result = .success(result)
+//        }
+//    }
+//
+//    func makeCoordinator() -> Coordinator {
+//        return Coordinator(presentation: presentation,
+//                           result: $result)
+//    }
+//
+//    func makeUIViewController(context: UIViewControllerRepresentableContext<MailView>) -> MFMailComposeViewController {
+//        let vc = MFMailComposeViewController()
+//        vc.setToRecipients(["photos@tourofhonor.com"])
+//        vc.setSubject("2020_\(riderFlagNumber)_\(self.activeBonus.category)_\(self.activeBonus.city)_\(self.activeBonus.state),\(self.activeBonus.code)")
+//        vc.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+//        vc.mailComposeDelegate = context.coordinator
+//        return vc
+//    }
+//
+//    func updateUIViewController(_ uiViewController: MFMailComposeViewController,
+//                                context: UIViewControllerRepresentableContext<MailView>) {
+//
+//    }
+//}
