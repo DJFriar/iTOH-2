@@ -31,16 +31,16 @@ struct TabBar : View {
                     Image(systemName: "sparkles")
                     Text("Trophies")
                 })
-            MailViewTest()
-                .tabItem({
-                    Image(systemName: "shield")
-                    Text("Send Email")
-                })
 //            NationalParks()
 //                .tabItem({
 //                    Image(systemName: "shield")
 //                    Text("Parks")
 //                })
+            PurchaseView()
+                .tabItem({
+                    Image(systemName: "shield")
+                    Text("IAP")
+                })
             BonusList()
             .tabItem({
                 Image(systemName: "flag")

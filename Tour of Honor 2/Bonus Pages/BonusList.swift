@@ -27,8 +27,6 @@ struct BonusList: View {
         
         }
 
-    
-        
     }
      
 }
