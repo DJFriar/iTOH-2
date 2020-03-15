@@ -11,40 +11,48 @@ import SwiftUI
 struct TabBar : View {
     
     @EnvironmentObject var filters: UserFilters
+    @State private var selection = 4
 
     var body: some View {
 
-        TabView {
+        TabView(selection:$selection) {
             Settings()
                 .tabItem({
                     Image(systemName: "gear")
                     Text("Settings")
                 })
+                .tag(0)
             Stats()
                 .tabItem({
                     Image(systemName: "gamecontroller")
                     Text("Stats")
                 })
+                .tag(1)
+                
             Trophies()
                 .tabItem({
                     Image(systemName: "sparkles")
                     Text("Trophies")
                 })
+                .tag(2)
 //            NationalParks()
 //                .tabItem({
 //                    Image(systemName: "shield")
 //                    Text("Parks")
 //                })
+//                .tag(3)
             PurchaseView()
                 .tabItem({
                     Image(systemName: "shield")
                     Text("IAP")
                 })
+                .tag(10)
             BonusList()
             .tabItem({
                 Image(systemName: "flag")
                 Text("Bonuses")
             })
+            .tag(4)
         }
         .background(Color(UIColor.systemBackground))
             .overlay(

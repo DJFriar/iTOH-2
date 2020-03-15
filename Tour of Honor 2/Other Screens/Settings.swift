@@ -17,6 +17,7 @@ struct Settings: View {
     @State var riderFlagNumber = UserDefaultsConfig.riderFlagNumber
     @State var pillionFlagNumber = UserDefaultsConfig.pillionFlagNumber
     @State var submit = false
+    @State var showIAP = false
     
     // Used for Location Tracking
     @ObservedObject var locationManager = LocationManager()
@@ -87,6 +88,13 @@ struct Settings: View {
                     Alert(title: Text("Details Saved"), message: Text("Rider: \(riderFlagNumber)"))
                 })
             }
+            Button(action: { self.showIAP.toggle() }) {
+                Text("Test IAP")
+                    .sheet(isPresented: $showIAP) {
+                        PurchaseView()
+                }
+            }
+            Spacer()
             HStack {
                 Text("latitude: \(userLatitude)").font(.caption)
                 Text("longitude: \(userLongitude)").font(.caption)
@@ -104,6 +112,7 @@ struct Settings: View {
                         .multilineTextAlignment(.center)
                 }
             }
+            Spacer()
         }
     }
 }
