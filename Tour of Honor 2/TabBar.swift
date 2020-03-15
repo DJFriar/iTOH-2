@@ -14,7 +14,6 @@ struct TabBar : View {
 
     var body: some View {
 
-        
         TabView {
             Settings()
                 .tabItem({
@@ -47,7 +46,7 @@ struct TabBar : View {
                 Text("Bonuses")
             })
         }
-                        .background(Color.primary)
+        .background(Color(UIColor.systemBackground))
             .overlay(
                 VStack {
                     Spacer()
@@ -58,18 +57,15 @@ struct TabBar : View {
                 }
             )
         .edgesIgnoringSafeArea(.top)
-
     }
-    
 }
 
 struct TabBar_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            TabBar().environment(\.colorScheme, .dark)
-            TabBar()
+            TabBar().darkModeFix()
+            TabBar().darkModeFix()
                 .previewDevice("iPhone SE")
-                .environment(\.colorScheme, .dark)
                 .environment(\.sizeCategory, .extraSmall)
         }
     }

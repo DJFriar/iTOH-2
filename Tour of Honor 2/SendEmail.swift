@@ -60,7 +60,7 @@ struct MailView: UIViewControllerRepresentable {
         // Add Optional Image
         if activeBonus.alternateImage != "optional_2nd_Image.png" {
             let imageData2 = (ImageReader.getImageFromDocDir(named: activeBonus.alternateImage)?.jpegData(compressionQuality: 0.7))!
-            vc.addAttachmentData(imageData2, mimeType: "image/jpeg", fileName: activeBonus.primaryImage)
+            vc.addAttachmentData(imageData2, mimeType: "image/jpeg", fileName: activeBonus.alternateImage)
         }
         
         vc.mailComposeDelegate = context.coordinator

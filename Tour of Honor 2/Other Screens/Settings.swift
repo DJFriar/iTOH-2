@@ -23,7 +23,7 @@ struct Settings: View {
     var userLatitude: String {
         return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
     }
-
+    
     var userLongitude: String {
         return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
     }
@@ -38,6 +38,7 @@ struct Settings: View {
                 Text("Settings")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
+                    .foregroundColor(Color(UIColor.label))
                 Spacer()
             }
             .padding(.leading,8)
@@ -86,10 +87,9 @@ struct Settings: View {
                     Alert(title: Text("Details Saved"), message: Text("Rider: \(riderFlagNumber)"))
                 })
             }
-            .navigationBarTitle("Settings")
             HStack {
-            Text("latitude: \(userLatitude)").font(.caption)
-            Text("longitude: \(userLongitude)").font(.caption)
+                Text("latitude: \(userLatitude)").font(.caption)
+                Text("longitude: \(userLongitude)").font(.caption)
             }
             Text("Submit App Feedback").padding(.bottom,8)
             Text("iTOH Version \(appVersion!).\(appBuild!)").font(.caption)
@@ -111,9 +111,9 @@ struct Settings: View {
 struct Settings_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            Settings().environment(\.colorScheme, .dark)
             Settings().environment(\.colorScheme, .light)
-            Settings().previewDevice("iPhone SE")
+            Settings().darkModeFix()
+            //            Settings().previewDevice("iPhone SE")
         }
     }
 }

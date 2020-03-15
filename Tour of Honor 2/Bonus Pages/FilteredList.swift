@@ -19,10 +19,6 @@ struct FilteredList: View {
     @State var showingBonusDetail = false
  
     var body: some View {
-//        VStack{
-//
-//            Image(uiImage: self.showBonusImage(code: "ak1") ?? self.sampleImageMissing! )
-//        }
         NavigationView{
             List(bonuses, id: \.self) { item in
                 Button(action: { self.setupBonusData(bonus:item) }) {
@@ -45,8 +41,6 @@ struct FilteredList: View {
                                 .opacity(item.captured ? 100 : 0)
                         }
                         Text("\(item.city), \(item.state)")
-                            //                                .lineLimit(1)
-                            //                                .lineSpacing(4)
                             .font(.subheadline)
                             .frame(height: 25.0)
                         HStack {
