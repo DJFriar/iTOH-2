@@ -29,6 +29,7 @@
 		6581CA90240F76CA00887782 /* optional_2nd_Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 6581CA8D240F76C900887782 /* optional_2nd_Image.png */; };
 		6581CA91240F76CA00887782 /* sample_image_missing.png in Resources */ = {isa = PBXBuildFile; fileRef = 6581CA8E240F76CA00887782 /* sample_image_missing.png */; };
 		6581CA92240F76CA00887782 /* no_image_taken.png in Resources */ = {isa = PBXBuildFile; fileRef = 6581CA8F240F76CA00887782 /* no_image_taken.png */; };
+		658D3C1B241F3FB800A333EC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658D3C1A241F3FB800A333EC /* OnboardingView.swift */; };
 		65BAAF5C2416DFE9004383FE /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BAAF5B2416DFE9004383FE /* BlurView.swift */; };
 		65C2C84E23DFCD9F00430FCC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */; };
 		65C2C85023DFD18800430FCC /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */; };
@@ -405,6 +406,7 @@
 		6581CA8D240F76C900887782 /* optional_2nd_Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optional_2nd_Image.png; sourceTree = "<group>"; };
 		6581CA8E240F76CA00887782 /* sample_image_missing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sample_image_missing.png; sourceTree = "<group>"; };
 		6581CA8F240F76CA00887782 /* no_image_taken.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_image_taken.png; sourceTree = "<group>"; };
+		658D3C1A241F3FB800A333EC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		65BAAF5B2416DFE9004383FE /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		65C2C84D23DFCD9F00430FCC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		65C2C84F23DFD18800430FCC /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
@@ -810,6 +812,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		658D3C19241F3F8C00A333EC /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				658D3C1A241F3FB800A333EC /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		65C2C85123DFDF5800430FCC /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -875,6 +885,7 @@
 				65E3D2D4241A9E3A005AA8CB /* SendEmail.swift */,
 				65CE1F7523AF7099008FA854 /* TabBar.swift */,
 				65CE1F6723AF705D008FA854 /* Assets.xcassets */,
+				658D3C19241F3F8C00A333EC /* Onboarding */,
 				65C2C85323DFDF9500430FCC /* Bonus Pages */,
 				65C2C85123DFDF5800430FCC /* Camera */,
 				639553E623E64DFC0034A51E /* Data */,
@@ -1661,6 +1672,7 @@
 				65E3D2E2241EA316005AA8CB /* Constants.swift in Sources */,
 				632468AC2414564E00BEE0D5 /* FilterMenuBar.swift in Sources */,
 				65E3D2E6241EB4F6005AA8CB /* PurchaseButton.swift in Sources */,
+				658D3C1B241F3FB800A333EC /* OnboardingView.swift in Sources */,
 				65E3D2DE241EA295005AA8CB /* IAPManager.swift in Sources */,
 				635E9FE7240E059300A46077 /* TrophyList+CoreDataClass.swift in Sources */,
 				65CE1F6623AF705B008FA854 /* ContentView.swift in Sources */,
@@ -1762,7 +1774,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.dev;
 				CODE_SIGN_ENTITLEMENTS = "Tour of Honor 2/Tour of Honor 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 694;
+				CURRENT_PROJECT_VERSION = 699;
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEVELOPMENT_ASSET_PATHS = "\"Tour of Honor 2/Preview Content\"";
@@ -1902,7 +1914,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.debug;
 				CODE_SIGN_ENTITLEMENTS = "Tour of Honor 2/Tour of Honor 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 694;
+				CURRENT_PROJECT_VERSION = 699;
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEVELOPMENT_ASSET_PATHS = "\"Tour of Honor 2/Preview Content\"";
@@ -1927,7 +1939,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Tour of Honor 2/Tour of Honor 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 694;
+				CURRENT_PROJECT_VERSION = 699;
 				DEBUG_ACTIVITY_MODE = "";
 				DEVELOPMENT_ASSET_PATHS = "\"Tour of Honor 2/Preview Content\"";
 				DEVELOPMENT_TEAM = 8XHY7EQ7TE;
@@ -1939,7 +1951,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "net.tommyc.iTOH-2";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Tour of Honor 2";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PROD;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
