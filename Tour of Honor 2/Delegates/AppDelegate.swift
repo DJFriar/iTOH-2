@@ -25,6 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".png")
         ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".jpg")
         
+        #if PROD
+            print("Production build!")
+        #elseif DEV
+            print("Development build")
+        #elseif DEBUG
+            print("Debug build")
+        #endif
+        
         return true
     }
 

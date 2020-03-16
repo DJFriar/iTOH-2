@@ -41,12 +41,14 @@ struct TabBar : View {
 //                    Text("Parks")
 //                })
 //                .tag(3)
+            #if DEV
             PurchaseView()
                 .tabItem({
                     Image(systemName: "shield")
                     Text("IAP")
                 })
                 .tag(10)
+            #endif
             BonusList()
             .tabItem({
                 Image(systemName: "flag")
