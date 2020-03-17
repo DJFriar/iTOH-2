@@ -13,9 +13,9 @@ struct Settings: View {
     let appBuild = Bundle.main.infoDictionary!["CFBundleVersion"]! as? String
     @State var showSettings = false
     @State var trophyHunter = UserDefaultsConfig.trophyHunter
-    @State var autoDarkMode = UserDefaultsConfig.autoDarkMode
     @State var riderFlagNumber = UserDefaultsConfig.riderFlagNumber
     @State var pillionFlagNumber = UserDefaultsConfig.pillionFlagNumber
+    @State var initialActiveTab = UserDefaultsConfig.initialActiveTab
     @State var submit = false
     @State var showIAP = false
     
@@ -65,9 +65,6 @@ struct Settings: View {
                 }
                 
                 Section(header: Text("App Preferences")) {
-                    Toggle(isOn: $autoDarkMode) {
-                        Text("Enable Automatic Dark Mode")
-                    }
                     Toggle(isOn: $trophyHunter) {
                         Text("Enable Trophy Mode")
                     }
@@ -75,10 +72,12 @@ struct Settings: View {
                 
                 Button(action: {
                     self.submit.toggle()
+                    self.initialActiveTab = 4
                     UserDefaultsConfig.riderFlagNumber = self.riderFlagNumber
                     UserDefaultsConfig.pillionFlagNumber = self.pillionFlagNumber
                     UserDefaultsConfig.trophyHunter = self.trophyHunter
-                    UserDefaultsConfig.autoDarkMode = self.autoDarkMode
+                    UserDefaultsConfig.initialActiveTab = self.initialActiveTab
+                    print("Active Tab set to: \(self.initialActiveTab)")
                 }) {
                     Text("Save Settings")
                         .multilineTextAlignment(.center)

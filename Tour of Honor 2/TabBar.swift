@@ -11,10 +11,11 @@ import SwiftUI
 struct TabBar : View {
     
     @EnvironmentObject var filters: UserFilters
-    @State private var selection = 4
-
+    @State var trophyHunter = UserDefaultsConfig.trophyHunter
+    @State private var selection = UserDefaultsConfig.initialActiveTab
+    @State var hasConfiguredApp = UserDefaultsConfig.hasConfiguredApp
+    
     var body: some View {
-
         TabView(selection:$selection) {
             Settings()
                 .tabItem({
@@ -28,19 +29,21 @@ struct TabBar : View {
                     Text("Stats")
                 })
                 .tag(1)
-                
-            Trophies()
-                .tabItem({
-                    Image(systemName: "sparkles")
-                    Text("Trophies")
-                })
-                .tag(2)
-//            NationalParks()
-//                .tabItem({
-//                    Image(systemName: "shield")
-//                    Text("Parks")
-//                })
-//                .tag(3)
+            if trophyHunter {
+                Trophies()
+                    .tabItem({
+                        Image(systemName: "sparkles")
+                        Text("Trophies")
+                    })
+                    .tag(2)
+            }
+            //            NationalParks()
+            //                .tabItem({
+            //                    Image(systemName: "shield")
+            //                    Text("Parks")
+            //                })
+            //                .tag(3)
+            
             #if DEV
             PurchaseView()
                 .tabItem({
@@ -49,23 +52,24 @@ struct TabBar : View {
                 })
                 .tag(10)
             #endif
+            
             BonusList()
-            .tabItem({
-                Image(systemName: "flag")
-                Text("Bonuses")
-            })
-            .tag(4)
+                .tabItem({
+                    Image(systemName: "flag")
+                    Text("Bonuses")
+                })
+                .tag(4)
         }
         .background(Color(UIColor.systemBackground))
-            .overlay(
-                VStack {
-                    Spacer()
-                    Image("branding_stripe")
+        .overlay(
+            VStack {
+                Spacer()
+                Image("branding_stripe")
                     .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding(.bottom,50)
-                }
-            )
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.bottom,50)
+            }
+        )
         .edgesIgnoringSafeArea(.top)
     }
 }
