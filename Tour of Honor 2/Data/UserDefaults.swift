@@ -52,8 +52,8 @@ struct UserDefault<T> {
 }
 
 class UserFilters: ObservableObject {
-    @Published var category = ""
-    @Published var state = ""
+    @Published var category = "*"
+    @Published var state = "*"
     @Published var showing = true
 }
 
