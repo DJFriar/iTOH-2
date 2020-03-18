@@ -26,6 +26,9 @@ struct UserDefaultsConfig {
     
     @UserDefault("trophyHunter", defaultValue: false)
     static var trophyHunter: Bool
+    
+    @UserDefault("useGoogleMaps", defaultValue: false)
+    static var useGoogleMaps: Bool
 }
 
 @propertyWrapper

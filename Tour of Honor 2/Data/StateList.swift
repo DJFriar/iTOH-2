@@ -52,7 +52,6 @@ struct StatePicker: View {
             }
         }
         .padding(.top,80)
-        //        .padding(.top, statusBarHeight)
     }
 }
 
@@ -190,6 +189,7 @@ let stateValues = [
     StateList(stateName: "Vermont"),
     StateList(stateName: "Virginia"),
     StateList(stateName: "Washington"),
+    StateList(stateName: "Washington, DC"),
     StateList(stateName: "West Virginia"),
     StateList(stateName: "Wisconsin"),
     StateList(stateName: "Wyoming")

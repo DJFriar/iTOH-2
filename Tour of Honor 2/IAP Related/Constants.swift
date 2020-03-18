@@ -10,7 +10,7 @@
 
 import Foundation
 
-let subscription_1 = "TOH.Annual"
+let subscription_1 = "net.tommyc.iTOH.AnnualSub"
 let subscription_2 = "net.tommyc.TOH.Annual"
 let shared_secret = "e0c5babf8e654fbb9573e1ac419ea4b5"
 

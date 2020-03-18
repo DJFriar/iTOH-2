@@ -13,6 +13,7 @@ struct Settings: View {
     let appBuild = Bundle.main.infoDictionary!["CFBundleVersion"]! as? String
     @State var showSettings = false
     @State var trophyHunter = UserDefaultsConfig.trophyHunter
+    @State var useGoogleMaps = UserDefaultsConfig.useGoogleMaps
     @State var riderFlagNumber = UserDefaultsConfig.riderFlagNumber
     @State var pillionFlagNumber = UserDefaultsConfig.pillionFlagNumber
     @State var initialActiveTab = UserDefaultsConfig.initialActiveTab
@@ -41,8 +42,15 @@ struct Settings: View {
                     .fontWeight(.heavy)
                     .foregroundColor(Color(UIColor.label))
                 Spacer()
+                Image("toh_logo")
+                    .renderingMode(.original)
+                    .resizable()
+                    .frame(width: 45, height: 45)
+
+//                Spacer()
             }
-            .padding(.leading,8)
+            .padding(.horizontal,8)
+            .padding(.top,8)
             Form {
                 Section(header: Text("Rider Details")) {
                     HStack {
@@ -68,6 +76,9 @@ struct Settings: View {
                     Toggle(isOn: $trophyHunter) {
                         Text("Enable Trophy Mode")
                     }
+                    Toggle(isOn: $useGoogleMaps) {
+                        Text("Prefer Google Maps")
+                    }
                 }
                 
                 Button(action: {
@@ -77,11 +88,10 @@ struct Settings: View {
                     UserDefaultsConfig.pillionFlagNumber = self.pillionFlagNumber
                     UserDefaultsConfig.trophyHunter = self.trophyHunter
                     UserDefaultsConfig.initialActiveTab = self.initialActiveTab
+                    UserDefaultsConfig.useGoogleMaps = self.useGoogleMaps
                     print("Active Tab set to: \(self.initialActiveTab)")
                 }) {
                     Text("Save Settings")
-                        .multilineTextAlignment(.center)
-                    
                 }
                 .alert(isPresented: $submit, content: {
                     Alert(title: Text("Details Saved"), message: Text("Rider: \(riderFlagNumber)"))

@@ -47,13 +47,15 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
         switch imagePriority {
         case "1":
             Bonus.updateBonusKey(code: testMe, key: "primaryImage", newVal: filename )
+            print("Reached case 1")
         case "2":
             Bonus.updateBonusKey(code: testMe, key: "alternateImage", newVal: filename )
         default:
             print("not sure which image that was...")
         }
         
-        
+        CoreData.stack.save()
+        print("Saved in ImagePicker")
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

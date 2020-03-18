@@ -380,6 +380,7 @@
 		65E3D2E6241EB4F6005AA8CB /* PurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E3D2E5241EB4F6005AA8CB /* PurchaseButton.swift */; };
 		65E3D2E8241EB548005AA8CB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E3D2E7241EB548005AA8CB /* Extensions.swift */; };
 		65E3D2EA241EB6B7005AA8CB /* IAPTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E3D2E9241EB6B7005AA8CB /* IAPTestingView.swift */; };
+		65F7199D242175F0004C659F /* MapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F7199C242175F0004C659F /* MapHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -759,6 +760,7 @@
 		65E3D2E5241EB4F6005AA8CB /* PurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButton.swift; sourceTree = "<group>"; };
 		65E3D2E7241EB548005AA8CB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		65E3D2E9241EB6B7005AA8CB /* IAPTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPTestingView.swift; sourceTree = "<group>"; };
+		65F7199C242175F0004C659F /* MapHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -881,6 +883,7 @@
 				65CE1F6523AF705B008FA854 /* ContentView.swift */,
 				65DBD66B23F0117200BC5B66 /* CustomModifiers.swift */,
 				65DBD66823F00CEF00BC5B66 /* DeviceDetector.swift */,
+				65F7199C242175F0004C659F /* MapHandler.swift */,
 				65795E46240E08D80036B4EA /* LocationManager.swift */,
 				65E3D2D4241A9E3A005AA8CB /* SendEmail.swift */,
 				65CE1F7523AF7099008FA854 /* TabBar.swift */,
@@ -1668,6 +1671,7 @@
 				65CE1F5F23AF705B008FA854 /* AppDelegate.swift in Sources */,
 				65E3D2D5241A9E3A005AA8CB /* SendEmail.swift in Sources */,
 				639553E523E64DF50034A51E /* Bonus+CoreDataProperties.swift in Sources */,
+				65F7199D242175F0004C659F /* MapHandler.swift in Sources */,
 				65E3D2E0241EA2E9005AA8CB /* ProductsStore.swift in Sources */,
 				65E3D2E2241EA316005AA8CB /* Constants.swift in Sources */,
 				632468AC2414564E00BEE0D5 /* FilterMenuBar.swift in Sources */,
@@ -1777,7 +1781,7 @@
 				CURRENT_PROJECT_VERSION = 699;
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
-				DEVELOPMENT_ASSET_PATHS = "\"Tour of Honor 2/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8XHY7EQ7TE;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Tour of Honor 2/Info.plist";
@@ -1917,7 +1921,7 @@
 				CURRENT_PROJECT_VERSION = 699;
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
-				DEVELOPMENT_ASSET_PATHS = "\"Tour of Honor 2/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8XHY7EQ7TE;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Tour of Honor 2/Info.plist";
@@ -1941,7 +1945,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 699;
 				DEBUG_ACTIVITY_MODE = "";
-				DEVELOPMENT_ASSET_PATHS = "\"Tour of Honor 2/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8XHY7EQ7TE;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Tour of Honor 2/Info.plist";

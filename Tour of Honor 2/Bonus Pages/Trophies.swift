@@ -9,16 +9,26 @@
 import SwiftUI
 
 struct Trophies: View {
-    var bonuses = sampleBonusData
-    @State var showSettings = false
-    @State var showBonuses = false
-    @State var bonusEarned = true
-    @State var showStatePicker = false
-    @State var showCategoryPicker = false
-    @State var showRegionFilterModal = false
-    
-    var body: some View {
-        Text("temp")
+    @EnvironmentObject var filters: UserFilters
+        @State private var showingCategoryFilter = false
+        @State private var showingStateFilter = false
+
+        var body: some View {
+            ZStack {
+                VStack {
+                    FilteredList(categoryFilter: "Tour of Honor", stateFilter: self.filters.state)
+                }
+                VStack {
+                    Spacer()
+                    FilterMenuBar()
+                        .background(BlurView(style: .systemThinMaterial).opacity(0.8))
+                }
+            
+            }
+
+        }
+         
+    }
 //        ZStack {
 //            NavigationView {
 //                VStack {
@@ -75,8 +85,8 @@ struct Trophies: View {
 //            }
 //            .saturation(self.bonusEarned ? 0 : 1)
 //        }
-    }
-}
+//    }
+//}
 
 struct Trophies_Previews: PreviewProvider {
     static var previews: some View {

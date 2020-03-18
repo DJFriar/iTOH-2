@@ -21,6 +21,7 @@ struct BonusDetail: View {
     @State var primaryChanged = false
     @State var alternateChanged = false
     @State var showFilterPicker = false
+    @State var gpsPressed = false
     @State public var useExistingPhoto: Bool = false
     @State private var showImagePicker: Bool = false
     @State private var primaryImage: Image? = nil
@@ -31,135 +32,138 @@ struct BonusDetail: View {
     @Environment(\.presentationMode) var presentationMode
     
     var sampleImageMissing = ImageReader.getImageFromDocDir(named: "sample_image_missing.png")
-    var primaryImageMissing = ImageReader.getImageFromDocDir(named: "no_image_taken.png")
-    var optionalImageMissing = ImageReader.getImageFromDocDir(named: "optional_2nd_Image.png")
+    //    var primaryImageMissing = ImageReader.getImageFromDocDir(named: "no_image_taken.png")
+    //    var optionalImageMissing = ImageReader.getImageFromDocDir(named: "optional_2nd_Image.png")
     
     var body: some View {
         
-        VStack(spacing: 5) {
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
+        ScrollView {
+            VStack(spacing: 5) {
                 HStack {
-                    Image("ic_back") // set image here
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundColor(.white)
-                    Text("Go back")
-                }
-                Spacer()
-            }
-            .padding(.bottom,12)
-            HStack {
-                Text(self.activeBonus.name)
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
-                Spacer()
-            }
-            .padding(.leading,8)
-            
-            HStack {
-                ZStack {
-                    HStack {
-                        Image(systemName: self.activeBonus.submitted ? "checkmark.shield.fill" : "checkmark.shield")
-                            .opacity(self.activeBonus.captured ? 100 : 0)
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        HStack {
+                            Image(systemName: "arrow.turn.up.left") // set image here
+                                .aspectRatio(contentMode: .fit)
+                                .foregroundColor(.primary)
+                            Text("Back")
+                        }
                         Spacer()
                     }
+                    .padding(.bottom,8)
+                    Image(systemName: self.activeBonus.submitted ? "checkmark.shield.fill" : "checkmark.shield")
+                        .opacity(self.activeBonus.captured ? 100 : 0)
+                }
+                
+                HStack {
+                    Text(self.activeBonus.name)
+                        .font(.title)
+                        .fontWeight(.heavy)
+                    Spacer()
+                }
+                .padding(.leading,8)
+                
+                HStack {
+                    Spacer()
+                    Text("\(self.activeBonus.city), \(self.activeBonus.state)")
+                    //                    .lineLimit(nil)
+                }
+                .padding(.horizontal,8)
+                
+                VStack(spacing: 0.0) {
+                    Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.sampleImage)!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(10)
                     HStack {
-                        Text("\(self.activeBonus.city), \(self.activeBonus.state)")
-                            .lineLimit(nil)
-                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
-                        Text("\(self.activeBonus.gps)")
-                            .lineLimit(nil)
-                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                        Text(self.activeBonus.category)
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                        Spacer()
+                        Text(self.activeBonus.code)
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.horizontal, 5)
+                    .padding(.bottom, 4)
+                    
+                    Text("\(self.activeBonus.gps)")
+                        .lineLimit(nil)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+                        .gesture(LongPressGesture(minimumDuration: 0.5).onEnded({_ in self.gpsPressed.toggle(); print("GPS link was activated"); openMaps(destGPS: self.activeBonus.gps) })
+                    )
+                }
+                .padding(.bottom, 4)
+                
+                VStack {
+                    Divider()
+                    Text("My Bonus Images")
+                        .font(.headline)
+                        .padding(.top, 4)
+                }
+                HStack {
+                    Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.primaryImage)!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(10)
+                        .gesture(TapGesture()
+                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "1"; self.testMe = self.activeBonus.code; }))
+                        .gesture(LongPressGesture(minimumDuration: 0.5)
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code; }))
+                        .sheet(isPresented: self.$showImagePicker, onDismiss: {self.primaryChanged = true; print("primaryImage is now: \(self.activeBonus.primaryImage)")}) {
+                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage, testMe: self.$testMe, imagePriority: self.$imagePriority)
+                                .modifier(SystemServices())
+                            
+                    }
+                    Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.alternateImage)!)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(10)
+                        .gesture(TapGesture()
+                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "2"; self.testMe = self.activeBonus.code;}))
+                        .gesture(LongPressGesture(minimumDuration: 0.5)
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code;}))
+                        .sheet(isPresented: self.$showImagePicker, onDismiss: {self.alternateChanged = true; print("alternateChanged is now: \(self.alternateChanged)")}) {
+                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage, testMe: self.$testMe,  imagePriority: self.$imagePriority)
+                                .modifier(SystemServices())
+                            
                     }
                 }
-            }
-            VStack(spacing: 0.0) {
-                Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.sampleImage) ?? sampleImageMissing!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(10)
                 HStack {
-                    Text(self.activeBonus.category)
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundColor(.gray)
+                    Button(action: { self.removeCapturedBonus() }) {
+                        Text("Reset Bonus")
+                            .multilineTextAlignment(.center)
+                    }
                     Spacer()
-                    Text(self.activeBonus.code)
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundColor(.gray)
-                }
-                .padding(.horizontal, 5.0)
-            }
-            .padding(.bottom, 10.0)
-            VStack {
-                Divider()
-                Text("My Bonus Images")
-                    .font(.headline)
-                    .padding(.top, 10.0)
-            }
-            HStack {
-                Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.primaryImage)!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(10)
-                    .gesture(TapGesture()
-                        .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "1"; self.testMe = self.activeBonus.code; }))
-                    .gesture(LongPressGesture(minimumDuration: 0.5)
-                        .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code; }))
-                    .sheet(isPresented: self.$showImagePicker, onDismiss: {self.primaryChanged = true}) {
-                        PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage, testMe: self.$testMe, imagePriority: self.$imagePriority)
+                    Button(action: {
+                        self.submitCapturedBonus()
+                        self.isShowingMailView.toggle()
+                    }) {
+                        Text("Submit Bonus")
+                    }
+                    .disabled(!MFMailComposeViewController.canSendMail())
+                    .sheet(isPresented: $isShowingMailView) {
+                        MailView(result: self.$result)
                             .modifier(SystemServices())
-                        
+                    }
                 }
-                Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.alternateImage)!)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(10)
-                    .gesture(TapGesture()
-                        .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "2"; self.testMe = self.activeBonus.code;}))
-                    .gesture(LongPressGesture(minimumDuration: 0.5)
-                        .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code;}))
-                    .sheet(isPresented: self.$showImagePicker, onDismiss: {self.alternateChanged = true;}) {
-                        PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage, testMe: self.$testMe,  imagePriority: self.$imagePriority)
-                            .modifier(SystemServices())
-                        
-                }
-            }
-            HStack {
-                Button(action: { self.removeCapturedBonus() }) {
-                    Text("Reset Bonus")
-                        .multilineTextAlignment(.center)
-                }
+                .padding(.vertical,8)
                 Spacer()
-                Button(action: {
-                    self.submitCapturedBonus()
-                    self.isShowingMailView.toggle()
-                }) {
-                    Text("Submit Bonus")
-                }
-                .disabled(!MFMailComposeViewController.canSendMail())
-                .sheet(isPresented: $isShowingMailView) {
-                    MailView(result: self.$result)
-                    .modifier(SystemServices())
-                }
             }
-            .padding(.vertical,8)
-            Spacer()
+            .padding(8)
         }
-        .padding(8)
     }
     
     func submitCapturedBonus(){
         Bonus.updateBonusKey(code: self.activeBonus.code, key: "submitted", newVal: true)
-        //        MailView.presentMailCompose()
     }
     
     func removeCapturedBonus(){
         Bonus.updateBonusKey(code: self.activeBonus.code, key: "submitted", newVal: false)
         Bonus.updateBonusKey(code: self.activeBonus.code, key: "captured", newVal: false)
-        //        Bonus.updateCapturedFlag(state: false,code: self.activeBonus.code)
     }
     
     func getDocumentsDirectory() -> URL {

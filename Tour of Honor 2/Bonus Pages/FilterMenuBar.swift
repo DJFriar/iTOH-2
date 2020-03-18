@@ -12,6 +12,7 @@ struct FilterMenuBar: View {
     @EnvironmentObject var filters: UserFilters
     @State private var showingCategoryFilter = false
     @State private var showingStateFilter = false
+    @State private var showingRegionFilter = false
     
     var categories = Bonus.getBonusesKey(key: "category")
     let alert = UIAlertController(title: "My Alert", message: "This is an alert.", preferredStyle: .alert)
@@ -26,15 +27,15 @@ struct FilterMenuBar: View {
                             .padding(2)
                             .padding(.horizontal,10)
                             .font(.footnote)
-//                            .foregroundColor(Color.primary)
                     }.actionSheet(isPresented: $showingCategoryFilter) {
                         ActionSheet(title: Text("Category"), message: Text("Current: \(self.filters.category)"), buttons: [
-                            .default(Text("Tour of Honor")) { self.filters.category = "Tour of Honor" },
-                            .default(Text("Hueys")) {self.filters.category = "Hueys"  },
-                            .default(Text("Doughboys")) {  self.filters.category = "Doughboys" },
-                            .default(Text("War Dogs")) { self.filters.category = "War Dogs"  },
-                            .default(Text("Gold Star Family")) { self.filters.category = "Gold Star Family"  },
                             .default(Text("All")) { self.filters.category = ""  },
+                            .default(Text("Doughboys")) {  self.filters.category = "Doughboys" },
+                            .default(Text("Gold Star Family")) { self.filters.category = "Gold Star Family"  },
+                            .default(Text("Hueys")) {self.filters.category = "Hueys"  },
+                            .default(Text("Madonna Trail")) {self.filters.category = "Madonna Trail"  },
+                            .default(Text("Tour of Honor")) { self.filters.category = "Tour of Honor" },
+                            .default(Text("War Dogs")) { self.filters.category = "War Dogs"  },
                             .cancel()
                         ])
                     }
@@ -49,59 +50,90 @@ struct FilterMenuBar: View {
                             .padding(2)
                             .padding(.horizontal,10)
                             .font(.footnote)
-//                            .foregroundColor(.primary)
                     }.actionSheet(isPresented: $showingStateFilter) {
                         ActionSheet(title: Text("State"), message: Text("Current: \(self.filters.state)"), buttons: [
+                            .default(Text("All")) { self.filters.state = ""  },
                             .default(Text("Alabama")){ self.filters.state = "AL"  },
                             .default(Text("Alaska")){ self.filters.state = "AK"  },
-                            .default(Text("Arizona")){ self.filters.state = "Arizona"  },
-                            .default(Text("Arkansas")){ self.filters.state = "Arkansas"  },
-                            .default(Text("California")){ self.filters.state = "California"  },
-                            .default(Text("Colorado")){ self.filters.state = "Colorado"  },
-                            .default(Text("Dakotas")){ self.filters.state = "Dakotas"  },
-                            .default(Text("Florida")){ self.filters.state = "Florida"  },
-                            .default(Text("Georgia")){ self.filters.state = "Georgia"  },
-                            .default(Text("Hawaii")){ self.filters.state = "Hawaii"  },
-                            .default(Text("Idaho")){ self.filters.state = "Idaho"  },
-                            .default(Text("Illinois")){ self.filters.state = "Illinois"  },
-                            .default(Text("Indiana")){ self.filters.state = "Indiana"  },
-                            .default(Text("Iowa")){ self.filters.state = "Iowa"  },
-                            .default(Text("Kansas")){ self.filters.state = "Kansas"  },
-                            .default(Text("Kentucky")){ self.filters.state = "Kentucky"  },
-                            .default(Text("Louisiana")){ self.filters.state = "Louisiana"  },
-                            .default(Text("Michigan")){ self.filters.state = "Michigan"  },
-                            .default(Text("Minnesota")){ self.filters.state = "Minnesota"  },
-                            .default(Text("Mississippi")){ self.filters.state = "Mississippi"  },
-                            .default(Text("Missouri")){ self.filters.state = "Missouri"  },
-                            .default(Text("Montana")){ self.filters.state = "Montana"  },
-                            .default(Text("Nebraska")){ self.filters.state = "Nebraska"  },
-                            .default(Text("Nevada")){ self.filters.state = "Nevada"  },
-                            .default(Text("New Mexico")){ self.filters.state = "New Mexico"  },
-                            .default(Text("New York")){ self.filters.state = "New York"  },
-                            .default(Text("North Carolina")){ self.filters.state = "North Carolina"  },
-                            .default(Text("Ohio")){ self.filters.state = "Ohio"  },
-                            .default(Text("Oklahoma")){ self.filters.state = "Oklahoma"  },
-                            .default(Text("Oregon")){ self.filters.state = "Oregon"  },
-                            .default(Text("Pennsylvania")){ self.filters.state = "Pennsylvania"  },
-                            .default(Text("South Carolina")){ self.filters.state = "South Carolina"  },
-                            .default(Text("Tennessee")){ self.filters.state = "Tennessee"  },
-                            .default(Text("Texas")){ self.filters.state = "Texas"  },
-                            .default(Text("Utah")){ self.filters.state = "Utah"  },
-                            .default(Text("Virginia")){ self.filters.state = "Virginia"  },
-                            .default(Text("Washington")){ self.filters.state = "Washington"  },
-                            .default(Text("West Virginia")){ self.filters.state = "West Virginia"  },
-                            .default(Text("Wisconsin")){ self.filters.state = "Wisconsin"  },
-                            .default(Text("Wyoming")){ self.filters.state = "Wyoming"  },
-                            .default(Text("All")) { self.filters.state = ""  },
+                            .default(Text("Arizona")){ self.filters.state = "AZ"  },
+                            .default(Text("Arkansas")){ self.filters.state = "AR"  },
+                            .default(Text("California")){ self.filters.state = "CA"  },
+                            .default(Text("Colorado")){ self.filters.state = "CO"  },
+                            .default(Text("Connecticut")){ self.filters.state = "CT"  },
+                            .default(Text("Delaware")){ self.filters.state = "DE"  },
+                            .default(Text("Florida")){ self.filters.state = "FL"  },
+                            .default(Text("Georgia")){ self.filters.state = "GA"  },
+                            .default(Text("Hawaii")){ self.filters.state = "HI"  },
+                            .default(Text("Idaho")){ self.filters.state = "ID"  },
+                            .default(Text("Illinois")){ self.filters.state = "IL"  },
+                            .default(Text("Indiana")){ self.filters.state = "IN"  },
+                            .default(Text("Iowa")){ self.filters.state = "IA"  },
+                            .default(Text("Kansas")){ self.filters.state = "KS"  },
+                            .default(Text("Kentucky")){ self.filters.state = "KY"  },
+                            .default(Text("Louisiana")){ self.filters.state = "LA"  },
+                            .default(Text("Maine")){ self.filters.state = "ME"  },
+                            .default(Text("Maryland")){ self.filters.state = "MD"  },
+                            .default(Text("Massachusetts")){ self.filters.state = "MA"  },
+                            .default(Text("Michigan")){ self.filters.state = "MI"  },
+                            .default(Text("Minnesota")){ self.filters.state = "MN"  },
+                            .default(Text("Mississippi")){ self.filters.state = "MS"  },
+                            .default(Text("Missouri")){ self.filters.state = "MO"  },
+                            .default(Text("Montana")){ self.filters.state = "MT"  },
+                            .default(Text("Nebraska")){ self.filters.state = "NE"  },
+                            .default(Text("Nevada")){ self.filters.state = "NV"  },
+                            .default(Text("New Hampshire")){ self.filters.state = "NM"  },
+                            .default(Text("New Jersey")){ self.filters.state = "NJ"  },
+                            .default(Text("New Mexico")){ self.filters.state = "NM"  },
+                            .default(Text("New York")){ self.filters.state = "NY"  },
+                            .default(Text("North Carolina")){ self.filters.state = "NC"  },
+                            .default(Text("North Dakota")){ self.filters.state = "ND"  },
+                            .default(Text("Ohio")){ self.filters.state = "OH"  },
+                            .default(Text("Oklahoma")){ self.filters.state = "OK"  },
+                            .default(Text("Oregon")){ self.filters.state = "OR"  },
+                            .default(Text("Pennsylvania")){ self.filters.state = "PA"  },
+                            .default(Text("Rhode Island")){ self.filters.state = "RI"  },
+                            .default(Text("South Carolina")){ self.filters.state = "SC"  },
+                            .default(Text("South Dakota")){ self.filters.state = "SD"  },
+                            .default(Text("Tennessee")){ self.filters.state = "TN"  },
+                            .default(Text("Texas")){ self.filters.state = "TX"  },
+                            .default(Text("Utah")){ self.filters.state = "UT"  },
+                            .default(Text("Vermont")){ self.filters.state = "VT"  },
+                            .default(Text("Virginia")){ self.filters.state = "VA"  },
+                            .default(Text("Washington")){ self.filters.state = "WA"  },
+                            .default(Text("Washington, DC")){ self.filters.state = "DC"  },
+                            .default(Text("West Virginia")){ self.filters.state = "WV"  },
+                            .default(Text("Wisconsin")){ self.filters.state = "WI"  },
+                            .default(Text("Wyoming")){ self.filters.state = "WY"  },
                             .cancel()
                         ])
                     }
                     .background(Color(UIColor.systemGray5))
                     .cornerRadius(40)
-                    .padding(.leading,10)
+                    .padding(.trailing,10)
                 }
                 Spacer()
-                
+                HStack {
+                    Button(action: { self.showingRegionFilter = true }) {
+                        Text("Regions")
+                            .frame(width: 80, height: 20, alignment: .center)
+                            .padding(2)
+                            .padding(.horizontal,10)
+                            .font(.footnote)
+                    }.actionSheet(isPresented: $showingRegionFilter) {
+                        ActionSheet(title: Text("Region"), message: Text("Current: \(self.filters.category)"), buttons: [
+                            .default(Text("All")) { self.filters.category = ""  },
+                            .default(Text("Dakotas")) {  self.filters.category = "Dakotas" },
+                            .default(Text("Mid-Atlantic")) { self.filters.category = "Mid-Atlantic"  },
+                            .default(Text("New England")) {self.filters.category = "New England"  },
+                            .default(Text("Everything Else")) {self.filters.category = "Everything Else"  },
+                            .cancel()
+                        ])
+                    }
+                }
+                .background(Color(UIColor.systemGray5))
+                .cornerRadius(40)
+//                .padding(.trailing,10)
+                Spacer()
             }
             .padding(4)
 //                    .background(Color.clear)
