@@ -17,7 +17,7 @@ struct BonusList: View {
     var body: some View {
         ZStack {
             VStack {
-                FilteredList(categoryFilter: self.filters.category, stateFilter: self.filters.state)
+                FilteredBonusList(categoryFilter: self.filters.category, stateFilter: self.filters.state)
             }
             VStack {
                 Spacer()

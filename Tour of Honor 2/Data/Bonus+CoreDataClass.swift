@@ -31,7 +31,7 @@ public class Bonus: NSManagedObject, Identifiable {
         
         return Bonus(context: CoreData.stack.context)
     }
-    class func createBonus(name: String, code: String, city: String, state: String, category: String, gps: String, sampleImage: String, order: Int?) -> Bonus {
+    class func createBonus(name: String, code: String, city: String, state: String, category: String, region: String, gps: String, sampleImage: String, order: Int?) -> Bonus {
         
         let bonus = Bonus.newBonus()
         bonus.name = name
@@ -39,6 +39,7 @@ public class Bonus: NSManagedObject, Identifiable {
         bonus.category = category
         bonus.city = city
         bonus.state = state
+        bonus.region = region
         bonus.gps = gps
         bonus.sampleImage = "2020\(code).jpg".lowercased()
         bonus.primaryImage = "no_image_taken.png"
@@ -145,6 +146,7 @@ public class Bonus: NSManagedObject, Identifiable {
                               var bonusName: String
                               var bonusCode: String
                               var bonusCategory: String
+                              var region: String
                               var city: String
                               var state: String
                               var GPS: String
@@ -163,6 +165,7 @@ public class Bonus: NSManagedObject, Identifiable {
                                     city: bonus.city,
                                     state: bonus.state,
                                     category: bonus.bonusCategory,
+                                    region: bonus.region,
                                     gps: bonus.GPS,
                                     sampleImage: "2019ca1",
                                     order: i
@@ -193,7 +196,6 @@ public class Bonus: NSManagedObject, Identifiable {
                } else {
                 elements.append("\(bonus.category)")
                }
-
             }
             
             print(elements)

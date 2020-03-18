@@ -16,11 +16,11 @@ struct Trophies: View {
         var body: some View {
             ZStack {
                 VStack {
-                    FilteredList(categoryFilter: "Tour of Honor", stateFilter: self.filters.state)
+                    FilteredTrophyList(categoryFilter: "Tour of Honor", stateFilter: self.filters.state)
                 }
                 VStack {
                     Spacer()
-                    FilterMenuBar()
+                    TrophyFilterMenuBar()
                         .background(BlurView(style: .systemThinMaterial).opacity(0.8))
                 }
             

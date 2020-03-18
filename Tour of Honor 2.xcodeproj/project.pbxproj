@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		10D411A32411786B004FCBDD /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D411A22411786B004FCBDD /* UserDefaults.swift */; };
-		632468A624144A5F00BEE0D5 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632468A524144A5F00BEE0D5 /* FilteredList.swift */; };
+		632468A624144A5F00BEE0D5 /* FilteredBonusList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632468A524144A5F00BEE0D5 /* FilteredBonusList.swift */; };
 		632468A82414521600BEE0D5 /* CategoryFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632468A72414521600BEE0D5 /* CategoryFilter.swift */; };
 		632468AA2414544200BEE0D5 /* StateFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632468A92414544200BEE0D5 /* StateFilter.swift */; };
-		632468AC2414564E00BEE0D5 /* FilterMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632468AB2414564E00BEE0D5 /* FilterMenuBar.swift */; };
+		632468AC2414564E00BEE0D5 /* BonusFilterMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632468AB2414564E00BEE0D5 /* BonusFilterMenuBar.swift */; };
 		635E9FE7240E059300A46077 /* TrophyList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E9FE5240E059300A46077 /* TrophyList+CoreDataClass.swift */; };
 		635E9FE8240E059300A46077 /* TrophyList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E9FE6240E059300A46077 /* TrophyList+CoreDataProperties.swift */; };
 		639553E423E64DF50034A51E /* Bonus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */; };
@@ -41,7 +41,7 @@
 		65CE1F6B23AF705D008FA854 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65CE1F6A23AF705D008FA854 /* Preview Assets.xcassets */; };
 		65CE1F6E23AF705D008FA854 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CE1F6C23AF705D008FA854 /* LaunchScreen.storyboard */; };
 		65CE1F7623AF7099008FA854 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE1F7523AF7099008FA854 /* TabBar.swift */; };
-		65CE1F7A23AF71A9008FA854 /* Trophies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE1F7923AF71A9008FA854 /* Trophies.swift */; };
+		65CE1F7A23AF71A9008FA854 /* TrophyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE1F7923AF71A9008FA854 /* TrophyList.swift */; };
 		65CE1F7C23AF71B5008FA854 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE1F7B23AF71B5008FA854 /* Settings.swift */; };
 		65CE1F7E23AF71CC008FA854 /* BonusList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE1F7D23AF71CC008FA854 /* BonusList.swift */; };
 		65CE1F8023AF71D6008FA854 /* BonusDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65CE1F7F23AF71D6008FA854 /* BonusDetail.swift */; };
@@ -381,14 +381,21 @@
 		65E3D2E8241EB548005AA8CB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E3D2E7241EB548005AA8CB /* Extensions.swift */; };
 		65E3D2EA241EB6B7005AA8CB /* IAPTestingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E3D2E9241EB6B7005AA8CB /* IAPTestingView.swift */; };
 		65F7199D242175F0004C659F /* MapHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F7199C242175F0004C659F /* MapHandler.swift */; };
+		65F7199F2421E997004C659F /* TrophyFilterMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F7199E2421E997004C659F /* TrophyFilterMenuBar.swift */; };
+		65F719A32421F2AB004C659F /* TrophyDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F719A22421F2AB004C659F /* TrophyDetail.swift */; };
+		65F719A52421F2FE004C659F /* FilteredTrophyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F719A42421F2FE004C659F /* FilteredTrophyList.swift */; };
+		65F719A72421F455004C659F /* ParksFilterMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F719A62421F455004C659F /* ParksFilterMenuBar.swift */; };
+		65F719A92421F463004C659F /* ParksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F719A82421F463004C659F /* ParksList.swift */; };
+		65F719AB2421F471004C659F /* FilteredParksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F719AA2421F471004C659F /* FilteredParksList.swift */; };
+		65F719AD2421F48C004C659F /* ParksDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F719AC2421F48C004C659F /* ParksDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		10D411A22411786B004FCBDD /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		632468A524144A5F00BEE0D5 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
+		632468A524144A5F00BEE0D5 /* FilteredBonusList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredBonusList.swift; sourceTree = "<group>"; };
 		632468A72414521600BEE0D5 /* CategoryFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFilter.swift; sourceTree = "<group>"; };
 		632468A92414544200BEE0D5 /* StateFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateFilter.swift; sourceTree = "<group>"; };
-		632468AB2414564E00BEE0D5 /* FilterMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMenuBar.swift; sourceTree = "<group>"; };
+		632468AB2414564E00BEE0D5 /* BonusFilterMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusFilterMenuBar.swift; sourceTree = "<group>"; };
 		635E9FE5240E059300A46077 /* TrophyList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrophyList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		635E9FE6240E059300A46077 /* TrophyList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrophyList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bonus+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -421,7 +428,7 @@
 		65CE1F6D23AF705D008FA854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65CE1F6F23AF705D008FA854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65CE1F7523AF7099008FA854 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
-		65CE1F7923AF71A9008FA854 /* Trophies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trophies.swift; sourceTree = "<group>"; };
+		65CE1F7923AF71A9008FA854 /* TrophyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyList.swift; sourceTree = "<group>"; };
 		65CE1F7B23AF71B5008FA854 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		65CE1F7D23AF71CC008FA854 /* BonusList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusList.swift; sourceTree = "<group>"; };
 		65CE1F7F23AF71D6008FA854 /* BonusDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusDetail.swift; sourceTree = "<group>"; };
@@ -761,6 +768,13 @@
 		65E3D2E7241EB548005AA8CB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		65E3D2E9241EB6B7005AA8CB /* IAPTestingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPTestingView.swift; sourceTree = "<group>"; };
 		65F7199C242175F0004C659F /* MapHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHandler.swift; sourceTree = "<group>"; };
+		65F7199E2421E997004C659F /* TrophyFilterMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyFilterMenuBar.swift; sourceTree = "<group>"; };
+		65F719A22421F2AB004C659F /* TrophyDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyDetail.swift; sourceTree = "<group>"; };
+		65F719A42421F2FE004C659F /* FilteredTrophyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredTrophyList.swift; sourceTree = "<group>"; };
+		65F719A62421F455004C659F /* ParksFilterMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParksFilterMenuBar.swift; sourceTree = "<group>"; };
+		65F719A82421F463004C659F /* ParksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParksList.swift; sourceTree = "<group>"; };
+		65F719AA2421F471004C659F /* FilteredParksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredParksList.swift; sourceTree = "<group>"; };
+		65F719AC2421F48C004C659F /* ParksDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParksDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -845,14 +859,10 @@
 		65C2C85323DFDF9500430FCC /* Bonus Pages */ = {
 			isa = PBXGroup;
 			children = (
-				632468A524144A5F00BEE0D5 /* FilteredList.swift */,
-				65CE1F7F23AF71D6008FA854 /* BonusDetail.swift */,
+				632468AB2414564E00BEE0D5 /* BonusFilterMenuBar.swift */,
 				65CE1F7D23AF71CC008FA854 /* BonusList.swift */,
-				632468AB2414564E00BEE0D5 /* FilterMenuBar.swift */,
-				632468A72414521600BEE0D5 /* CategoryFilter.swift */,
-				632468A92414544200BEE0D5 /* StateFilter.swift */,
-				6561FAC723F3DA6A00F786AE /* NationalParks.swift */,
-				65CE1F7923AF71A9008FA854 /* Trophies.swift */,
+				632468A524144A5F00BEE0D5 /* FilteredBonusList.swift */,
+				65CE1F7F23AF71D6008FA854 /* BonusDetail.swift */,
 			);
 			path = "Bonus Pages";
 			sourceTree = "<group>";
@@ -886,9 +896,13 @@
 				65F7199C242175F0004C659F /* MapHandler.swift */,
 				65795E46240E08D80036B4EA /* LocationManager.swift */,
 				65E3D2D4241A9E3A005AA8CB /* SendEmail.swift */,
+				632468A72414521600BEE0D5 /* CategoryFilter.swift */,
+				632468A92414544200BEE0D5 /* StateFilter.swift */,
 				65CE1F7523AF7099008FA854 /* TabBar.swift */,
 				65CE1F6723AF705D008FA854 /* Assets.xcassets */,
 				658D3C19241F3F8C00A333EC /* Onboarding */,
+				65F719A12421F237004C659F /* NPT Pages */,
+				65F719A02421F21A004C659F /* Trophy Pages */,
 				65C2C85323DFDF9500430FCC /* Bonus Pages */,
 				65C2C85123DFDF5800430FCC /* Camera */,
 				639553E623E64DFC0034A51E /* Data */,
@@ -1254,6 +1268,29 @@
 				65E3D2E9241EB6B7005AA8CB /* IAPTestingView.swift */,
 			);
 			path = "IAP Related";
+			sourceTree = "<group>";
+		};
+		65F719A02421F21A004C659F /* Trophy Pages */ = {
+			isa = PBXGroup;
+			children = (
+				65F7199E2421E997004C659F /* TrophyFilterMenuBar.swift */,
+				65CE1F7923AF71A9008FA854 /* TrophyList.swift */,
+				65F719A42421F2FE004C659F /* FilteredTrophyList.swift */,
+				65F719A22421F2AB004C659F /* TrophyDetail.swift */,
+			);
+			path = "Trophy Pages";
+			sourceTree = "<group>";
+		};
+		65F719A12421F237004C659F /* NPT Pages */ = {
+			isa = PBXGroup;
+			children = (
+				6561FAC723F3DA6A00F786AE /* NationalParks.swift */,
+				65F719A62421F455004C659F /* ParksFilterMenuBar.swift */,
+				65F719A82421F463004C659F /* ParksList.swift */,
+				65F719AA2421F471004C659F /* FilteredParksList.swift */,
+				65F719AC2421F48C004C659F /* ParksDetail.swift */,
+			);
+			path = "NPT Pages";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1655,6 +1692,7 @@
 				65CE1F6423AF705B008FA854 /* Tour_of_Honor_2.xcdatamodeld in Sources */,
 				639553E423E64DF50034A51E /* Bonus+CoreDataClass.swift in Sources */,
 				65E3D2E4241EA35A005AA8CB /* PurchaseView.swift in Sources */,
+				65F719AB2421F471004C659F /* FilteredParksList.swift in Sources */,
 				635E9FE8240E059300A46077 /* TrophyList+CoreDataProperties.swift in Sources */,
 				639553E823E64E1A0034A51E /* CoreData.swift in Sources */,
 				65BAAF5C2416DFE9004383FE /* BlurView.swift in Sources */,
@@ -1667,6 +1705,7 @@
 				65E3D2E8241EB548005AA8CB /* Extensions.swift in Sources */,
 				6561FAC623F3D60100F786AE /* RegionFilterModal.swift in Sources */,
 				65CE1F7E23AF71CC008FA854 /* BonusList.swift in Sources */,
+				65F719A32421F2AB004C659F /* TrophyDetail.swift in Sources */,
 				65CE1F8023AF71D6008FA854 /* BonusDetail.swift in Sources */,
 				65CE1F5F23AF705B008FA854 /* AppDelegate.swift in Sources */,
 				65E3D2D5241A9E3A005AA8CB /* SendEmail.swift in Sources */,
@@ -1674,10 +1713,12 @@
 				65F7199D242175F0004C659F /* MapHandler.swift in Sources */,
 				65E3D2E0241EA2E9005AA8CB /* ProductsStore.swift in Sources */,
 				65E3D2E2241EA316005AA8CB /* Constants.swift in Sources */,
-				632468AC2414564E00BEE0D5 /* FilterMenuBar.swift in Sources */,
+				632468AC2414564E00BEE0D5 /* BonusFilterMenuBar.swift in Sources */,
 				65E3D2E6241EB4F6005AA8CB /* PurchaseButton.swift in Sources */,
+				65F719A52421F2FE004C659F /* FilteredTrophyList.swift in Sources */,
 				658D3C1B241F3FB800A333EC /* OnboardingView.swift in Sources */,
 				65E3D2DE241EA295005AA8CB /* IAPManager.swift in Sources */,
+				65F719A92421F463004C659F /* ParksList.swift in Sources */,
 				635E9FE7240E059300A46077 /* TrophyList+CoreDataClass.swift in Sources */,
 				65CE1F6623AF705B008FA854 /* ContentView.swift in Sources */,
 				6561FAC823F3DA6A00F786AE /* NationalParks.swift in Sources */,
@@ -1685,12 +1726,15 @@
 				65CE1F6123AF705B008FA854 /* SceneDelegate.swift in Sources */,
 				10D411A32411786B004FCBDD /* UserDefaults.swift in Sources */,
 				6561FAC423F3B83600F786AE /* BonusFilterModal.swift in Sources */,
+				65F719A72421F455004C659F /* ParksFilterMenuBar.swift in Sources */,
 				632468A82414521600BEE0D5 /* CategoryFilter.swift in Sources */,
-				632468A624144A5F00BEE0D5 /* FilteredList.swift in Sources */,
+				632468A624144A5F00BEE0D5 /* FilteredBonusList.swift in Sources */,
 				65CE1F7623AF7099008FA854 /* TabBar.swift in Sources */,
-				65CE1F7A23AF71A9008FA854 /* Trophies.swift in Sources */,
+				65F719AD2421F48C004C659F /* ParksDetail.swift in Sources */,
+				65CE1F7A23AF71A9008FA854 /* TrophyList.swift in Sources */,
 				65E3D2EA241EB6B7005AA8CB /* IAPTestingView.swift in Sources */,
 				65DBD66C23F0117200BC5B66 /* CustomModifiers.swift in Sources */,
+				65F7199F2421E997004C659F /* TrophyFilterMenuBar.swift in Sources */,
 				65795E49240E12BC0036B4EA /* ImageWriter.swift in Sources */,
 				65DBD66123F002A900BC5B66 /* BonusDataArray.swift in Sources */,
 				65DBD66923F00CEF00BC5B66 /* DeviceDetector.swift in Sources */,

@@ -8,7 +8,7 @@
 import CoreData
 import SwiftUI
 
-struct FilteredList: View {
+struct FilteredBonusList: View {
     var fetchRequest: FetchRequest<Bonus>
     var bonuses: FetchedResults<Bonus> { fetchRequest.wrappedValue }
     var testimage: UIImage?
@@ -67,12 +67,13 @@ struct FilteredList: View {
                 
             .navigationBarTitle(Text("Bonuses"))
             .navigationBarItems(trailing: HStack {
-                Button(action: { self.filters.category = ""; self.filters.state = ""; }) {
+                Button(action: { self.filters.category = "*"; self.filters.state = "*"; }) {
                     Text("Clear filters")
                 }
             })
         }
     }
+    
     func setupBonusData(bonus: AnyObject){
         self.showingBonusDetail = true
         self.activeBonus.name = bonus.name

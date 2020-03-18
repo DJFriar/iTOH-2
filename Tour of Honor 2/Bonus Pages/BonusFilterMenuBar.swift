@@ -29,7 +29,7 @@ struct FilterMenuBar: View {
                             .font(.footnote)
                     }.actionSheet(isPresented: $showingCategoryFilter) {
                         ActionSheet(title: Text("Category"), message: Text("Current: \(self.filters.category)"), buttons: [
-                            .default(Text("All")) { self.filters.category = ""  },
+                            .default(Text("All")) { self.filters.category = "*"  },
                             .default(Text("Doughboys")) {  self.filters.category = "Doughboys" },
                             .default(Text("Gold Star Family")) { self.filters.category = "Gold Star Family"  },
                             .default(Text("Hueys")) {self.filters.category = "Hueys"  },
@@ -52,7 +52,7 @@ struct FilterMenuBar: View {
                             .font(.footnote)
                     }.actionSheet(isPresented: $showingStateFilter) {
                         ActionSheet(title: Text("State"), message: Text("Current: \(self.filters.state)"), buttons: [
-                            .default(Text("All")) { self.filters.state = ""  },
+                            .default(Text("All")) { self.filters.state = "*"  },
                             .default(Text("Alabama")){ self.filters.state = "AL"  },
                             .default(Text("Alaska")){ self.filters.state = "AK"  },
                             .default(Text("Arizona")){ self.filters.state = "AZ"  },
@@ -111,28 +111,6 @@ struct FilterMenuBar: View {
                     .cornerRadius(40)
                     .padding(.trailing,10)
                 }
-                Spacer()
-                HStack {
-                    Button(action: { self.showingRegionFilter = true }) {
-                        Text("Regions")
-                            .frame(width: 80, height: 20, alignment: .center)
-                            .padding(2)
-                            .padding(.horizontal,10)
-                            .font(.footnote)
-                    }.actionSheet(isPresented: $showingRegionFilter) {
-                        ActionSheet(title: Text("Region"), message: Text("Current: \(self.filters.category)"), buttons: [
-                            .default(Text("All")) { self.filters.category = ""  },
-                            .default(Text("Dakotas")) {  self.filters.category = "Dakotas" },
-                            .default(Text("Mid-Atlantic")) { self.filters.category = "Mid-Atlantic"  },
-                            .default(Text("New England")) {self.filters.category = "New England"  },
-                            .default(Text("Everything Else")) {self.filters.category = "Everything Else"  },
-                            .cancel()
-                        ])
-                    }
-                }
-                .background(Color(UIColor.systemGray5))
-                .cornerRadius(40)
-//                .padding(.trailing,10)
                 Spacer()
             }
             .padding(4)
