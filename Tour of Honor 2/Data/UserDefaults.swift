@@ -29,6 +29,10 @@ struct UserDefaultsConfig {
     
     @UserDefault("useGoogleMaps", defaultValue: false)
     static var useGoogleMaps: Bool
+    
+    @UserDefault("isSubscriber", defaultValue: false)
+    static var isSubscriber: Bool
+        
 }
 
 @propertyWrapper
@@ -71,4 +75,11 @@ class ActiveBonus: ObservableObject {
     @Published var primaryImage = ""
     @Published var alternateImage = ""
     @Published var submitted = false
+}
+
+public func checkSubscription() -> String {
+    guard let subscriptionExpirationDate:String = UserDefaults.standard.string(forKey: "net.tommyc.iTOH.AnnualSub") else {
+        return "No Subscription Found"
+    }
+    return subscriptionExpirationDate
 }

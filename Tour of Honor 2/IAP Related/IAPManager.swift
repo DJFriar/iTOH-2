@@ -133,7 +133,7 @@ class IAPManager : NSObject{
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd HH:mm:ss VV"
             if let date = formatter.date(from: receipt["expires_date"] as! String) {
-                if date > Date() || UserDefaults.standard.object(forKey: productID) == nil{
+                if date > Date() || UserDefaults.standard.object(forKey: productID) == nil {
                     // do not save expired date to user defaults to avoid overwriting with expired date
                     UserDefaults.standard.set(date, forKey: productID)
                 }

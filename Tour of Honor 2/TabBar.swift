@@ -14,6 +14,7 @@ struct TabBar : View {
     @State var trophyHunter = UserDefaultsConfig.trophyHunter
     @State private var selection = UserDefaultsConfig.initialActiveTab
     @State var hasConfiguredApp = UserDefaultsConfig.hasConfiguredApp
+    @State var isSubscriber = UserDefaultsConfig.isSubscriber
     
     var body: some View {
         TabView(selection:$selection) {
@@ -23,18 +24,14 @@ struct TabBar : View {
                     Text("Settings")
                 })
                 .tag(0)
-                        Stats()
-                            .tabItem({
-                                Image(systemName: "gamecontroller")
-                                Text("Stats")
-                            })
-                            .tag(1)
-//            IAPTestingView(productsStore: ProductsStore.shared)
-//                .tabItem({
-//                    Image(systemName: "gamecontroller")
-//                    Text("IAP")
-//                })
-//                .tag(1)
+            if isSubscriber {
+                Stats()
+                    .tabItem({
+                        Image(systemName: "gamecontroller")
+                        Text("Stats")
+                    })
+                    .tag(1)
+            }
             if trophyHunter {
                 Trophies()
                     .tabItem({
@@ -49,15 +46,6 @@ struct TabBar : View {
             //                    Text("Parks")
             //                })
             //                .tag(3)
-            
-            #if DEV
-            PurchaseView()
-                .tabItem({
-                    Image(systemName: "shield")
-                    Text("IAP")
-                })
-                .tag(10)
-            #endif
             
             BonusList()
                 .tabItem({

@@ -34,7 +34,7 @@ struct PurchaseView : View {
                     .padding(.vertical, 20)
                 self.aboutText()
                 self.helperButtons()
-                    .padding(.top, 8)
+                    .padding(.top, 15)
                     .padding(.bottom, 15)
                 Text("Terms of Use")
                     .font(.subheadline)
