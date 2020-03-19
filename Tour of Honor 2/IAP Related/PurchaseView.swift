@@ -22,25 +22,30 @@ struct PurchaseView : View {
     private func dismiss() {
         self.presentationMode.wrappedValue.dismiss()
     }
-
+    
     var body: some View {
-                           
+        
         ScrollView (showsIndicators: false) {
-            
             VStack {
-                Text("Unlock All Bonuses").font(.title)
-                Text("Choose one of the packages above").font(.subheadline)
-                
+                Text("Unlock Everything")
+                    .font(.title)
+                    .padding(.top, 8)
                 self.purchaseButtons()
+                    .padding(.vertical, 20)
                 self.aboutText()
                 self.helperButtons()
+                    .padding(.top, 8)
+                    .padding(.bottom, 15)
+                Text("Terms of Use")
+                    .font(.subheadline)
                 self.termsText().frame(width: UIScreen.main.bounds.size.width)
-                self.dismissButton()
-                
-                }.frame(width : UIScreen.main.bounds.size.width)
-            }.disabled(self.isDisabled)
+//                self.dismissButton()
+            }
+            .frame(width : UIScreen.main.bounds.size.width)
+        }
+        .disabled(self.isDisabled)
     }
-
+    
     // MARK:- View creations
     
     func purchaseButtons() -> some View {
@@ -59,29 +64,32 @@ struct PurchaseView : View {
     func helperButtons() -> some View{
         HStack {
             Button(action: {
-                self.termsTapped()
-            }) {
-                Text("Terms of use").font(.footnote)
-            }
-            Button(action: {
                 self.restorePurchases()
             }) {
                 Text("Restore Purchases").font(.footnote)
             }
             Button(action: {
-                self.privacyTapped()
+                self.dismiss()
             }) {
-                Text("Privacy Policy").font(.footnote)
-            }
+                Text("Don't Purchase Yet").font(.footnote)
             }.padding()
+
+//            Button(action: {
+//                self.privacyTapped()
+//            }) {
+//                Text("Privacy Policy").font(.footnote)
+//            }
+        }.padding()
     }
     
     func aboutText() -> some View {
         Text("""
-                • View state memorials as soon as they are released
-                • Unlimited submissions
+                • Unlock unlimited submissions
                 • Unlock all auxilary bonuses
-                """).font(.subheadline).lineLimit(nil)
+                • Unlock the National Park Tour (coming in May)
+                • Unlock all future features
+                • Support the Tour of Honor
+                """).font(.body).lineLimit(nil)
     }
     
     func termsText() -> some View{
@@ -89,7 +97,7 @@ struct PurchaseView : View {
         VStack {
             Text(terms_text).font(.footnote).lineLimit(nil).padding()
             Spacer()
-            }.frame(height: 350)
+        }.frame(height: 350)
     }
     
     func dismissButton() -> some View {
@@ -97,7 +105,7 @@ struct PurchaseView : View {
             self.dismiss()
         }) {
             Text("Not now").font(.footnote)
-            }.padding()
+        }.padding()
     }
     
     //MARK:- Actions

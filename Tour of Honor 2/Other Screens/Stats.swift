@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct Stats: View {
+    @State var showIAP = false
+    
     var body: some View {
         VStack {
             HStack {

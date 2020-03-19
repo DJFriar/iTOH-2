@@ -195,7 +195,6 @@ extension IAPManager: SKProductsRequestDelegate {
                 self.didLoadsProducts?(self.products)
                 self.didLoadsProducts = nil
             }
-            
         }
     }
 }

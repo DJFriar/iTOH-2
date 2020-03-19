@@ -23,12 +23,18 @@ struct TabBar : View {
                     Text("Settings")
                 })
                 .tag(0)
-            Stats()
-                .tabItem({
-                    Image(systemName: "gamecontroller")
-                    Text("Stats")
-                })
-                .tag(1)
+                        Stats()
+                            .tabItem({
+                                Image(systemName: "gamecontroller")
+                                Text("Stats")
+                            })
+                            .tag(1)
+//            IAPTestingView(productsStore: ProductsStore.shared)
+//                .tabItem({
+//                    Image(systemName: "gamecontroller")
+//                    Text("IAP")
+//                })
+//                .tag(1)
             if trophyHunter {
                 Trophies()
                     .tabItem({
@@ -70,7 +76,7 @@ struct TabBar : View {
                     .padding(.bottom,50)
             }
         )
-        .edgesIgnoringSafeArea(.top)
+            .edgesIgnoringSafeArea(.top)
     }
 }
 

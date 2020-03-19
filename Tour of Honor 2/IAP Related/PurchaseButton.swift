@@ -22,7 +22,14 @@ struct PurchaseButton : View {
         Button(action: {
             self.block()
         }) {
-            Text(product.localizedPrice()).lineLimit(nil).multilineTextAlignment(.center).font(.subheadline)
-            }.padding().frame(height: 50).scaledToFill().border(Color.blue, width: 1)
+            Text(product.localizedPrice())
+                .lineLimit(nil)
+                .multilineTextAlignment(.center)
+                .font(.subheadline)
+        }
+        .padding(.vertical, 4)
+            .frame(width: 120, height: 50)
+            .scaledToFill()
+            .border(Color(UIColor.systemBlue), width: 1)
     }
 }
