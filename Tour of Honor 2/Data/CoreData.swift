@@ -46,5 +46,4 @@ class CoreData: NSObject {
             Bonus.forceLoadData()
         }
     }
-       
 }

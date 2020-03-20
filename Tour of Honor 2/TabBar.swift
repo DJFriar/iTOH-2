@@ -14,7 +14,8 @@ struct TabBar : View {
     @State var trophyHunter = UserDefaultsConfig.trophyHunter
     @State private var selection = UserDefaultsConfig.initialActiveTab
     @State var hasConfiguredApp = UserDefaultsConfig.hasConfiguredApp
-    @State var isSubscriber = UserDefaultsConfig.isSubscriber
+//    @State var isSubscriber = UserDefaultsConfig.isSubscriber
+    var isSubscriber = true
     
     var body: some View {
         TabView(selection:$selection) {

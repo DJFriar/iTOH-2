@@ -15,20 +15,31 @@ import CoreData
 public class Bonus: NSManagedObject, Identifiable {
     
     class func count() -> Int {
-        let fetchRequest: NSFetchRequest<Bonus> = Bonus.fetchRequest()
+        let fetchCountRequest: NSFetchRequest<Bonus> = Bonus.fetchRequest()
         do {
-            let count = try CoreData.stack.context.count(for: fetchRequest)
+            let count = try CoreData.stack.context.count(for: fetchCountRequest)
             return count
         } catch let error as NSError {
             fatalError("Unresolved error \(error), \(error.userInfo)")
         }
     }
     
-    class func countSubmitted() -> Int{
-        let countFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
-        countFetch.predicate = NSPredicate(format: "submitted = %@", true)
+    class func countSubmitted() -> Int {
+        let countSubmittedFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+        countSubmittedFetch.predicate = NSPredicate(format: "submitted == %@", NSNumber(value: true))
         do {
-            let count = try CoreData.stack.context.count(for: countFetch)
+            let count = try CoreData.stack.context.count(for: countSubmittedFetch)
+            return count
+        } catch let error as NSError {
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
+    
+    class func countCaptured() -> Int {
+        let countCapturedFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+        countCapturedFetch.predicate = NSPredicate(format: "captured == %@", NSNumber(value: true))
+        do {
+            let count = try CoreData.stack.context.count(for: countCapturedFetch)
             return count
         } catch let error as NSError {
             fatalError("Unresolved error \(error), \(error.userInfo)")

@@ -57,14 +57,22 @@ struct Stats: View {
                 VStack(alignment: .leading) {
                     Text("PERSONAL STATS")
                         .font(.caption)
+                    Text("Total Submitted")
+                        .padding(.leading, 8)
+                    Text("Total Captured")
+                        .padding(.leading, 8)
                     Text("Memorial Visits")
                         .padding(.leading, 8)
                     Text("Doughboy Visits")
                         .padding(.leading, 8)
+
+
                 }
                 .padding(8)
                 Spacer()
                 VStack(alignment: .trailing) {
+                    Text("\(Bonus.countSubmitted())")
+                    Text("\(Bonus.countCaptured())")
                     Text("13")
                     Text("6")
                 }
@@ -75,6 +83,7 @@ struct Stats: View {
         }
     }
 }
+
 
 
 struct Stats_Previews: PreviewProvider {

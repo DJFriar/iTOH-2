@@ -94,9 +94,9 @@ struct FilteredBonusList: View {
         var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         documentsPath.append("/2020\(code).jpg")
         let url = URL(fileURLWithPath: documentsPath)
-        print("-------------")
-        print(url)
-        print("-------------")
+//        print("-------------")
+//        print(url)
+//        print("-------------")
         do {
             let imageData = try Data.init(contentsOf: url)
             return UIImage(data: imageData)
@@ -133,18 +133,7 @@ struct FilteredBonusList: View {
         //            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [])
         //        }
         
-        var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        documentsPath.append("/copy.jpg")
-        let url = URL(fileURLWithPath: documentsPath)
-        print("-------------")
-        print(url)
-        print("-------------")
-        do {
-            let imageData = try Data.init(contentsOf: url)
-            testimage = UIImage(data: imageData)
-        } catch {
-            print(error.localizedDescription)
-        }
+
         //var predicate = NSCompoundPredicate(type:.and, subpredicates:[
         //    NSPredicate(format: "lastName BEGINSWITH %@", lastNameFilter),
         //    NSPredicate(format: "firstName BEGINSWITH %@", firstNameFilter)])
