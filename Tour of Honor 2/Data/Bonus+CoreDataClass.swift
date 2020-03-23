@@ -77,7 +77,7 @@ public class Bonus: NSManagedObject, Identifiable {
         print("test \(code)")
         return true
     }
-    class func updateBonusKey(code: String, key: String, newVal: Any) -> Bool {
+    @discardableResult class func updateBonusKey(code: String, key: String, newVal: Any) -> Bool {
         let moc = CoreData.stack.context
         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
         bonusesFetch.predicate = NSPredicate(format: "code = %@", code)
@@ -102,7 +102,7 @@ public class Bonus: NSManagedObject, Identifiable {
         
         return true
     }
-    class func updateCapturedFlag(state: Bool, code: String) -> Bool {
+    @discardableResult class func updateCapturedFlag(state: Bool, code: String) -> Bool {
         
         let moc = CoreData.stack.context
         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
@@ -131,7 +131,7 @@ public class Bonus: NSManagedObject, Identifiable {
         
         return true
     }
-    class func nukeData() -> Bool {
+    @discardableResult class func nukeData() -> Bool {
         
         let moc = CoreData.stack.context
         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
@@ -149,10 +149,9 @@ public class Bonus: NSManagedObject, Identifiable {
             fatalError("Failed to fetch bonuses: \(error)")
         }
         
-        
         return true
     }
-    class func forceLoadData() -> Bool {
+    @discardableResult class func forceLoadData() -> Bool {
         let url = URL(string: "https://www.basicbitch.dev/bonuses.json")
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             guard let dataResponse = data,
