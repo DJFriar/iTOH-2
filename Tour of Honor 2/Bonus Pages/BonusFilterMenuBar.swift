@@ -114,10 +114,6 @@ struct FilterMenuBar: View {
                 Spacer()
             }
             .padding(4)
-//                    .background(Color.clear)
-//            .background(BlurView(style: .systemUltraThinMaterial))
-//            .background(Color(UIColor.systemGray5))
-            
         }
         .padding(.bottom,4)
         .background(Color.clear)

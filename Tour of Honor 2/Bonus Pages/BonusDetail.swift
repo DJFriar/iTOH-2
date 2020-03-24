@@ -70,7 +70,6 @@ struct BonusDetail: View {
                 HStack {
                     Spacer()
                     Text("\(self.activeBonus.city), \(self.activeBonus.state)")
-                    //                    .lineLimit(nil)
                 }
                 .padding(.horizontal,8)
                 

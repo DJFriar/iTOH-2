@@ -11,10 +11,10 @@ import SwiftUI
 struct TabBar : View {
     
     @EnvironmentObject var filters: UserFilters
-    @State var trophyHunter = UserDefaultsConfig.trophyHunter
+    //    @State var trophyHunter = UserDefaultsConfig.trophyHunter
     @State private var selection = UserDefaultsConfig.initialActiveTab
     @State var hasConfiguredApp = UserDefaultsConfig.hasConfiguredApp
-//    @State var isSubscriber = UserDefaultsConfig.isSubscriber
+    //    @State var isSubscriber = UserDefaultsConfig.isSubscriber
     var isSubscriber = true
     
     var body: some View {
@@ -33,21 +33,22 @@ struct TabBar : View {
                     })
                     .tag(1)
             }
-            if trophyHunter {
-                Trophies()
+            //            if trophyHunter {
+            //                Trophies()
+            //                    .tabItem({
+            //                        Image(systemName: "sparkles")
+            //                        Text("Trophies")
+            //                    })
+            //                    .tag(2)
+            //            }
+            if isSubscriber {
+                NationalParks()
                     .tabItem({
-                        Image(systemName: "sparkles")
-                        Text("Trophies")
+                        Image(systemName: "shield")
+                        Text("Parks")
                     })
-                    .tag(2)
+                    .tag(3)
             }
-            //            NationalParks()
-            //                .tabItem({
-            //                    Image(systemName: "shield")
-            //                    Text("Parks")
-            //                })
-            //                .tag(3)
-            
             BonusList()
                 .tabItem({
                     Image(systemName: "flag")
