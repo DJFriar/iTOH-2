@@ -16,7 +16,10 @@ struct BonusDetail: View {
     
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
+    @State var answerSubmitButton = false
+    @State var requiresIAP = false
     
+    let subscriptionCheck = SubscriptionCheck()
     @State var submit = false
     @State var primaryChanged = false
     @State var alternateChanged = false
@@ -34,7 +37,7 @@ struct BonusDetail: View {
     var sampleImageMissing = ImageReader.getImageFromDocDir(named: "sample_image_missing.png")
     //    var primaryImageMissing = ImageReader.getImageFromDocDir(named: "no_image_taken.png")
     //    var optionalImageMissing = ImageReader.getImageFromDocDir(named: "optional_2nd_Image.png")
-    
+       
     var body: some View {
         
         ScrollView {
@@ -129,25 +132,27 @@ struct BonusDetail: View {
                         .sheet(isPresented: self.$showImagePicker, onDismiss: {self.alternateChanged = true; print("alternateChanged is now: \(self.alternateChanged)")}) {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage, testMe: self.$testMe,  imagePriority: self.$imagePriority)
                                 .modifier(SystemServices())
-                            
                     }
                 }
                 HStack {
-                    Button(action: { self.removeCapturedBonus() }) {
+                    Button(action: {
+                        self.removeCapturedBonus()
+                        // Add logic to remove the captured image as well.
+                    }) {
                         Text("Reset Bonus")
                             .multilineTextAlignment(.center)
                     }
                     Spacer()
-                    Button(action: {
-                        self.submitCapturedBonus()
-                        self.isShowingMailView.toggle()
-                    }) {
-                        Text("Submit Bonus")
-                    }
+                    SubmitButton()
                     .disabled(!MFMailComposeViewController.canSendMail())
-                    .sheet(isPresented: $isShowingMailView) {
-                        MailView(result: self.$result)
-                            .modifier(SystemServices())
+                    .sheet(isPresented: $answerSubmitButton) {
+                        if self.requiresIAP {
+                            PurchaseView()
+                                .modifier(SystemServices())
+                        } else {
+                            MailView(result: self.$result)
+                                .modifier(SystemServices())
+                        }
                     }
                 }
                 .padding(.vertical,8)
@@ -157,7 +162,7 @@ struct BonusDetail: View {
         }
     }
     
-    func submitCapturedBonus(){
+    func markBonusSubmitted(){
         Bonus.updateBonusKey(code: self.activeBonus.code, key: "submitted", newVal: true)
     }
     
@@ -170,6 +175,27 @@ struct BonusDetail: View {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
+
+    public func SubmitButton() -> Button<Text> {
+        return Button(action: {
+            self.markBonusSubmitted()
+            switch self.subscriptionCheck.checkSubscription() {
+            case 0:
+                print("Subscriber Mode")
+            case 1:
+                print("Trial Mode")
+            case 2:
+                print("IAP Required")
+                self.requiresIAP.toggle()
+            default:
+                print("Something has gone wrong with Subscription Check!!")
+            }
+            self.answerSubmitButton.toggle()
+        }) {
+            Text("Submit Bonus")
+        }
+    }
+    
 }
 
 struct BonusDetail_Previews: PreviewProvider {

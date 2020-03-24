@@ -9,14 +9,23 @@
 import SwiftUI
 
 class SubscriptionCheck: NSObject {
-//    If user is a subscriber, carry on
     
-    // Call normal submit logic here
+    @State var isSubscriber = UserDefaultsConfig.isSubscriber
     
-//    If user is not a subscriber, check how many submissions they have done.
-    
-    // Put count logic here. If under 7, call submit logic. If 7 or more, present IAP.
-    
+    func checkSubscription() -> Int {
+        if isSubscriber {
+            //    If user is a subscriber, carry on
+            print("User is a subscriber!")
+            return 0
+        } else {    //    If user is not a subscriber, check how many submissions they have done.
+            print("User has exceeed free trial limits.")
+            if Bonus.countSubmitted() > 2 {
+                return 2
+            } else {
+                print("Free Trial Mode: \(Bonus.countSubmitted()) submissions used.")
+                return 1
+            }
+        }
+    }
 }
-
 
