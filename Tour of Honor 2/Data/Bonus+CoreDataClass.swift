@@ -140,6 +140,56 @@ public class Bonus: NSManagedObject, Identifiable {
         }
         return true
     }
+    @discardableResult class func updateData() -> Bool {
+        let url = URL(string: "https://www.basicbitch.dev/changes.json")
+        //let url = URL(string: "https://apps.perrycraft.net/wp-json/toh/v1/updates")
+
+        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            guard let dataResponse = data,
+                error == nil else {
+                    print(error?.localizedDescription ?? "Response Error")
+                    return }
+            do{
+                let json = dataResponse
+                struct BonusEntry: Codable {
+                    var sampleImage: String
+                    var bonusName: String
+                    var bonusCode: String
+                    var bonusCategory: String
+                    var region: String
+                    var city: String
+                    var state: String
+                    var GPS: String
+                }
+                
+                let decoder = JSONDecoder()
+                let bonuses = try decoder.decode([BonusEntry].self, from: json)
+
+                print("The following bonuses are available:")
+                for (i,bonus) in bonuses.enumerated() {
+                    //print("\t\(bonus.bonusName) (\(bonus.bonusCode) )")
+                    //update each record
+                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "sampleImage", newVal: bonus.sampleImage )
+                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "name", newVal: bonus.bonusName )
+                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "category", newVal: bonus.bonusCategory )
+                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "region", newVal: bonus.region )
+                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "city", newVal: bonus.city )
+                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "state", newVal: bonus.state )
+                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "gps", newVal: bonus.GPS )
+
+
+                }
+                print("Bonus updates completed")
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            
+        }
+        task.resume()
+        
+        
+        return true
+    }
     
     @discardableResult class func forceLoadData() -> Bool {
         let url = URL(string: "https://www.basicbitch.dev/bonuses.json")

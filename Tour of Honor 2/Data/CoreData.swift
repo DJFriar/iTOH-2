@@ -40,10 +40,13 @@ class CoreData: NSObject {
     }
     // MARK: - Database setup
        
+    
     public class func initialDbSetup() -> Void {
         print("Loaded \(Bonus.count()) bonuses.")
         if Bonus.count() == 0 {
             Bonus.forceLoadData()
+        } else {
+            Bonus.updateData()
         }
     }
 }
