@@ -73,9 +73,9 @@ struct Settings: View {
                 }
                 
                 Section(header: Text("App Preferences")) {
-                    Toggle(isOn: $trophyHunter) {
-                        Text("Enable Trophy Mode")
-                    }
+//                    Toggle(isOn: $trophyHunter) {
+//                        Text("Enable Trophy Mode")
+//                    }
                     Toggle(isOn: $useGoogleMaps) {
                         Text("Prefer Google Maps")
                     }
@@ -86,7 +86,7 @@ struct Settings: View {
                     self.initialActiveTab = 4
                     UserDefaultsConfig.riderFlagNumber = self.riderFlagNumber
                     UserDefaultsConfig.pillionFlagNumber = self.pillionFlagNumber
-                    UserDefaultsConfig.trophyHunter = self.trophyHunter
+//                    UserDefaultsConfig.trophyHunter = self.trophyHunter
                     UserDefaultsConfig.initialActiveTab = self.initialActiveTab
                     UserDefaultsConfig.useGoogleMaps = self.useGoogleMaps
                     print("Active Tab set to: \(self.initialActiveTab)")

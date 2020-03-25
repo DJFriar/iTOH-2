@@ -77,31 +77,26 @@ public class Bonus: NSManagedObject, Identifiable {
         print("test \(code)")
         return true
     }
+    
     @discardableResult class func updateBonusKey(code: String, key: String, newVal: Any) -> Bool {
         let moc = CoreData.stack.context
         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
         bonusesFetch.predicate = NSPredicate(format: "code = %@", code)
-        
         do {
             let fetchedBonuses = try moc.fetch(bonusesFetch) as! [Bonus]
             print(fetchedBonuses)
             if let bonusRecord = fetchedBonuses.first {
                 print(bonusRecord.name)
-                
                 print("Updated: key \(key) to value \(newVal)")
                 bonusRecord.setValue(newVal, forKey: key)
-                
                 CoreData.stack.save()
             }
-            
-            
         } catch {
             fatalError("Failed to fetch bonuses: \(error)")
         }
-        
-        
         return true
     }
+    
     @discardableResult class func updateCapturedFlag(state: Bool, code: String) -> Bool {
         
         let moc = CoreData.stack.context
@@ -114,7 +109,7 @@ public class Bonus: NSManagedObject, Identifiable {
             if let bonusRecord = fetchedBonuses.first {
                 print(bonusRecord.name)
                 if (state){
-                    print("Submitted: \(code)")
+                    print("Captured: \(code)")
                     bonusRecord.setValue(true, forKey: "captured")
                 } else {
                     print("Reset: \(code)")
@@ -122,15 +117,12 @@ public class Bonus: NSManagedObject, Identifiable {
                 }
                 CoreData.stack.save()
             }
-            
-            
         } catch {
             fatalError("Failed to fetch bonuses: \(error)")
         }
-        
-        
         return true
     }
+    
     @discardableResult class func nukeData() -> Bool {
         
         let moc = CoreData.stack.context
@@ -143,14 +135,12 @@ public class Bonus: NSManagedObject, Identifiable {
                 moc.delete(object)
             }
             try moc.save()
-            
-            
         } catch {
             fatalError("Failed to fetch bonuses: \(error)")
         }
-        
         return true
     }
+    
     @discardableResult class func forceLoadData() -> Bool {
         let url = URL(string: "https://www.basicbitch.dev/bonuses.json")
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
@@ -158,11 +148,11 @@ public class Bonus: NSManagedObject, Identifiable {
                 error == nil else {
                     print(error?.localizedDescription ?? "Response Error")
                     return }
-            do{
+            do {
                 let json = dataResponse
                 
                 struct BonusEntry: Codable {
-                    var sampleImage: String?
+                    var sampleImage: String
                     var bonusName: String
                     var bonusCode: String
                     var bonusCategory: String
@@ -177,7 +167,7 @@ public class Bonus: NSManagedObject, Identifiable {
                 
                 print("The following bonuses are available:")
                 for (i,bonus) in bonuses.enumerated() {
-                    print("\t\(bonus.bonusName) (\(bonus.bonusCode) )")
+                    print("\t\(bonus.bonusName) (\(bonus.bonusCode))")
                     
                     let _ = Bonus.createBonus(
                         name: bonus.bonusName,
@@ -187,21 +177,18 @@ public class Bonus: NSManagedObject, Identifiable {
                         category: bonus.bonusCategory,
                         region: bonus.region,
                         gps: bonus.GPS,
-                        sampleImage: "2019ca1",
+                        sampleImage: bonus.sampleImage,
                         order: i
                     )
                 }
-                
             } catch let parsingError {
                 print("Error", parsingError)
             }
-            
         }
         task.resume()
-        
-        
         return true
     }
+    
     class func getBonusesKey(key:String) -> [String] {
         
         let moc = CoreData.stack.context
@@ -217,13 +204,10 @@ public class Bonus: NSManagedObject, Identifiable {
                     elements.append("\(bonus.category)")
                 }
             }
-            
             print(elements)
             return elements
         } catch {
             fatalError("Failed to fetch bonuses: \(error)")
         }
     }
-    
-    
 }

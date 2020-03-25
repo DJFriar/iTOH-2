@@ -22,6 +22,7 @@ struct BonusDetail: View {
     let subscriptionCheck = SubscriptionCheck()
     @State var submit = false
     @State var primaryChanged = false
+    @State var imageWasAccepted = false
     @State var alternateChanged = false
     @State var showFilterPicker = false
     @State var gpsPressed = false
@@ -34,10 +35,11 @@ struct BonusDetail: View {
     @State private var imagePriority: String = ""
     @Environment(\.presentationMode) var presentationMode
     
+    var riderFlagNumber = UserDefaultsConfig.riderFlagNumber
     var sampleImageMissing = ImageReader.getImageFromDocDir(named: "sample_image_missing.png")
     //    var primaryImageMissing = ImageReader.getImageFromDocDir(named: "no_image_taken.png")
     //    var optionalImageMissing = ImageReader.getImageFromDocDir(named: "optional_2nd_Image.png")
-       
+    
     var body: some View {
         
         ScrollView {
@@ -74,10 +76,17 @@ struct BonusDetail: View {
                 .padding(.horizontal,8)
                 
                 VStack(spacing: 0.0) {
-                    Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.sampleImage)!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(10)
+                    if (ImageReader.getImageFromDocDir(named: self.activeBonus.sampleImage) != nil){
+                        Image(uiImage: ImageReader.getImageFromDocDir(named: self.activeBonus.sampleImage)!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(10)
+                    } else {
+                        Image(uiImage: self.sampleImageMissing!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(10)
+                    }
                     HStack {
                         Text(self.activeBonus.category)
                             .font(.caption)
@@ -115,7 +124,7 @@ struct BonusDetail: View {
                             .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "1"; self.testMe = self.activeBonus.code; }))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
                             .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code; }))
-                        .sheet(isPresented: self.$showImagePicker, onDismiss: {self.primaryChanged = true; print("primaryImage is now: \(self.activeBonus.primaryImage)")}) {
+                        .sheet(isPresented: self.$showImagePicker, onDismiss: {self.checkForSavedPhoto(); print("primaryImage is now: \(self.activeBonus.primaryImage)")}) {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage, testMe: self.$testMe, imagePriority: self.$imagePriority)
                                 .modifier(SystemServices())
                             
@@ -128,7 +137,7 @@ struct BonusDetail: View {
                             .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "2"; self.testMe = self.activeBonus.code;}))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
                             .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code;}))
-                        .sheet(isPresented: self.$showImagePicker, onDismiss: {self.alternateChanged = true; print("alternateChanged is now: \(self.alternateChanged)")}) {
+                        .sheet(isPresented: self.$showImagePicker, onDismiss: {self.checkForSavedPhoto(); print("alternateChanged is now: \(self.activeBonus.alternateImage)")}) {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage, testMe: self.$testMe,  imagePriority: self.$imagePriority)
                                 .modifier(SystemServices())
                     }
@@ -143,21 +152,35 @@ struct BonusDetail: View {
                     }
                     Spacer()
                     SubmitButton()
-                    .disabled(!MFMailComposeViewController.canSendMail())
-                    .sheet(isPresented: $answerSubmitButton) {
-                        if self.requiresIAP {
-                            PurchaseView()
-                                .modifier(SystemServices())
-                        } else {
-                            MailView(result: self.$result)
-                                .modifier(SystemServices())
-                        }
+                        .disabled(!MFMailComposeViewController.canSendMail())
+                        .sheet(isPresented: $answerSubmitButton) {
+                            if self.requiresIAP {
+                                PurchaseView()
+                                    .modifier(SystemServices())
+                            } else {
+                                MailView(result: self.$result)
+                                    .modifier(SystemServices())
+                            }
                     }
                 }
                 .padding(.vertical,8)
                 Spacer()
             }
             .padding(8)
+        }
+    }
+    
+    func checkForSavedPhoto(){
+        if (ImageReader.getImageFromDocDir(named: "2020_\(self.riderFlagNumber)_\(self.testMe)_\(self.imagePriority).jpg") != nil) {
+            if self.imagePriority == "1" {
+                self.activeBonus.primaryImage = "2020_\(self.riderFlagNumber)_\(self.testMe)_\(self.imagePriority).jpg"
+                self.primaryChanged = true
+            } else if self.imagePriority == "2" {
+                self.activeBonus.alternateImage = "2020_\(self.riderFlagNumber)_\(self.testMe)_\(self.imagePriority).jpg"
+                self.alternateChanged = true
+            } else {
+                print("checkForSavedPhoto caught an invalid number.")
+            }
         }
     }
     
@@ -174,7 +197,7 @@ struct BonusDetail: View {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
-
+    
     public func SubmitButton() -> Button<Text> {
         return Button(action: {
             self.markBonusSubmitted()

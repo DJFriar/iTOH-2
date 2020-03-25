@@ -23,36 +23,39 @@ struct Stats: View {
                 Spacer()
             }
             HStack {
-                Text("Current Rank")
-                    .font(.headline)
-                    .padding(.leading, 8)
-                Spacer()
-                Text("39 of 984")
-                .font(.headline)
+                Text("This page is still under development, but will be updated soon.")
             }
-            .padding(.trailing,16)
-            .padding(.leading,8)
-            .padding(.vertical,16)
-
-            HStack {
-                VStack(alignment: .leading) {
-                    
-                    Text("OVERALL STATS")
-                        .font(.caption)
-                    Text("Total Memorial Visits")
-                        .padding(.leading, 8)
-                    Text("Total Doughboy Visits")
-                        .padding(.leading, 8)
-                }
-                .padding(8)
-                Spacer()
-                VStack(alignment: .trailing) {
-                    Text("15,986")
-                    Text("786")
-                }
-                .padding(.top, 16)
-                .padding(.trailing, 16)
-            }
+//            HStack {
+//                Text("Current Rank")
+//                    .font(.headline)
+//                    .padding(.leading, 8)
+//                Spacer()
+//                Text("39 of 984")
+//                .font(.headline)
+//            }
+//            .padding(.trailing,16)
+//            .padding(.leading,8)
+//            .padding(.vertical,16)
+//
+//            HStack {
+//                VStack(alignment: .leading) {
+//
+//                    Text("OVERALL STATS")
+//                        .font(.caption)
+//                    Text("Total Memorial Visits")
+//                        .padding(.leading, 8)
+//                    Text("Total Doughboy Visits")
+//                        .padding(.leading, 8)
+//                }
+//                .padding(8)
+//                Spacer()
+//                VStack(alignment: .trailing) {
+//                    Text("15,986")
+//                    Text("786")
+//                }
+//                .padding(.top, 16)
+//                .padding(.trailing, 16)
+//            }
             HStack {
                 VStack(alignment: .leading) {
                     Text("PERSONAL STATS")
@@ -73,8 +76,8 @@ struct Stats: View {
                 VStack(alignment: .trailing) {
                     Text("\(Bonus.countSubmitted())")
                     Text("\(Bonus.countCaptured())")
-                    Text("13")
-                    Text("6")
+                    Text("N/A")
+                    Text("N/A")
                 }
                 .padding(.top, 16)
                 .padding(.trailing, 16)

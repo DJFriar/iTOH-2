@@ -17,7 +17,7 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
     @Binding var image: Image?
     var testMe: String
     var imagePriority: String
-
+    
     init(isShown: Binding<Bool>, image: Binding<Image?>, testMe: String, imagePriority: String) {
         _isShown = isShown
         _image = image
@@ -30,15 +30,11 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
         let uiImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         image = Image(uiImage: uiImage)
         isShown = false
-        //print(uiImage.size)
-        //print(info)
-        //print("-----")
-        //print(UIImagePickerController.InfoKey.originalImage)
         print("-----")
         print(self.testMe)
         print("-----")
-
-
+        
+        
         let imageSaver = ImageWriter()
         imageSaver.writeToAppData(image: uiImage, testMe: testMe, imagePriority: imagePriority)
         Bonus.updateCapturedFlag(state: true, code: testMe)
@@ -46,10 +42,13 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
         let filename = "2020_\(UserDefaultsConfig.riderFlagNumber)_\(testMe)_\(imagePriority).jpg"
         switch imagePriority {
         case "1":
-            Bonus.updateBonusKey(code: testMe, key: "primaryImage", newVal: filename )
             print("Reached case 1")
+            Bonus.updateBonusKey(code: testMe, key: "primaryImage", newVal: filename )
+            
         case "2":
+            print("Reached case 2")
             Bonus.updateBonusKey(code: testMe, key: "alternateImage", newVal: filename )
+            
         default:
             print("not sure which image that was...")
         }
