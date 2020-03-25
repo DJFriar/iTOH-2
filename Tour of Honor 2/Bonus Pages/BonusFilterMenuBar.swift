@@ -33,9 +33,9 @@ struct FilterMenuBar: View {
                             .default(Text("Doughboys")) {  self.filters.category = "Doughboys" },
                             .default(Text("Gold Star Family")) { self.filters.category = "Gold Star Family"  },
                             .default(Text("Hueys")) {self.filters.category = "Hueys"  },
-                            .default(Text("Madonna Trail")) {self.filters.category = "Madonna Trail"  },
+                            .default(Text("Madonna Trail")) {self.filters.category = "Madonna of the Trail"  },
                             .default(Text("Tour of Honor")) { self.filters.category = "Tour of Honor" },
-                            .default(Text("War Dogs")) { self.filters.category = "War Dogs"  },
+                            .default(Text("War Dogs / K9")) { self.filters.category = "War Dogs"  },
                             .cancel()
                         ])
                     }
