@@ -50,7 +50,7 @@ struct MailView: UIViewControllerRepresentable {
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<MailView>) -> MFMailComposeViewController {
         let vc = MFMailComposeViewController()
-        vc.setToRecipients(["testing@tommyc.net"])
+        vc.setToRecipients(["photos@tourofhonor.com"])
         vc.setSubject("2020_\(riderFlagNumber)_\(activeBonus.category)_\(activeBonus.city)_\(activeBonus.state)_\(activeBonus.code)")
         vc.setMessageBody("", isHTML: true)
         
