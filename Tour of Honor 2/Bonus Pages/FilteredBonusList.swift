@@ -67,7 +67,7 @@ struct FilteredBonusList: View {
                 
             .navigationBarTitle(Text("Bonuses"))
             .navigationBarItems(trailing: HStack {
-                Button(action: { self.filters.category = "*"; self.filters.state = "*"; }) {
+                Button(action: { self.filters.category = ""; self.filters.state = ""; }) {
                     Text("Clear filters")
                 }
             })
@@ -106,11 +106,21 @@ struct FilteredBonusList: View {
     
     
     init(categoryFilter: String, stateFilter: String) {
-        
-        //        let regionPredicate = NSPredicate(format: "region BEGINSWITH %@", regionFilter)
-        let categoryPredicate = NSPredicate(format: "category LIKE %@", categoryFilter)
-        let statePredicate = NSPredicate(format: "state LIKE %@", stateFilter)
-        let filterPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate,statePredicate])
-        fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [], predicate: filterPredicate)
+      if (categoryFilter.count > 0 && stateFilter.count > 0){
+           let predicate = NSPredicate(format: "category BEGINSWITH %@ AND state BEGINSWITH %@", categoryFilter, stateFilter)
+           fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [], predicate: predicate)
+
+       } else if (categoryFilter.count > 0 && stateFilter.count <= 0){
+           let predicate = NSPredicate(format: "category BEGINSWITH %@", categoryFilter)
+           fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [], predicate: predicate)
+       } else if (categoryFilter.count <= 0 && stateFilter.count > 0){
+           let predicate = NSPredicate(format: "state BEGINSWITH %@", stateFilter)
+           fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [], predicate: predicate)
+       } else {
+           fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [])
+
+       }
+
+
     }
 }
