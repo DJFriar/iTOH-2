@@ -53,7 +53,7 @@ public class Bonus: NSManagedObject, Identifiable {
         return Bonus(context: CoreData.stack.context)
     }
     class func createBonus(name: String, code: String, city: String, state: String, category: String, region: String, gps: String, sampleImage: String, order: Int?) -> Bonus {
-        let moc = CoreData.stack.backgroundContext
+        //let moc = CoreData.stack.backgroundContext
 
         let bonus = Bonus.newBonus()
         bonus.name = name
@@ -71,7 +71,7 @@ public class Bonus: NSManagedObject, Identifiable {
         bonus.submitted = false
 
         do {
-            try moc.save()
+            try CoreData.stack.save()
         } catch let error as NSError {
             //fatalError("Unresolved error \(error), \(error.userInfo)")
             print("bonus did not save")
@@ -147,8 +147,7 @@ public class Bonus: NSManagedObject, Identifiable {
         return true
     }
     @discardableResult class func updateData() -> Bool {
-        let url = URL(string: "https://www.basicbitch.dev/changes.json")
-        //let url = URL(string: "https://apps.perrycraft.net/wp-json/toh/v1/updates")
+        let url = URL(string: "https://apps.perrycraft.net/wp-json/toh/v1/updates")
 
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             guard let dataResponse = data,
@@ -198,7 +197,7 @@ public class Bonus: NSManagedObject, Identifiable {
     }
     
     @discardableResult class func forceLoadData() -> Bool {
-        let url = URL(string: "https://www.basicbitch.dev/bonuses.json")
+        let url = URL(string: "https://apps.perrycraft.net/wp-json/toh/v1/bonus-data")
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             guard let dataResponse = data,
                 error == nil else {
@@ -246,7 +245,7 @@ public class Bonus: NSManagedObject, Identifiable {
         return true
     }
     @discardableResult class func getBonusImagesFromServer() -> Bool{
-            let moc = CoreData.stack.context
+            let moc = CoreData.stack.backgroundContext
             let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
             do {
                 let fetchedBonuses = try moc.fetch(bonusesFetch) as! [Bonus]
