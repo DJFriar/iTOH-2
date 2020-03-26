@@ -22,7 +22,12 @@ class CoreData: NSObject {
                return self.persistentContainer.viewContext
            }
        }
-       
+       public var backgroundContext: NSManagedObjectContext {
+           
+           get {
+               return self.persistentContainer.newBackgroundContext()
+           }
+       }
     // MARK: - Core Data Saving support
     
     public func save() {

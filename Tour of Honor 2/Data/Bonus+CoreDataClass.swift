@@ -53,7 +53,8 @@ public class Bonus: NSManagedObject, Identifiable {
         return Bonus(context: CoreData.stack.context)
     }
     class func createBonus(name: String, code: String, city: String, state: String, category: String, region: String, gps: String, sampleImage: String, order: Int?) -> Bonus {
-        
+        let moc = CoreData.stack.backgroundContext
+
         let bonus = Bonus.newBonus()
         bonus.name = name
         bonus.code = code
@@ -68,8 +69,13 @@ public class Bonus: NSManagedObject, Identifiable {
         bonus.order = Int32(order ?? 0)
         bonus.captured = false
         bonus.submitted = false
-        CoreData.stack.save()
-        
+
+        do {
+            try moc.save()
+        } catch let error as NSError {
+            //fatalError("Unresolved error \(error), \(error.userInfo)")
+            print("bonus did not save")
+        }
         return bonus
     }
     
@@ -232,6 +238,7 @@ public class Bonus: NSManagedObject, Identifiable {
                     )
                 }
             } catch let parsingError {
+                print("error while loading data")
                 print("Error", parsingError)
             }
         }
