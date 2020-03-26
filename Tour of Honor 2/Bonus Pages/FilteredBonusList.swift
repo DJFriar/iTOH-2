@@ -23,7 +23,7 @@ struct FilteredBonusList: View {
             List(bonuses, id: \.self) { item in
                 Button(action: { self.setupBonusData(bonus:item) }) {
                     HStack(spacing: 12.0) {
-                        Image(uiImage: self.showBonusImage(code: item.code.lowercased()) ?? self.sampleImageMissing! )
+                        Image(uiImage: self.showBonusImage(sampleImage: item.sampleImage) ?? self.sampleImageMissing! )
                             .renderingMode(.original)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -91,9 +91,9 @@ struct FilteredBonusList: View {
         
     }
     
-    func showBonusImage(code: String) -> UIImage?{
+    func showBonusImage(sampleImage: String) -> UIImage?{
         var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        documentsPath.append("/2020\(code).jpg")
+        documentsPath.append("/\(sampleImage)")
         let url = URL(fileURLWithPath: documentsPath)
         do {
             let imageData = try Data.init(contentsOf: url)
@@ -103,6 +103,7 @@ struct FilteredBonusList: View {
             return nil
         }
     }
+    
     
     init(categoryFilter: String, stateFilter: String) {
         

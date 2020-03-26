@@ -62,7 +62,7 @@ public class Bonus: NSManagedObject, Identifiable {
         bonus.state = state
         bonus.region = region
         bonus.gps = gps
-        bonus.sampleImage = "2020\(code).jpg".lowercased()
+        bonus.sampleImage = sampleImage
         bonus.primaryImage = "no_image_taken.png"
         bonus.alternateImage = "optional_2nd_Image.png"
         bonus.order = Int32(order ?? 0)
@@ -238,7 +238,50 @@ public class Bonus: NSManagedObject, Identifiable {
         task.resume()
         return true
     }
-    
+    @discardableResult class func getBonusImagesFromServer() -> Bool{
+            let moc = CoreData.stack.context
+            let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+            do {
+                let fetchedBonuses = try moc.fetch(bonusesFetch) as! [Bonus]
+                for object in fetchedBonuses {
+                    if (ImageReader.getImageFromDocDir(named: object.sampleImage) != nil) {
+                            print("Downloaded \(object.code) image found")
+                        } else {
+                            print(object.sampleImage)
+                        if let imgURL = URL(string: "https://www.tourofhonor.com/2020appimages/\(object.sampleImage)") {
+                                // create your document folder url
+                                let documentsUrl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                                // your destination file url
+                                let destination = documentsUrl.appendingPathComponent(imgURL.lastPathComponent)
+                                print(destination)
+                                // check if it exists before downloading it
+                                if FileManager().fileExists(atPath: destination.path) {
+                                    print("The file already exists at path")
+                                } else {
+                                    //  if the file doesn't exist
+                                    //  just download the data from your url
+                                    URLSession.shared.downloadTask(with: imgURL, completionHandler: { (location, response, error) in
+                                        // after downloading your data you need to save it to your destination url
+                                        guard
+                                            let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                                            let location = location, error == nil
+                                            else { return }
+                                        do {
+                                            try FileManager.default.moveItem(at: location, to: destination)
+                                            print("file saved")
+                                        } catch {
+                                            print(error)
+                                        }
+                                    }).resume()
+                                }
+                            }
+                        }
+                }
+            } catch {
+                fatalError("Failed to fetch bonuses: \(error)")
+            }
+            return true
+        }
     class func getBonusesKey(key:String) -> [String] {
         
         let moc = CoreData.stack.context
