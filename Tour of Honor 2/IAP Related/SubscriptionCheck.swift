@@ -19,7 +19,7 @@ class SubscriptionCheck: NSObject {
             return 0
         } else {    //    If user is not a subscriber, check how many submissions they have done.
             print("User has exceeed free trial limits.")
-            if Bonus.countSubmitted() > 2 {
+            if Bonus.countSubmitted() > 6 {
                 return 2
             } else {
                 print("Free Trial Mode: \(Bonus.countSubmitted()) submissions used.")
