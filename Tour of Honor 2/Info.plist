@@ -29,8 +29,6 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Used to capture photos of your bonuses.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Used to properly tag your photos with their location.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Used to let you store photos you took of your bonuses from the in-app camera view.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

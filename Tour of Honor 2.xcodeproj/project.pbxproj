@@ -25,7 +25,6 @@
 		6561FACC23F4A95000F786AE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACB23F4A95000F786AE /* GameKit.framework */; };
 		6561FACE23F4A95D00F786AE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACD23F4A95D00F786AE /* StoreKit.framework */; };
 		6561FAD023F4AAFC00F786AE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACF23F4AAFC00F786AE /* CloudKit.framework */; };
-		65795E47240E08D80036B4EA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65795E46240E08D80036B4EA /* LocationManager.swift */; };
 		65795E49240E12BC0036B4EA /* ImageWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65795E48240E12BC0036B4EA /* ImageWriter.swift */; };
 		6581CA8C240F580700887782 /* ImageReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6581CA8B240F580700887782 /* ImageReader.swift */; };
 		6581CA90240F76CA00887782 /* optional_2nd_Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 6581CA8D240F76C900887782 /* optional_2nd_Image.png */; };
@@ -412,7 +411,6 @@
 		6561FACB23F4A95000F786AE /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		6561FACD23F4A95D00F786AE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6561FACF23F4AAFC00F786AE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		65795E46240E08D80036B4EA /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		65795E48240E12BC0036B4EA /* ImageWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWriter.swift; sourceTree = "<group>"; };
 		6581CA8B240F580700887782 /* ImageReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageReader.swift; sourceTree = "<group>"; };
 		6581CA8D240F76C900887782 /* optional_2nd_Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optional_2nd_Image.png; sourceTree = "<group>"; };
@@ -898,7 +896,6 @@
 				65DBD66B23F0117200BC5B66 /* CustomModifiers.swift */,
 				65DBD66823F00CEF00BC5B66 /* DeviceDetector.swift */,
 				65F7199C242175F0004C659F /* MapHandler.swift */,
-				65795E46240E08D80036B4EA /* LocationManager.swift */,
 				65E3D2D4241A9E3A005AA8CB /* SendEmail.swift */,
 				632468A72414521600BEE0D5 /* CategoryFilter.swift */,
 				632468A92414544200BEE0D5 /* StateFilter.swift */,
@@ -1746,7 +1743,6 @@
 				65795E49240E12BC0036B4EA /* ImageWriter.swift in Sources */,
 				65DBD66123F002A900BC5B66 /* BonusDataArray.swift in Sources */,
 				65DBD66923F00CEF00BC5B66 /* DeviceDetector.swift in Sources */,
-				65795E47240E08D80036B4EA /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1830,7 +1826,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.dev;
 				CODE_SIGN_ENTITLEMENTS = "Tour of Honor 2/Tour of Honor 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 746;
+				CURRENT_PROJECT_VERSION = 747;
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1971,7 +1967,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.debug;
 				CODE_SIGN_ENTITLEMENTS = "Tour of Honor 2/Tour of Honor 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 746;
+				CURRENT_PROJECT_VERSION = 747;
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -1997,7 +1993,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Tour of Honor 2/Tour of Honor 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 746;
+				CURRENT_PROJECT_VERSION = 747;
 				DEBUG_ACTIVITY_MODE = "";
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8XHY7EQ7TE;

@@ -20,15 +20,15 @@ struct Settings: View {
     @State var submit = false
     @State var showIAP = false
     
-    // Used for Location Tracking
-    @ObservedObject var locationManager = LocationManager()
-    var userLatitude: String {
-        return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
-    }
-    
-    var userLongitude: String {
-        return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
-    }
+    //    // Used for Location Tracking
+    //    @ObservedObject var locationManager = LocationManager()
+    //    var userLatitude: String {
+    //        return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
+    //    }
+    //
+    //    var userLongitude: String {
+    //        return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+    //    }
     
     // Set Device Info
     let systemVersion = UIDevice.current.systemVersion
@@ -46,8 +46,7 @@ struct Settings: View {
                     .renderingMode(.original)
                     .resizable()
                     .frame(width: 45, height: 45)
-
-//                Spacer()
+                
             }
             .padding(.horizontal,8)
             .padding(.top,8)
@@ -73,9 +72,9 @@ struct Settings: View {
                 }
                 
                 Section(header: Text("App Preferences")) {
-//                    Toggle(isOn: $trophyHunter) {
-//                        Text("Enable Trophy Mode")
-//                    }
+                    //                    Toggle(isOn: $trophyHunter) {
+                    //                        Text("Enable Trophy Mode")
+                    //                    }
                     Toggle(isOn: $useGoogleMaps) {
                         Text("Prefer Google Maps")
                     }
@@ -86,7 +85,7 @@ struct Settings: View {
                     self.initialActiveTab = 4
                     UserDefaultsConfig.riderFlagNumber = self.riderFlagNumber
                     UserDefaultsConfig.pillionFlagNumber = self.pillionFlagNumber
-//                    UserDefaultsConfig.trophyHunter = self.trophyHunter
+                    //                    UserDefaultsConfig.trophyHunter = self.trophyHunter
                     UserDefaultsConfig.initialActiveTab = self.initialActiveTab
                     UserDefaultsConfig.useGoogleMaps = self.useGoogleMaps
                     print("Active Tab set to: \(self.initialActiveTab)")
@@ -97,20 +96,27 @@ struct Settings: View {
                     Alert(title: Text("Details Saved"), message: Text("Rider: \(riderFlagNumber)"))
                 })
             }
+            #if DEBUG
             Button(action: { self.showIAP.toggle() }) {
                 Text("Test IAP")
                     .sheet(isPresented: $showIAP) {
                         PurchaseView()
                 }
             }
+            #endif
             Spacer()
-            HStack {
-                Text("latitude: \(userLatitude)").font(.caption)
-                Text("longitude: \(userLongitude)").font(.caption)
+            //            HStack {
+            //                Text("latitude: \(userLatitude)").font(.caption)
+            //                Text("longitude: \(userLongitude)").font(.caption)
+            //            }
+            Button(action: { if let url = URL(string: "https://djfriar.atlassian.net/servicedesk/customer/portal/3") {
+                UIApplication.shared.open(url)
+                }  }) {
+                    Text("App Feedback & Support").padding(.bottom,8)
             }
-            Text("Submit App Feedback").padding(.bottom,8)
             Text("iTOH Version \(appVersion!).\(appBuild!)").font(.caption)
             Text("\(modelName) on iOS \(systemVersion)").font(.caption).padding(.bottom,8)
+            #if DEBUG
             HStack{
                 Button(action: { Bonus.nukeData()}) {
                     Text("Nuke Bonus Data")
@@ -121,7 +127,7 @@ struct Settings: View {
                         .multilineTextAlignment(.center)
                 }
             }
-            Spacer()
+            #endif
         }
     }
 }
@@ -131,7 +137,6 @@ struct Settings_Previews: PreviewProvider {
         Group {
             Settings().environment(\.colorScheme, .light)
             Settings().darkModeFix()
-            //            Settings().previewDevice("iPhone SE")
         }
     }
 }

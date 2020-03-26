@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Setup Imagery
         ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".png")
-        ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".jpg")
+//        ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".jpg")
         
         #if PROD
         print("Production build!")

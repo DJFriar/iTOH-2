@@ -52,10 +52,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //MARK: Location Data
         // Used to start getting the users location
-        let locationManager = CLLocationManager()
+//        let locationManager = CLLocationManager()
         
         // For use when the app is open
-        locationManager.requestWhenInUseAuthorization()
+//        locationManager.requestWhenInUseAuthorization()
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
