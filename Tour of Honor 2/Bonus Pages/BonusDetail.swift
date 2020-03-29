@@ -17,9 +17,7 @@ struct BonusDetail: View {
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
     @State var answerSubmitButton = false
-    @State var requiresIAP = false
     
-    let subscriptionCheck = SubscriptionCheck()
     @State var submit = false
     @State var primaryChanged = false
     @State var imageWasAccepted = false
@@ -154,13 +152,8 @@ struct BonusDetail: View {
                     SubmitButton()
                         .disabled(!MFMailComposeViewController.canSendMail())
                         .sheet(isPresented: $answerSubmitButton) {
-                            if self.requiresIAP {
-                                PurchaseView()
-                                    .modifier(SystemServices())
-                            } else {
                                 MailView(result: self.$result)
                                     .modifier(SystemServices())
-                            }
                     }
                 }
                 .padding(.vertical,8)
@@ -201,17 +194,6 @@ struct BonusDetail: View {
     public func SubmitButton() -> Button<Text> {
         return Button(action: {
             self.markBonusSubmitted()
-            switch self.subscriptionCheck.checkSubscription() {
-            case 0:
-                print("Subscriber Mode")
-            case 1:
-                print("Trial Mode")
-            case 2:
-                print("IAP Required")
-                self.requiresIAP.toggle()
-            default:
-                print("Something has gone wrong with Subscription Check!!")
-            }
             self.answerSubmitButton.toggle()
         }) {
             Text("Submit Bonus")

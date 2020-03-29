@@ -18,7 +18,6 @@ struct Settings: View {
     @State var pillionFlagNumber = UserDefaultsConfig.pillionFlagNumber
     @State var initialActiveTab = UserDefaultsConfig.initialActiveTab
     @State var submit = false
-    @State var showIAP = false
     
     //    // Used for Location Tracking
     //    @ObservedObject var locationManager = LocationManager()
@@ -96,14 +95,7 @@ struct Settings: View {
                     Alert(title: Text("Details Saved"), message: Text("Rider: \(riderFlagNumber)"))
                 })
             }
-            #if DEBUG
-            Button(action: { self.showIAP.toggle() }) {
-                Text("Test IAP")
-                    .sheet(isPresented: $showIAP) {
-                        PurchaseView()
-                }
-            }
-            #endif
+
             Spacer()
             //            HStack {
             //                Text("latitude: \(userLatitude)").font(.caption)

@@ -14,8 +14,6 @@ struct TabBar : View {
     //    @State var trophyHunter = UserDefaultsConfig.trophyHunter
     @State private var selection = UserDefaultsConfig.initialActiveTab
     @State var hasConfiguredApp = UserDefaultsConfig.hasConfiguredApp
-    //    @State var isSubscriber = UserDefaultsConfig.isSubscriber
-    var isSubscriber = true
     
     var body: some View {
         TabView(selection:$selection) {
@@ -25,14 +23,12 @@ struct TabBar : View {
                     Text("Settings")
                 })
                 .tag(0)
-            if isSubscriber {
-                Stats()
-                    .tabItem({
-                        Image(systemName: "gamecontroller")
-                        Text("Stats")
-                    })
-                    .tag(1)
-            }
+            Stats()
+                .tabItem({
+                    Image(systemName: "gamecontroller")
+                    Text("Stats")
+                })
+                .tag(1)
             //            if trophyHunter {
             //                Trophies()
             //                    .tabItem({
@@ -41,14 +37,12 @@ struct TabBar : View {
             //                    })
             //                    .tag(2)
             //            }
-            if isSubscriber {
-                NationalParks()
-                    .tabItem({
-                        Image(systemName: "shield")
-                        Text("Parks")
-                    })
-                    .tag(3)
-            }
+            NationalParks()
+                .tabItem({
+                    Image(systemName: "shield")
+                    Text("Parks")
+                })
+                .tag(3)
             BonusList()
                 .tabItem({
                     Image(systemName: "flag")

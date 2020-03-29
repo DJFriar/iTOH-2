@@ -20,17 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Setup DB
         CoreData.initialDbSetup()
-        
-        // Verify Subscription
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss VV"
-        if let date = formatter.date(from: checkSubscription()) {
-            if date > Date() || UserDefaults.standard.object(forKey: "net.tommyc.iTOH.AnnualSub") == nil {
-                UserDefaultsConfig.isSubscriber = true
-            }
-        }
-        print("Expiration is \(checkSubscription()) and isSubscriber is \(UserDefaultsConfig.isSubscriber)")
-        
+                
         // Setup Imagery
         ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".png")
 //        ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".jpg")
