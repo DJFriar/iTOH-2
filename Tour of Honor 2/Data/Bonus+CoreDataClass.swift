@@ -17,7 +17,7 @@ public class Bonus: NSManagedObject, Identifiable {
     class func count() -> Int {
         let fetchCountRequest: NSFetchRequest<Bonus> = Bonus.fetchRequest()
         do {
-            let count = try CoreData.stack.context.count(for: fetchCountRequest)
+            let count = try CoreData.stack.backgroundContext.count(for: fetchCountRequest)
             return count
         } catch let error as NSError {
             fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -28,7 +28,7 @@ public class Bonus: NSManagedObject, Identifiable {
         let countSubmittedFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
         countSubmittedFetch.predicate = NSPredicate(format: "submitted == %@", NSNumber(value: true))
         do {
-            let count = try CoreData.stack.context.count(for: countSubmittedFetch)
+            let count = try CoreData.stack.backgroundContext.count(for: countSubmittedFetch)
             return count
         } catch let error as NSError {
             fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -39,7 +39,7 @@ public class Bonus: NSManagedObject, Identifiable {
         let countCapturedFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
         countCapturedFetch.predicate = NSPredicate(format: "captured == %@", NSNumber(value: true))
         do {
-            let count = try CoreData.stack.context.count(for: countCapturedFetch)
+            let count = try CoreData.stack.backgroundContext.count(for: countCapturedFetch)
             return count
         } catch let error as NSError {
             fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -50,7 +50,7 @@ public class Bonus: NSManagedObject, Identifiable {
     
     class func newBonus() -> Bonus {
         
-        return Bonus(context: CoreData.stack.context)
+        return Bonus(context: CoreData.stack.backgroundContext)
     }
     class func createBonus(name: String, code: String, city: String, state: String, category: String, region: String, gps: String, sampleImage: String, order: Int?) -> Bonus {
         //let moc = CoreData.stack.backgroundContext
@@ -85,7 +85,7 @@ public class Bonus: NSManagedObject, Identifiable {
     }
     
     @discardableResult class func updateBonusKey(code: String, key: String, newVal: Any) -> Bool {
-        let moc = CoreData.stack.context
+        let moc = CoreData.stack.backgroundContext
         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
         bonusesFetch.predicate = NSPredicate(format: "code = %@", code)
         do {
@@ -105,7 +105,7 @@ public class Bonus: NSManagedObject, Identifiable {
     
     @discardableResult class func updateCapturedFlag(state: Bool, code: String) -> Bool {
         
-        let moc = CoreData.stack.context
+        let moc = CoreData.stack.backgroundContext
         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
         bonusesFetch.predicate = NSPredicate(format: "code = %@", code)
         
@@ -131,7 +131,7 @@ public class Bonus: NSManagedObject, Identifiable {
     
     @discardableResult class func nukeData() -> Bool {
         
-        let moc = CoreData.stack.context
+        let moc = CoreData.stack.backgroundContext
         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
         //bonusesFetch.predicate = NSPredicate(format: "code = %@", code)
         do {
@@ -290,7 +290,7 @@ public class Bonus: NSManagedObject, Identifiable {
         }
     class func getBonusesKey(key:String) -> [String] {
         
-        let moc = CoreData.stack.context
+        let moc = CoreData.stack.backgroundContext
         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
         bonusesFetch.propertiesToFetch = ["\(key)"]
         do {

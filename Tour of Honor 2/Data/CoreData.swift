@@ -22,19 +22,19 @@ class CoreData: NSObject {
                return self.persistentContainer.viewContext
            }
        }
-       public var backgroundContext: NSManagedObjectContext {
-           
-           get {
-               return self.persistentContainer.newBackgroundContext()
-           }
-       }
+       
+       lazy var backgroundContext: NSManagedObjectContext = {
+           let newbackgroundContext = persistentContainer.newBackgroundContext()
+           newbackgroundContext.automaticallyMergesChangesFromParent = true
+           return newbackgroundContext
+       }()
     // MARK: - Core Data Saving support
     
     public func save() {
         
-        if self.context.hasChanges {
+        if self.backgroundContext.hasChanges {
             do {
-                try self.context.save()
+                try self.backgroundContext.save()
                 print("In CoreData.stack.save()")
             } catch {
                 
