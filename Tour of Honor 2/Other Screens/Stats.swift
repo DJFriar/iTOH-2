@@ -17,7 +17,7 @@ struct Stats: View {
                 VStack(alignment: .leading) {
                     Text("Stats")
                         .font(.largeTitle)
-                        .fontWeight(.heavy)
+                        .fontWeight(.semibold)
                 }
                 .padding(8)
                 Spacer()

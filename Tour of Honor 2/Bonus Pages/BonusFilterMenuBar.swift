@@ -29,7 +29,7 @@ struct FilterMenuBar: View {
                             .font(.footnote)
                     }.actionSheet(isPresented: $showingCategoryFilter) {
                         ActionSheet(title: Text("Category"), message: Text("Current: \(self.filters.category)"), buttons: [
-                            .default(Text("All")) { self.filters.category = "*"  },
+                            .default(Text("All")) { self.filters.category = ""  },
                             .default(Text("Doughboys")) {  self.filters.category = "Doughboys" },
                             .default(Text("Gold Star Family")) { self.filters.category = "Gold Star Family"  },
                             .default(Text("Hueys")) {self.filters.category = "Hueys"  },
@@ -52,7 +52,7 @@ struct FilterMenuBar: View {
                             .font(.footnote)
                     }.actionSheet(isPresented: $showingStateFilter) {
                         ActionSheet(title: Text("State"), message: Text("Current: \(self.filters.state)"), buttons: [
-                            .default(Text("All")) { self.filters.state = "*"  },
+                            .default(Text("All")) { self.filters.state = ""  },
                             .default(Text("Alabama")){ self.filters.state = "AL"  },
                             .default(Text("Alaska")){ self.filters.state = "AK"  },
                             .default(Text("Arizona")){ self.filters.state = "AZ"  },

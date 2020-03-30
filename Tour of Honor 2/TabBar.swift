@@ -11,7 +11,6 @@ import SwiftUI
 struct TabBar : View {
     
     @EnvironmentObject var filters: UserFilters
-    //    @State var trophyHunter = UserDefaultsConfig.trophyHunter
     @State private var selection = UserDefaultsConfig.initialActiveTab
     @State var hasConfiguredApp = UserDefaultsConfig.hasConfiguredApp
     
@@ -29,14 +28,6 @@ struct TabBar : View {
                     Text("Stats")
                 })
                 .tag(1)
-            //            if trophyHunter {
-            //                Trophies()
-            //                    .tabItem({
-            //                        Image(systemName: "sparkles")
-            //                        Text("Trophies")
-            //                    })
-            //                    .tag(2)
-            //            }
             NationalParks()
                 .tabItem({
                     Image(systemName: "shield")
@@ -60,7 +51,7 @@ struct TabBar : View {
                     .padding(.bottom,50)
             }
         )
-            .edgesIgnoringSafeArea(.top)
+//            .edgesIgnoringSafeArea(.top)
     }
 }
 

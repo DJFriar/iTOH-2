@@ -38,7 +38,7 @@ struct Settings: View {
             HStack {
                 Text("Settings")
                     .font(.largeTitle)
-                    .fontWeight(.heavy)
+                    .fontWeight(.semibold)
                     .foregroundColor(Color(UIColor.label))
                 Spacer()
                 Image("toh_logo")
@@ -71,9 +71,6 @@ struct Settings: View {
                 }
                 
                 Section(header: Text("App Preferences")) {
-                    //                    Toggle(isOn: $trophyHunter) {
-                    //                        Text("Enable Trophy Mode")
-                    //                    }
                     Toggle(isOn: $useGoogleMaps) {
                         Text("Prefer Google Maps")
                     }
@@ -84,7 +81,6 @@ struct Settings: View {
                     self.initialActiveTab = 4
                     UserDefaultsConfig.riderFlagNumber = self.riderFlagNumber
                     UserDefaultsConfig.pillionFlagNumber = self.pillionFlagNumber
-                    //                    UserDefaultsConfig.trophyHunter = self.trophyHunter
                     UserDefaultsConfig.initialActiveTab = self.initialActiveTab
                     UserDefaultsConfig.useGoogleMaps = self.useGoogleMaps
                     print("Active Tab set to: \(self.initialActiveTab)")
@@ -108,19 +104,23 @@ struct Settings: View {
             }
             Text("iTOH Version \(appVersion!).\(appBuild!)").font(.caption)
             Text("\(modelName) on iOS \(systemVersion)").font(.caption).padding(.bottom,8)
-            #if DEBUG
-            HStack{
-                Button(action: { Bonus.nukeData()}) {
-                    Text("Nuke Bonus Data")
-                        .multilineTextAlignment(.center)
+            #if DEV
+            VStack {
+                HStack{
+                    Button(action: { Bonus.nukeData()}) {
+                        Text("Nuke Bonus Data")
+                            .multilineTextAlignment(.center)
+                    }
+                    Button(action: { Bonus.forceLoadData()}) {
+                        Text("Load Bonus Data")
+                            .multilineTextAlignment(.center)
+                    }
                 }
-                Button(action: { Bonus.forceLoadData()}) {
-                    Text("Load Bonus Data")
-                        .multilineTextAlignment(.center)
-                }
+                Text("Loaded \(Bonus.count()) bonuses.")
             }
             #endif
         }
+        .padding(.vertical,8)
     }
 }
 

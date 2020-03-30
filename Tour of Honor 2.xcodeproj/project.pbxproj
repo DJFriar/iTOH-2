@@ -498,7 +498,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.dev;
 				CODE_SIGN_ENTITLEMENTS = "Tour of Honor 2/Tour of Honor 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 762;
+				CURRENT_PROJECT_VERSION = 774;
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -639,7 +639,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon.debug;
 				CODE_SIGN_ENTITLEMENTS = "Tour of Honor 2/Tour of Honor 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 762;
+				CURRENT_PROJECT_VERSION = 774;
 				DEBUG_ACTIVITY_MODE = "";
 				"DEBUG_ACTIVITY_MODE[sdk=iphonesimulator*]" = disable;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -665,7 +665,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Tour of Honor 2/Tour of Honor 2.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 762;
+				CURRENT_PROJECT_VERSION = 774;
 				DEBUG_ACTIVITY_MODE = "";
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 8XHY7EQ7TE;
