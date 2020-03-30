@@ -32,9 +32,9 @@ class CoreData: NSObject {
     
     public func save() {
         
-        if self.backgroundContext.hasChanges {
+        if self.context.hasChanges {
             do {
-                try self.backgroundContext.save()
+                try self.context.save()
                 print("In CoreData.stack.save()")
             } catch {
                 

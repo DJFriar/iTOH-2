@@ -197,6 +197,8 @@ public class Bonus: NSManagedObject, Identifiable {
     }
     
     @discardableResult class func forceLoadData() -> Bool {
+        let moc = CoreData.stack.backgroundContext
+
         let url = URL(string: "https://apps.perrycraft.net/wp-json/toh/v1/bonus-data")
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             guard let dataResponse = data,
@@ -221,21 +223,29 @@ public class Bonus: NSManagedObject, Identifiable {
                 let bonuses = try decoder.decode([BonusEntry].self, from: json)
                 
                 print("The following bonuses are available:")
-                for (i,bonus) in bonuses.enumerated() {
-                    print("\t\(bonus.bonusName) (\(bonus.bonusCode))")
-                    
-                    let _ = Bonus.createBonus(
-                        name: bonus.bonusName,
-                        code: bonus.bonusCode,
-                        city: bonus.city,
-                        state: bonus.state,
-                        category: bonus.bonusCategory,
-                        region: bonus.region,
-                        gps: bonus.GPS,
-                        sampleImage: bonus.sampleImage,
-                        order: i
-                    )
+                moc.performAndWait {
+                    for (i,bonus) in bonuses.enumerated() {
+                        print("\t\(bonus.bonusName) (\(bonus.bonusCode))")
+                        
+                        let _ = Bonus.createBonus(
+                            name: bonus.bonusName,
+                            code: bonus.bonusCode,
+                            city: bonus.city,
+                            state: bonus.state,
+                            category: bonus.bonusCategory,
+                            region: bonus.region,
+                            gps: bonus.GPS,
+                            sampleImage: bonus.sampleImage,
+                            order: i
+                        )
+                    }
+                    do {
+                        try moc.save()
+                    } catch {
+                        fatalError("Failure to save context: \(error)")
+                    }
                 }
+                
             } catch let parsingError {
                 print("error while loading data")
                 print("Error", parsingError)
