@@ -102,7 +102,7 @@ struct BonusDetail: View {
                     Text("\(self.activeBonus.gps)")
                         .lineLimit(nil)
                         .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
-                        .gesture(LongPressGesture(minimumDuration: 0.5).onEnded({_ in self.gpsPressed.toggle(); print("GPS link was activated"); openMaps(destGPS: self.activeBonus.gps) })
+                        .gesture(LongPressGesture(minimumDuration: 0.5).onEnded({_ in self.gpsPressed.toggle(); openMaps(destGPS: self.activeBonus.gps) })
                     )
                 }
                 .padding(.bottom, 4)
@@ -122,7 +122,7 @@ struct BonusDetail: View {
                             .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "1"; self.testMe = self.activeBonus.code; }))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
                             .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code; }))
-                        .sheet(isPresented: self.$showImagePicker, onDismiss: {self.checkForSavedPhoto(); print("primaryImage is now: \(self.activeBonus.primaryImage)")}) {
+                        .sheet(isPresented: self.$showImagePicker, onDismiss: {self.checkForSavedPhoto() }) {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage, testMe: self.$testMe, imagePriority: self.$imagePriority)
                                 .modifier(SystemServices())
                             
@@ -135,7 +135,7 @@ struct BonusDetail: View {
                             .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "2"; self.testMe = self.activeBonus.code;}))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
                             .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code;}))
-                        .sheet(isPresented: self.$showImagePicker, onDismiss: {self.checkForSavedPhoto(); print("alternateChanged is now: \(self.activeBonus.alternateImage)")}) {
+                        .sheet(isPresented: self.$showImagePicker, onDismiss: {self.checkForSavedPhoto() }) {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage, testMe: self.$testMe,  imagePriority: self.$imagePriority)
                                 .modifier(SystemServices())
                     }

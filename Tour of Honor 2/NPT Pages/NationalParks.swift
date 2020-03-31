@@ -79,14 +79,6 @@ struct NationalParks: View {
                 //                    }
                 //                }
                 .navigationBarTitle(Text("National Parks"))
-                .navigationBarItems(trailing: HStack {
-                    Button(action: { self.showBonusFilterModal.toggle() }) {
-                        // If the filter is active, we should make this image "line.horizontal.3.decrease.circle.fill" instead.
-                        Image(systemName: "line.horizontal.3.decrease.circle")
-                    }.sheet(isPresented: $showBonusFilterModal) {
-                        BonusFilterModal(showBonusFilterModal: .constant(true))
-                    }
-                })
         }
         .saturation(self.bonusEarned ? 0 : 1)
     }

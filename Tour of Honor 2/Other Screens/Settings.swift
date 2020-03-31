@@ -83,7 +83,7 @@ struct Settings: View {
                     UserDefaultsConfig.pillionFlagNumber = self.pillionFlagNumber
                     UserDefaultsConfig.initialActiveTab = self.initialActiveTab
                     UserDefaultsConfig.useGoogleMaps = self.useGoogleMaps
-                    print("Active Tab set to: \(self.initialActiveTab)")
+//                    print("Active Tab set to: \(self.initialActiveTab)")
                 }) {
                     Text("Save Settings")
                 }

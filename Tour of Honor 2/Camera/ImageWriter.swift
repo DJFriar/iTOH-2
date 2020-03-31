@@ -22,13 +22,12 @@ class ImageWriter: NSObject {
         if let data = image.jpegData(compressionQuality: 0.8) {
             let filename = getDocumentsDirectory().appendingPathComponent("2020_\(riderFlagNumber)_\(testMe)_\(imagePriority).jpg")
             try? data.write(to: filename)
-            print("image written ... I think")
         }
     }
     
     // Copy required images to document directory
         static func copyFilesFromBundleToDocumentsFolderWith(fileExtension: String) {
-            print("Copying required imagery...")
+//            print("Copying required imagery...")
             if let resPath = Bundle.main.resourcePath {
                 do {
                     let dirContents = try FileManager.default.contentsOfDirectory(atPath: resPath)
@@ -38,7 +37,7 @@ class ImageWriter: NSObject {
                         if let documentsURL = documentsURL {
                             let sourceURL = Bundle.main.bundleURL.appendingPathComponent(fileName)
                             let destURL = documentsURL.appendingPathComponent(fileName)
-                            print("destURL: \(destURL)")
+//                            print("destURL: \(destURL)")
                             do { try FileManager.default.copyItem(at: sourceURL, to: destURL) } catch { }
                         }
                     }
@@ -52,7 +51,6 @@ class ImageWriter: NSObject {
     }
     
     @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-        print("Save finished!")
     }
 }
 
