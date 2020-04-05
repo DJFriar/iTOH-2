@@ -81,7 +81,7 @@ struct FilterMenuBar: View {
                             .default(Text("Montana")){ self.filters.state = "MT"  },
                             .default(Text("Nebraska")){ self.filters.state = "NE"  },
                             .default(Text("Nevada")){ self.filters.state = "NV"  },
-                            .default(Text("New Hampshire")){ self.filters.state = "NM"  },
+                            .default(Text("New Hampshire")){ self.filters.state = "NH"  },
                             .default(Text("New Jersey")){ self.filters.state = "NJ"  },
                             .default(Text("New Mexico")){ self.filters.state = "NM"  },
                             .default(Text("New York")){ self.filters.state = "NY"  },
