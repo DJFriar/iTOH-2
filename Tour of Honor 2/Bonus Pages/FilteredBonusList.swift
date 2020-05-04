@@ -66,11 +66,11 @@ struct FilteredBonusList: View {
             }
                 
             .navigationBarTitle(Text("Bonuses"))
-            .navigationBarItems(trailing: HStack {
-                Button(action: { self.filters.category = ""; self.filters.state = ""; }) {
-                    Text("Clear filters")
-                }
-            })
+//            .navigationBarItems(trailing: HStack {
+//                Button(action: { self.filters.category = ""; self.filters.state = ""; }) {
+//                    Text("Clear filters")
+//                }
+//            })
         }
     }
     

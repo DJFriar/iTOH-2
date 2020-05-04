@@ -19,11 +19,11 @@ struct BonusList: View {
             VStack {
                 FilteredBonusList(categoryFilter: self.filters.category, stateFilter: self.filters.state)
             }
-            VStack {
-                Spacer()
-                FilterMenuBar()
-                    .background(BlurView(style: .systemThinMaterial).opacity(0.8))
-            }
+//            VStack {
+//                Spacer()
+//                FilterMenuBar()
+//                    .background(BlurView(style: .systemThinMaterial).opacity(0.8))
+//            }
         
         }
 

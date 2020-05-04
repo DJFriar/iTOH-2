@@ -57,6 +57,7 @@ class UserFilters: ObservableObject {
     @Published var state = ""
     @Published var region = ""
     @Published var showing = true
+    @Published var tabSelection = 0
 }
 
 class ActiveBonus: ObservableObject {

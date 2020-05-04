@@ -15,6 +15,7 @@
 		639553E423E64DF50034A51E /* Bonus+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */; };
 		639553E523E64DF50034A51E /* Bonus+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E323E64DF50034A51E /* Bonus+CoreDataProperties.swift */; };
 		639553E823E64E1A0034A51E /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639553E723E64E1A0034A51E /* CoreData.swift */; };
+		63B453FF2460CBC800551949 /* BonusFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B453FE2460CBC800551949 /* BonusFilters.swift */; };
 		6504E46E24299356006F4DCE /* TrophyStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6504E46D24299356006F4DCE /* TrophyStatusBar.swift */; };
 		6561FAC823F3DA6A00F786AE /* NationalParks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6561FAC723F3DA6A00F786AE /* NationalParks.swift */; };
 		6561FACC23F4A95000F786AE /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6561FACB23F4A95000F786AE /* GameKit.framework */; };
@@ -64,6 +65,7 @@
 		639553E223E64DF50034A51E /* Bonus+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bonus+CoreDataClass.swift"; sourceTree = "<group>"; };
 		639553E323E64DF50034A51E /* Bonus+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bonus+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		639553E723E64E1A0034A51E /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		63B453FE2460CBC800551949 /* BonusFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusFilters.swift; sourceTree = "<group>"; };
 		6504E46D24299356006F4DCE /* TrophyStatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrophyStatusBar.swift; sourceTree = "<group>"; };
 		6561FAC723F3DA6A00F786AE /* NationalParks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NationalParks.swift; sourceTree = "<group>"; };
 		6561FAC923F4A6F800F786AE /* Tour of Honor 2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tour of Honor 2.entitlements"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				65CE1F7D23AF71CC008FA854 /* BonusList.swift */,
 				632468A524144A5F00BEE0D5 /* FilteredBonusList.swift */,
 				65CE1F7F23AF71D6008FA854 /* BonusDetail.swift */,
+				63B453FE2460CBC800551949 /* BonusFilters.swift */,
 			);
 			path = "Bonus Pages";
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				65CE1F6123AF705B008FA854 /* SceneDelegate.swift in Sources */,
 				10D411A32411786B004FCBDD /* UserDefaults.swift in Sources */,
 				65F719A72421F455004C659F /* ParksFilterMenuBar.swift in Sources */,
+				63B453FF2460CBC800551949 /* BonusFilters.swift in Sources */,
 				632468A624144A5F00BEE0D5 /* FilteredBonusList.swift in Sources */,
 				65CE1F7623AF7099008FA854 /* TabBar.swift in Sources */,
 				65F719AD2421F48C004C659F /* ParksDetail.swift in Sources */,

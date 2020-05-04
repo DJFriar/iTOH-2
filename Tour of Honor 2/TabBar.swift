@@ -11,11 +11,11 @@ import SwiftUI
 struct TabBar : View {
     
     @EnvironmentObject var filters: UserFilters
-    @State private var selection = UserDefaultsConfig.initialActiveTab
+    @State public var selection = UserDefaultsConfig.initialActiveTab
     @State var hasConfiguredApp = UserDefaultsConfig.hasConfiguredApp
     
     var body: some View {
-        TabView(selection:$selection) {
+        TabView(selection: self.$filters.tabSelection ) {
             Settings()
                 .tabItem({
                     Image(systemName: "gear")
@@ -40,6 +40,12 @@ struct TabBar : View {
                     Text("Bonuses")
                 })
                 .tag(4)
+            BonusFilters()
+                .tabItem({
+                    Image(systemName: "flag")
+                    Text("Filters")
+                })
+                .tag(5)
         }
         .background(Color(UIColor.systemBackground))
         .overlay(
