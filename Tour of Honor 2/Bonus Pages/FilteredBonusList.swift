@@ -66,11 +66,11 @@ struct FilteredBonusList: View {
             }
                 
             .navigationBarTitle(Text("Bonuses"))
-//            .navigationBarItems(trailing: HStack {
-//                Button(action: { self.filters.category = ""; self.filters.state = ""; }) {
-//                    Text("Clear filters")
-//                }
-//            })
+            //            .navigationBarItems(trailing: HStack {
+            //                Button(action: { self.filters.category = ""; self.filters.state = ""; }) {
+            //                    Text("Clear filters")
+            //                }
+            //            })
         }
     }
     
@@ -106,21 +106,21 @@ struct FilteredBonusList: View {
     
     
     init(categoryFilter: String, stateFilter: String) {
-      if (categoryFilter.count > 0 && stateFilter.count > 0){
-           let predicate = NSPredicate(format: "category BEGINSWITH %@ AND state BEGINSWITH %@", categoryFilter, stateFilter)
-           fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [], predicate: predicate)
-
-       } else if (categoryFilter.count > 0 && stateFilter.count <= 0){
-           let predicate = NSPredicate(format: "category BEGINSWITH %@", categoryFilter)
-           fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [], predicate: predicate)
-       } else if (categoryFilter.count <= 0 && stateFilter.count > 0){
-           let predicate = NSPredicate(format: "state BEGINSWITH %@", stateFilter)
-           fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [], predicate: predicate)
-       } else {
-           fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [])
-
-       }
-
-
+        if (categoryFilter.count > 0 && stateFilter.count > 0){
+            let predicate = NSPredicate(format: "category == %@ AND state == %@", categoryFilter, stateFilter)
+            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "code", ascending: true)], predicate: predicate)
+            
+        } else if (categoryFilter.count > 0 && stateFilter.count <= 0){
+            let predicate = NSPredicate(format: "category == %@", categoryFilter)
+            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "code", ascending: true)], predicate: predicate)
+        } else if (categoryFilter.count <= 0 && stateFilter.count > 0){
+            let predicate = NSPredicate(format: "state == %@", stateFilter)
+            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "code", ascending: true)], predicate: predicate)
+        } else {
+            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "code", ascending: true)])
+            
+        }
+        
+        
     }
 }

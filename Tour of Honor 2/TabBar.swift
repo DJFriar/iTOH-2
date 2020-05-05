@@ -34,18 +34,18 @@ struct TabBar : View {
                     Text("Parks")
                 })
                 .tag(3)
+            BonusFilters()
+                .tabItem({
+                    Image(systemName: "line.horizontal.3.decrease.circle")
+                    Text("Filters")
+                })
+                .tag(5)
             BonusList()
                 .tabItem({
                     Image(systemName: "flag")
                     Text("Bonuses")
                 })
                 .tag(4)
-            BonusFilters()
-                .tabItem({
-                    Image(systemName: "flag")
-                    Text("Filters")
-                })
-                .tag(5)
         }
         .background(Color(UIColor.systemBackground))
         .overlay(
