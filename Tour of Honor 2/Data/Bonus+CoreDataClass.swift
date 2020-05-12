@@ -240,12 +240,12 @@ public class Bonus: NSManagedObject, Identifiable {
             let fetchedBonuses = try moc.fetch(bonusesFetch) as! [Bonus]
             for object in fetchedBonuses {
                 if (ImageReader.getImageFromDocDir(named: object.sampleImage) != nil) {
-                    //                            print("Downloaded \(object.code) image found")
+                    //print("\(object.code) image already found on device")
                 } else {
-                    //                            print(object.sampleImage)
+                    //print("\(object.sampleImage) not on device, search server...." )
                     if let imgURL = URL(string: "https://www.tourofhonor.com/2020appimages/\(object.sampleImage)") {
                         // create your document folder url
-                        let documentsUrl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                        let documentsUrl = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                         // your destination file url
                         let destination = documentsUrl.appendingPathComponent(imgURL.lastPathComponent)
                         // check if it exists before downloading it
@@ -258,9 +258,10 @@ public class Bonus: NSManagedObject, Identifiable {
                                 guard
                                     let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                                     let location = location, error == nil
-                                    else { return }
+                                    else { return print("Image \(object.code) not found on server") }
                                 do {
                                     try FileManager.default.moveItem(at: location, to: destination)
+                                    //print("downloading....")
                                 } catch {
                                     print(error)
                                 }

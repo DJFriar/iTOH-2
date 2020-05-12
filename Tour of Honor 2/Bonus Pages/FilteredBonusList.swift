@@ -73,6 +73,7 @@ struct FilteredBonusList: View {
             //            })
         }
     }
+
     
     func setupBonusData(bonus: AnyObject){
         self.showingBonusDetail = true
@@ -100,7 +101,43 @@ struct FilteredBonusList: View {
             return UIImage(data: imageData)
         } catch {
             print(error.localizedDescription)
-            return nil
+            if (ImageReader.getImageFromDocDir(named: sampleImage) != nil) {
+                print("image already found on device")
+            } else {
+                print("\(sampleImage) not on device, search server...." )
+                if let imgURL = URL(string: "https://www.tourofhonor.com/2020appimages/\(sampleImage)") {
+                    // create your document folder url
+                    let documentsUrl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                    // your destination file url
+                    let destination = documentsUrl.appendingPathComponent(imgURL.lastPathComponent)
+                    // check if it exists before downloading it
+                    if FileManager().fileExists(atPath: destination.path) {
+                    } else {
+                        //  if the file doesn't exist
+                        //  just download the data from your url
+                        URLSession.shared.downloadTask(with: imgURL, completionHandler: { (location, response, error) in
+                            // after downloading your data you need to save it to your destination url
+                            guard
+                                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                                let location = location, error == nil
+                                else { return print("Image \(sampleImage) not found on server") }
+                            do {
+                                try FileManager.default.moveItem(at: location, to: destination)
+                                print("downloading....")
+                            } catch {
+                                print(error)
+                            }
+                        }).resume()
+                    }
+                }
+            }
+//            return nil
+            do {
+                let imageData = try Data.init(contentsOf: url)
+                return UIImage(data: imageData)
+            } catch {
+                return nil
+            }
         }
     }
     
@@ -120,7 +157,6 @@ struct FilteredBonusList: View {
             fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "code", ascending: true)])
             
         }
-        
         
     }
 }

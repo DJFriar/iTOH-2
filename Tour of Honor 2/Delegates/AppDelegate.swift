@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Setup Imagery
         ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".png")
 //        ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".jpg")
-        Bonus.getBonusImagesFromServer()
+        //Bonus.getBonusImagesFromServer()
         #if PROD
         print("Production build!")
         #elseif DEV
