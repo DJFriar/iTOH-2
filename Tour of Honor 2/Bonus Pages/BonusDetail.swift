@@ -17,6 +17,7 @@ struct BonusDetail: View {
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
     @State var answerSubmitButton = false
+    @State var answerResetButton = false
     
     @State var submit = false
     @State var primaryChanged = false
@@ -121,7 +122,7 @@ struct BonusDetail: View {
                         .gesture(TapGesture()
                             .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "1"; self.testMe = self.activeBonus.code; }))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
-                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code; }))
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.imagePriority = "1"; self.testMe = self.activeBonus.code; }))
                         .sheet(isPresented: self.$showImagePicker, onDismiss: {self.checkForSavedPhoto() }) {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage, testMe: self.$testMe, imagePriority: self.$imagePriority)
                                 .modifier(SystemServices())
@@ -134,7 +135,7 @@ struct BonusDetail: View {
                         .gesture(TapGesture()
                             .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "2"; self.testMe = self.activeBonus.code;}))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
-                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code;}))
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.imagePriority = "2"; self.testMe = self.activeBonus.code;}))
                         .sheet(isPresented: self.$showImagePicker, onDismiss: {self.checkForSavedPhoto() }) {
                             PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage, testMe: self.$testMe,  imagePriority: self.$imagePriority)
                                 .modifier(SystemServices())
@@ -143,7 +144,7 @@ struct BonusDetail: View {
                 HStack {
                     Button(action: {
                         self.removeCapturedBonus()
-                        // Add logic to remove the captured image as well.
+//                        self.deletedCapturedImage(testMe: self.activeBonus.code, imagePriority: self.imagePriority)
                     }) {
                         Text("Reset Bonus")
                             .multilineTextAlignment(.center)
@@ -184,7 +185,19 @@ struct BonusDetail: View {
     func removeCapturedBonus(){
         Bonus.updateBonusKey(code: self.activeBonus.code, key: "submitted", newVal: false)
         Bonus.updateBonusKey(code: self.activeBonus.code, key: "captured", newVal: false)
+        Bonus.updateBonusKey(code: self.activeBonus.code, key: "primaryImage", newVal: "no_image_taken.png")
+        Bonus.updateBonusKey(code: self.activeBonus.code, key: "alternateImage", newVal: "optional_2nd_Image.png")
+        self.answerResetButton.toggle()
     }
+    
+//    func deletedCapturedImage(testMe: String, imagePriority: String) {
+//        let fileManager = FileManager.default
+//        let filename1 = getDocumentsDirectory().appendingPathComponent("2020_\(riderFlagNumber)_\(self.activeBonus.code)_1.jpg")
+//        let filename2 = getDocumentsDirectory().appendingPathComponent("2020_\(riderFlagNumber)_\(self.activeBonus.code)_2.jpg")
+//        print("Deleting image named \"2020_\(riderFlagNumber)_\(self.activeBonus.code)_*.jpg")
+//        try? fileManager.removeItem(at: filename1)
+//        try? fileManager.removeItem(at: filename2)
+//    }
     
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

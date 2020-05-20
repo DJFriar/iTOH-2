@@ -25,25 +25,31 @@ class ImageWriter: NSObject {
         }
     }
     
+    func deleteFromAppData(image: UIImage, testMe: String, imagePriority: String) {
+        let fileManager = FileManager.default
+        let filename = getDocumentsDirectory().appendingPathComponent("2020_\(riderFlagNumber)_\(testMe)_\(imagePriority).jpg")
+        try? fileManager.removeItem(at: filename)
+    }
+    
     // Copy required images to document directory
-        static func copyFilesFromBundleToDocumentsFolderWith(fileExtension: String) {
-//            print("Copying required imagery...")
-            if let resPath = Bundle.main.resourcePath {
-                do {
-                    let dirContents = try FileManager.default.contentsOfDirectory(atPath: resPath)
-                    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-                    let filteredFiles = dirContents.filter{ $0.contains(fileExtension)}
-                    for fileName in filteredFiles {
-                        if let documentsURL = documentsURL {
-                            let sourceURL = Bundle.main.bundleURL.appendingPathComponent(fileName)
-                            let destURL = documentsURL.appendingPathComponent(fileName)
-//                            print("destURL: \(destURL)")
-                            do { try FileManager.default.copyItem(at: sourceURL, to: destURL) } catch { }
-                        }
+    static func copyFilesFromBundleToDocumentsFolderWith(fileExtension: String) {
+        //            print("Copying required imagery...")
+        if let resPath = Bundle.main.resourcePath {
+            do {
+                let dirContents = try FileManager.default.contentsOfDirectory(atPath: resPath)
+                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+                let filteredFiles = dirContents.filter{ $0.contains(fileExtension)}
+                for fileName in filteredFiles {
+                    if let documentsURL = documentsURL {
+                        let sourceURL = Bundle.main.bundleURL.appendingPathComponent(fileName)
+                        let destURL = documentsURL.appendingPathComponent(fileName)
+                        //                            print("destURL: \(destURL)")
+                        do { try FileManager.default.copyItem(at: sourceURL, to: destURL) } catch { }
                     }
-                } catch { }
-            }
+                }
+            } catch { }
         }
+    }
     
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

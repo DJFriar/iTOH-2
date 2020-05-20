@@ -15,12 +15,14 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
     
     @Binding var isShown: Bool
     @Binding var image: Image?
+    @Binding var useExistingPhoto: Bool
     var testMe: String
     var imagePriority: String
     
-    init(isShown: Binding<Bool>, image: Binding<Image?>, testMe: String, imagePriority: String) {
+    init(isShown: Binding<Bool>, image: Binding<Image?>, useExistingPhoto: Binding<Bool>, testMe: String, imagePriority: String) {
         _isShown = isShown
         _image = image
+        _useExistingPhoto = useExistingPhoto
         self.testMe = testMe
         self.imagePriority = imagePriority
     }
@@ -34,11 +36,14 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
 //        print(self.testMe)
 //        print("-----")
         
-        
         let imageSaver = ImageWriter()
         imageSaver.writeToAppData(image: uiImage, testMe: testMe, imagePriority: imagePriority)
         Bonus.updateCapturedFlag(state: true, code: testMe)
-        imageSaver.writeToPhotoAlbum(image: uiImage)
+        if useExistingPhoto {
+            print("Existing Image Chosen")
+        } else {
+            imageSaver.writeToPhotoAlbum(image: uiImage)
+        }
         let filename = "2020_\(UserDefaultsConfig.riderFlagNumber)_\(testMe)_\(imagePriority).jpg"
         switch imagePriority {
         case "1":
@@ -75,7 +80,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
     
     func makeCoordinator() -> ImagePickerCoordinator {
-        return ImagePickerCoordinator(isShown: $isShown, image: $image, testMe: testMe, imagePriority: imagePriority)
+        return ImagePickerCoordinator(isShown: $isShown, image: $image, useExistingPhoto: $useExistingPhoto, testMe: testMe, imagePriority: imagePriority)
     }
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
