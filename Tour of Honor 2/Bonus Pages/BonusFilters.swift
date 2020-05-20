@@ -102,6 +102,7 @@ struct BonusFilters: View {
                             ["Vermont","VT"],
                             ["Virginia","VA"],
                             ["Washington","WA"],
+                            ["Washington, DC","DC"],
                             ["West Virginia","WV"],
                             ["Wisconsin","WI"],
                             ["Wyoming","WY"]
