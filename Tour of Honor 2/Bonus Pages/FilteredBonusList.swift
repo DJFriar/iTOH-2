@@ -59,18 +59,11 @@ struct FilteredBonusList: View {
                         }
                     }
                 }.sheet(isPresented: self.$showingBonusDetail) {
-                    //FilterA()
                     BonusDetail()
                         .modifier(SystemServices())
                 }
             }
-                
             .navigationBarTitle(Text("Bonuses"))
-            //            .navigationBarItems(trailing: HStack {
-            //                Button(action: { self.filters.category = ""; self.filters.state = ""; }) {
-            //                    Text("Clear filters")
-            //                }
-            //            })
         }
     }
 

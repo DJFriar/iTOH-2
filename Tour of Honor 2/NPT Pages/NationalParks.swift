@@ -28,7 +28,7 @@ struct NationalParks: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("This feature is coming soon, likely in mid to late May. In the meantime, please use the Bonuses tab below to capture your National Park visits. Remember not to submit them until you have completed your entire tour.")
+                Text("This feature is coming soon, likely in early to mid June. In the meantime, please use the Bonuses tab below to capture your National Park visits. Remember not to submit them until you have completed your entire tour.")
                     .padding(.top,40)
                 Spacer()
             }

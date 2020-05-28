@@ -48,7 +48,7 @@ struct BonusDetail: View {
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         HStack {
-                            Image(systemName: "arrow.turn.up.left") // set image here
+                            Image(systemName: "arrow.turn.up.left")
                                 .aspectRatio(contentMode: .fit)
                                 .foregroundColor(.primary)
                             Text("Back")
@@ -144,7 +144,6 @@ struct BonusDetail: View {
                 HStack {
                     Button(action: {
                         self.removeCapturedBonus()
-//                        self.deletedCapturedImage(testMe: self.activeBonus.code, imagePriority: self.imagePriority)
                     }) {
                         Text("Reset Bonus")
                             .multilineTextAlignment(.center)
@@ -180,6 +179,8 @@ struct BonusDetail: View {
     
     func markBonusSubmitted(){
         Bonus.updateBonusKey(code: self.activeBonus.code, key: "submitted", newVal: true)
+        Bonus.updateBonusKey(code: self.activeBonus.code, key: "primaryImage", newVal: self.activeBonus.primaryImage)
+        Bonus.updateBonusKey(code: self.activeBonus.code, key: "alternateImage", newVal: self.activeBonus.alternateImage)
     }
     
     func removeCapturedBonus(){

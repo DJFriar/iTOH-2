@@ -46,6 +46,72 @@ public class Bonus: NSManagedObject, Identifiable {
         }
     }
     
+    class func countSubmittedTOH() -> Int {
+        let countSubmittedTOHFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+        countSubmittedTOHFetch.predicate = NSPredicate(format: "submitted == %@ AND category == 'Tour of Honor'", NSNumber(value: true))
+        do {
+            let count = try CoreData.stack.backgroundContext.count(for: countSubmittedTOHFetch)
+            return count
+        } catch let error as NSError {
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
+    
+    class func countSubmittedDB() -> Int {
+        let countSubmittedDBFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+        countSubmittedDBFetch.predicate = NSPredicate(format: "submitted == %@ AND category == 'Doughboys'", NSNumber(value: true))
+        do {
+            let count = try CoreData.stack.backgroundContext.count(for: countSubmittedDBFetch)
+            return count
+        } catch let error as NSError {
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
+    
+    class func countSubmittedK9() -> Int {
+        let countSubmittedK9Fetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+        countSubmittedK9Fetch.predicate = NSPredicate(format: "submitted == %@ AND category == 'War Dogs'", NSNumber(value: true))
+        do {
+            let count = try CoreData.stack.backgroundContext.count(for: countSubmittedK9Fetch)
+            return count
+        } catch let error as NSError {
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
+    
+    class func countSubmittedNPT() -> Int {
+        let countSubmittedNPTFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+        countSubmittedNPTFetch.predicate = NSPredicate(format: "submitted == %@ AND category == 'National Parks'", NSNumber(value: true))
+        do {
+            let count = try CoreData.stack.backgroundContext.count(for: countSubmittedNPTFetch)
+            return count
+        } catch let error as NSError {
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
+    
+    class func countSubmittedHuey() -> Int {
+        let countSubmittedHueyFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+        countSubmittedHueyFetch.predicate = NSPredicate(format: "submitted == %@ AND category == 'Hueys'", NSNumber(value: true))
+        do {
+            let count = try CoreData.stack.backgroundContext.count(for: countSubmittedHueyFetch)
+            return count
+        } catch let error as NSError {
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
+    
+    class func countSubmittedGSF() -> Int {
+        let countSubmittedGSFFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+        countSubmittedGSFFetch.predicate = NSPredicate(format: "submitted == %@ AND category == 'Gold Star Family'", NSNumber(value: true))
+        do {
+            let count = try CoreData.stack.backgroundContext.count(for: countSubmittedGSFFetch)
+            return count
+        } catch let error as NSError {
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
+    
     //MARK: CRUD
     
     class func newBonus() -> Bonus {
@@ -87,7 +153,7 @@ public class Bonus: NSManagedObject, Identifiable {
             let fetchedBonuses = try moc.fetch(bonusesFetch) as! [Bonus]
             if let bonusRecord = fetchedBonuses.first {
                 bonusRecord.setValue(newVal, forKey: key)
-                CoreData.stack.save()
+               try moc.save()
             }
         } catch {
             fatalError("Failed to fetch bonuses: \(error)")
@@ -233,6 +299,7 @@ public class Bonus: NSManagedObject, Identifiable {
         task.resume()
         return true
     }
+    
     @discardableResult class func getBonusImagesFromServer() -> Bool{
         let moc = CoreData.stack.backgroundContext
         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
