@@ -51,7 +51,7 @@ struct MailView: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<MailView>) -> MFMailComposeViewController {
         let vc = MFMailComposeViewController()
         vc.setToRecipients(["photos@tourofhonor.com"])
-        vc.setSubject("2020_\(riderFlagNumber)_\(activeBonus.category)_\(activeBonus.city)_\(activeBonus.state)_\(activeBonus.code)")
+        vc.setSubject("2020_\(riderFlagNumber)_\(activeBonus.category)_\(activeBonus.state)_\(activeBonus.city)_\(activeBonus.code)")
         vc.setMessageBody("", isHTML: true)
         
         // Add Primary Image

@@ -28,12 +28,12 @@ struct TabBar : View {
                     Text("Stats")
                 })
                 .tag(1)
-            NationalParks()
-                .tabItem({
-                    Image(systemName: "shield")
-                    Text("Parks")
-                })
-                .tag(3)
+//            NationalParks()
+//                .tabItem({
+//                    Image(systemName: "shield")
+//                    Text("Parks")
+//                })
+//                .tag(3)
             BonusFilters()
                 .tabItem({
                     Image(systemName: "line.horizontal.3.decrease.circle")

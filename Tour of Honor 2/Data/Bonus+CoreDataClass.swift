@@ -162,7 +162,6 @@ public class Bonus: NSManagedObject, Identifiable {
     }
     
     @discardableResult class func updateCapturedFlag(state: Bool, code: String) -> Bool {
-        
         let moc = CoreData.stack.backgroundContext
         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
         bonusesFetch.predicate = NSPredicate(format: "code = %@", code)
@@ -184,7 +183,6 @@ public class Bonus: NSManagedObject, Identifiable {
     }
     
     @discardableResult class func nukeData() -> Bool {
-        
         let moc = CoreData.stack.backgroundContext
         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
         do {
@@ -198,6 +196,7 @@ public class Bonus: NSManagedObject, Identifiable {
         }
         return true
     }
+    
     @discardableResult class func updateData() -> Bool {
         let url = URL(string: "https://apps.perrycraft.net/wp-json/toh/v1/updates")
         
@@ -343,7 +342,6 @@ public class Bonus: NSManagedObject, Identifiable {
         return true
     }
     class func getBonusesKey(key:String) -> [String] {
-        
         let moc = CoreData.stack.backgroundContext
         let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
         bonusesFetch.propertiesToFetch = ["\(key)"]

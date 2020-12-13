@@ -18,13 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // Clear existing data in prep for 2021 season
+        Bonus.nukeData()
+        
         // Setup DB
-        CoreData.initialDbSetup()
+//        CoreData.initialDbSetup()
                 
         // Setup Imagery
         ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".png")
-//        ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".jpg")
-        //Bonus.getBonusImagesFromServer()
+
         #if PROD
         print("Production build!")
         #elseif DEV

@@ -83,7 +83,6 @@ struct Settings: View {
                     UserDefaultsConfig.pillionFlagNumber = self.pillionFlagNumber
                     UserDefaultsConfig.initialActiveTab = self.initialActiveTab
                     UserDefaultsConfig.useGoogleMaps = self.useGoogleMaps
-//                    print("Active Tab set to: \(self.initialActiveTab)")
                 }) {
                     Text("Save Settings")
                 }
@@ -93,10 +92,7 @@ struct Settings: View {
             }
 
             Spacer()
-            //            HStack {
-            //                Text("latitude: \(userLatitude)").font(.caption)
-            //                Text("longitude: \(userLongitude)").font(.caption)
-            //            }
+            
             Button(action: { if let url = URL(string: "https://djfriar.atlassian.net/servicedesk/customer/portal/3") {
                 UIApplication.shared.open(url)
                 }  }) {

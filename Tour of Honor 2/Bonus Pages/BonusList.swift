@@ -17,13 +17,11 @@ struct BonusList: View {
     var body: some View {
         ZStack {
             VStack {
-                FilteredBonusList(categoryFilter: self.filters.category, stateFilter: self.filters.state)
+//                FilteredBonusList(categoryFilter: self.filters.category, stateFilter: self.filters.state)
+                Spacer()
+                Text("Please check back in March for the 2021 Rally Data")
+                Spacer()
             }
-//            VStack {
-//                Spacer()
-//                FilterMenuBar()
-//                    .background(BlurView(style: .systemThinMaterial).opacity(0.8))
-//            }
         
         }
 
