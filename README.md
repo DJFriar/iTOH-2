@@ -2,7 +2,7 @@
 
 ## Description
 
-This is the iOS app for the Tour of Honor.
+This is the official iOS app for the Tour of Honor.
 
 ## Usage
 
