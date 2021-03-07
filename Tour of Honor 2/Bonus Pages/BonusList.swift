@@ -18,9 +18,6 @@ struct BonusList: View {
         ZStack {
             VStack {
                 FilteredBonusList(categoryFilter: self.filters.category, stateFilter: self.filters.state)
-//                Spacer()
-//                Text("Please check back in March for the 2021 Rally Data")
-//                Spacer()
             }
         
         }

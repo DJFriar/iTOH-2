@@ -52,8 +52,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
+    func applicationWillResignActive(_ application: UIApplication) {
+        print("Active Resigned")
+        UserDefaults.standard.set(Date(), forKey: "LastOpened")
+    }
     
-    
-    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("App became active")
+        guard let lastOpened = UserDefaults.standard.object(forKey: "LastOpened") as? Date else {
+            return
+        }
+        print(lastOpened)
+        let elapsed = Calendar.current.dateComponents([.hour], from: lastOpened, to: Date())
+        print(elapsed)
+        if elapsed.hour! >= 1 {
+            // do something
+        }
+    }
+       
 }
 

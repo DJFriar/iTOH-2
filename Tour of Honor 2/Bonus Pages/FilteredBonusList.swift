@@ -134,6 +134,7 @@ struct FilteredBonusList: View {
         }
     }
     
+
     
     init(categoryFilter: String, stateFilter: String) {
         if (categoryFilter.count > 0 && stateFilter.count > 0){
