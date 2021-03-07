@@ -97,8 +97,8 @@ struct FilteredBonusList: View {
             if (ImageReader.getImageFromDocDir(named: sampleImage) != nil) {
                 print("image already found on device")
             } else {
-                print("\(sampleImage) not on device, search server...." )
-                if let imgURL = URL(string: "https://www.tourofhonor.com/2020appimages/\(sampleImage)") {
+//                print("\(sampleImage) not on device, search server...." )
+                if let imgURL = URL(string: "https://www.tourofhonor.com/2021appimages/\(sampleImage)") {
                     // create your document folder url
                     let documentsUrl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                     // your destination file url
@@ -113,7 +113,7 @@ struct FilteredBonusList: View {
                             guard
                                 let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                                 let location = location, error == nil
-                                else { return print("Image \(sampleImage) not found on server") }
+                                else { return }
                             do {
                                 try FileManager.default.moveItem(at: location, to: destination)
                                 print("downloading....")

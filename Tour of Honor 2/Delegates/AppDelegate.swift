@@ -19,10 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Clear existing data in prep for 2021 season
-        Bonus.nukeData()
+//        Bonus.nukeData()
         
         // Setup DB
-//        CoreData.initialDbSetup()
+        CoreData.initialDbSetup()
                 
         // Setup Imagery
         ImageWriter.copyFilesFromBundleToDocumentsFolderWith(fileExtension: ".png")

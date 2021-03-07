@@ -25,11 +25,12 @@ struct BonusFilters: View {
                     List {
                         ForEach([
                             ["All",""],
+                            ["Tour of Honor","Tour of Honor"],
+                            ["9/11 Memorials","911"],
                             ["Doughboys","Doughboys"],
                             ["Gold Star Family","Gold Star Family"],
                             ["Hueys","Hueys"],
                             ["Madonna Trail","Madonna of the Trail"],
-                            ["Tour of Honor","Tour of Honor"],
                             ["War Dogs / K9","War Dogs"]
                         ], id: \.self) {
                             item in

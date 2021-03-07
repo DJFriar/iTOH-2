@@ -17,10 +17,10 @@ struct BonusList: View {
     var body: some View {
         ZStack {
             VStack {
-//                FilteredBonusList(categoryFilter: self.filters.category, stateFilter: self.filters.state)
-                Spacer()
-                Text("Please check back in March for the 2021 Rally Data")
-                Spacer()
+                FilteredBonusList(categoryFilter: self.filters.category, stateFilter: self.filters.state)
+//                Spacer()
+//                Text("Please check back in March for the 2021 Rally Data")
+//                Spacer()
             }
         
         }

@@ -107,7 +107,7 @@ struct Settings: View {
                         Text("Nuke Bonus Data")
                             .multilineTextAlignment(.center)
                     }
-                    Button(action: { Bonus.forceLoadData()}) {
+                    Button(action: { Bonus.updateData()}) {
                         Text("Load Bonus Data")
                             .multilineTextAlignment(.center)
                     }

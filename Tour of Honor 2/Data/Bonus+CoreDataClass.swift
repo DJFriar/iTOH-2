@@ -9,6 +9,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 
 @objc(Bonus)
@@ -95,6 +96,17 @@ public class Bonus: NSManagedObject, Identifiable {
         countSubmittedHueyFetch.predicate = NSPredicate(format: "submitted == %@ AND category == 'Hueys'", NSNumber(value: true))
         do {
             let count = try CoreData.stack.backgroundContext.count(for: countSubmittedHueyFetch)
+            return count
+        } catch let error as NSError {
+            fatalError("Unresolved error \(error), \(error.userInfo)")
+        }
+    }
+    
+    class func countSubmitted911() -> Int {
+        let countSubmitted911etch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+        countSubmitted911etch.predicate = NSPredicate(format: "submitted == %@ AND category == '911'", NSNumber(value: true))
+        do {
+            let count = try CoreData.stack.backgroundContext.count(for: countSubmitted911etch)
             return count
         } catch let error as NSError {
             fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -198,7 +210,7 @@ public class Bonus: NSManagedObject, Identifiable {
     }
     
     @discardableResult class func updateData() -> Bool {
-        let url = URL(string: "https://apps.perrycraft.net/wp-json/toh/v1/updates")
+        let url = URL(string: "https://apps.perrycraft.net/wp-json/toh/v1/bonus-data")
         
         let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
             guard let dataResponse = data,
@@ -221,14 +233,39 @@ public class Bonus: NSManagedObject, Identifiable {
                 let decoder = JSONDecoder()
                 let bonuses = try decoder.decode([BonusEntry].self, from: json)
                 
+
+                
                 for (i,bonus) in bonuses.enumerated() {
-                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "sampleImage", newVal: bonus.sampleImage )
-                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "name", newVal: bonus.bonusName )
-                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "category", newVal: bonus.bonusCategory )
-                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "region", newVal: bonus.region )
-                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "city", newVal: bonus.city )
-                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "state", newVal: bonus.state )
-                    Bonus.updateBonusKey(code: bonus.bonusCode, key: "gps", newVal: bonus.GPS )
+                    let moc = CoreData.stack.backgroundContext
+                    let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+                    bonusesFetch.predicate = NSPredicate(format: "code = %@", bonus.bonusCode)
+                    let codeResult = try moc.fetch(bonusesFetch)
+                    print("===================================")
+                    print(codeResult.count)
+                    if codeResult.count == 0 {
+                        print("inserting \(bonus.bonusCode)")
+                        let _ = Bonus.createBonus(
+                            name: bonus.bonusName,
+                            code: bonus.bonusCode,
+                            city: bonus.city,
+                            state: bonus.state,
+                            category: bonus.bonusCategory,
+                            region: bonus.region,
+                            gps: bonus.GPS,
+                            sampleImage: bonus.sampleImage,
+                            order: i
+                        )
+                    } else {
+                        print("updating \(bonus.bonusCode)")
+                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "sampleImage", newVal: bonus.sampleImage )
+                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "name", newVal: bonus.bonusName )
+                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "category", newVal: bonus.bonusCategory )
+                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "region", newVal: bonus.region )
+                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "city", newVal: bonus.city )
+                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "state", newVal: bonus.state )
+                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "gps", newVal: bonus.GPS )
+                    }
+                    
                 }
             } catch let parsingError {
                 print("Error", parsingError)
@@ -309,7 +346,7 @@ public class Bonus: NSManagedObject, Identifiable {
                     //print("\(object.code) image already found on device")
                 } else {
                     //print("\(object.sampleImage) not on device, search server...." )
-                    if let imgURL = URL(string: "https://www.tourofhonor.com/2020appimages/\(object.sampleImage)") {
+                    if let imgURL = URL(string: "https://www.tourofhonor.com/2021appimages/\(object.sampleImage)") {
                         // create your document folder url
                         let documentsUrl = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                         // your destination file url
