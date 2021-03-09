@@ -45,7 +45,7 @@ class CoreData: NSObject {
     
     // MARK: - Database setup
     public class func initialDbSetup() -> Void {
-//        Bonus.updateData()
+        Bonus.updateData()
         print("Loaded \(Bonus.count()) bonuses.")
     }
 }

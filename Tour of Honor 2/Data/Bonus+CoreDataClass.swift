@@ -209,73 +209,83 @@ public class Bonus: NSManagedObject, Identifiable {
     }
     
     @discardableResult class func updateData() -> Bool {
-        let url = URL(string: "https://apps.perrycraft.net/wp-json/toh/v1/bonus-data")
-        
-        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            guard let dataResponse = data,
-                error == nil else {
-                    print(error?.localizedDescription ?? "Response Error")
-                    return }
-            do{
-                let json = dataResponse
-                struct BonusEntry: Codable {
-                    var sampleImage: String
-                    var bonusName: String
-                    var bonusCode: String
-                    var bonusCategory: String
-                    var region: String
-                    var city: String
-                    var state: String
-                    var GPS: String
-                }
-                
-                let decoder = JSONDecoder()
-                let bonuses = try decoder.decode([BonusEntry].self, from: json)
-                
-
-                
-                for (i,bonus) in bonuses.enumerated() {
-                    let moc = CoreData.stack.backgroundContext
-                    let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
-                    bonusesFetch.predicate = NSPredicate(format: "code = %@", bonus.bonusCode)
-                    let codeResult = try moc.fetch(bonusesFetch)
-                    print("===================================")
-                    print(codeResult.count)
-                    if codeResult.count == 0 {
-                        print("inserting \(bonus.bonusCode)")
-                        let _ = Bonus.createBonus(
-                            name: bonus.bonusName,
-                            code: bonus.bonusCode,
-                            city: bonus.city,
-                            state: bonus.state,
-                            category: bonus.bonusCategory,
-                            region: bonus.region,
-                            gps: bonus.GPS,
-                            sampleImage: bonus.sampleImage,
-                            order: i
-                        )
-                    } else {
-                        print("updating \(bonus.bonusCode)")
-                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "sampleImage", newVal: bonus.sampleImage )
-                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "name", newVal: bonus.bonusName )
-                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "category", newVal: bonus.bonusCategory )
-                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "region", newVal: bonus.region )
-                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "city", newVal: bonus.city )
-                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "state", newVal: bonus.state )
-                        Bonus.updateBonusKey(code: bonus.bonusCode, key: "gps", newVal: bonus.GPS )
+            let url = URL(string: "https://apps.perrycraft.net/wp-json/toh/v1/bonus-data")
+            
+            let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                guard let dataResponse = data,
+                    error == nil else {
+                        print(error?.localizedDescription ?? "Response Error")
+                        return }
+                do{
+                    let json = dataResponse
+                    struct BonusEntry: Codable {
+                        var sampleImage: String
+                        var bonusName: String
+                        var bonusCode: String
+                        var bonusCategory: String
+                        var region: String
+                        var city: String
+                        var state: String
+                        var GPS: String
                     }
                     
+                    let decoder = JSONDecoder()
+                    let bonuses = try decoder.decode([BonusEntry].self, from: json)
+                    let methodStart = NSDate()
+
+                    for (i,bonus) in bonuses.enumerated() {
+                        let moc = CoreData.stack.backgroundContext
+                        let bonusesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+                        bonusesFetch.predicate = NSPredicate(format: "code = %@", bonus.bonusCode)
+                        let codeResult = try moc.fetch(bonusesFetch)
+                        //print("===================================")
+                        //print(codeResult.count)
+                        if codeResult.count == 0 {
+                            print("inserting \(bonus.bonusCode)")
+                            let _ = Bonus.createBonus(
+                                name: bonus.bonusName,
+                                code: bonus.bonusCode,
+                                city: bonus.city,
+                                state: bonus.state,
+                                category: bonus.bonusCategory,
+                                region: bonus.region,
+                                gps: bonus.GPS,
+                                sampleImage: bonus.sampleImage,
+                                order: i
+                            )
+                        } else {
+                            //print("updating \(bonus.bonusCode)")
+                            let thisFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
+                            thisFetch.predicate = NSPredicate(format: "code = %@", bonus.bonusCode)
+                            do {
+                                let fetchedBonuses = try moc.fetch(thisFetch) as! [Bonus]
+                                if let bonusRecord = fetchedBonuses.first {
+                                    bonusRecord.setValue(bonus.sampleImage, forKey: "sampleImage")
+                                    bonusRecord.setValue(bonus.bonusName, forKey: "name")
+                                    bonusRecord.setValue(bonus.bonusCategory, forKey: "category")
+                                    bonusRecord.setValue(bonus.region, forKey: "region")
+                                    bonusRecord.setValue(bonus.city, forKey: "city")
+                                    bonusRecord.setValue(bonus.state, forKey: "state")
+                                    bonusRecord.setValue(bonus.GPS, forKey: "gps")
+                                }
+                            } catch {
+                                fatalError("Failed to fetch bonuses: \(error)")
+                            }
+                           
+                        }
+                        try moc.save()
+                    }
+                    let methodFinish = NSDate()
+                    let executionTime = methodFinish.timeIntervalSince(methodStart as Date)
+                    print("Initial data update execution time: \(executionTime)")
+                } catch let parsingError {
+                    print("Error", parsingError)
                 }
-            } catch let parsingError {
-                print("Error", parsingError)
             }
+            task.resume()
             
+            return true
         }
-        task.resume()
-        
-        
-        return true
-    }
     
     @discardableResult class func forceLoadData() -> Bool {
         let moc = CoreData.stack.backgroundContext
