@@ -26,6 +26,7 @@ struct BonusDetail: View {
     @State var showFilterPicker = false
     @State var gpsPressed = false
     @State public var useExistingPhoto: Bool = false
+//    @State public var hasPillion: Bool = false
     @State private var showImagePicker: Bool = false
     @State private var primaryImage: Image? = nil
     @State private var optionalImage: Image? = nil
@@ -35,6 +36,7 @@ struct BonusDetail: View {
     @Environment(\.presentationMode) var presentationMode
     
     var riderFlagNumber = UserDefaultsConfig.riderFlagNumber
+    @State var hasPillion = UserDefaultsConfig.hasPillion
     var sampleImageMissing = ImageReader.getImageFromDocDir(named: "sample_image_missing.png")
     //    var primaryImageMissing = ImageReader.getImageFromDocDir(named: "no_image_taken.png")
     //    var optionalImageMissing = ImageReader.getImageFromDocDir(named: "optional_2nd_Image.png")
@@ -110,6 +112,7 @@ struct BonusDetail: View {
                 
                 VStack {
                     Divider()
+//                    Toggle("Include Pillion", isOn: $hasPillion)
                     Text("My Bonus Images")
                         .font(.headline)
                         .padding(.top, 4)
@@ -164,12 +167,12 @@ struct BonusDetail: View {
     }
     
     func checkForSavedPhoto(){
-        if (ImageReader.getImageFromDocDir(named: "2020_\(self.riderFlagNumber)_\(self.testMe)_\(self.imagePriority).jpg") != nil) {
+        if (ImageReader.getImageFromDocDir(named: "2021_\(self.riderFlagNumber)_\(self.testMe)_\(self.imagePriority).jpg") != nil) {
             if self.imagePriority == "1" {
-                self.activeBonus.primaryImage = "2020_\(self.riderFlagNumber)_\(self.testMe)_\(self.imagePriority).jpg"
+                self.activeBonus.primaryImage = "2021_\(self.riderFlagNumber)_\(self.testMe)_\(self.imagePriority).jpg"
                 self.primaryChanged = true
             } else if self.imagePriority == "2" {
-                self.activeBonus.alternateImage = "2020_\(self.riderFlagNumber)_\(self.testMe)_\(self.imagePriority).jpg"
+                self.activeBonus.alternateImage = "2021_\(self.riderFlagNumber)_\(self.testMe)_\(self.imagePriority).jpg"
                 self.alternateChanged = true
             } else {
                 print("checkForSavedPhoto caught an invalid number.")
@@ -193,9 +196,9 @@ struct BonusDetail: View {
     
 //    func deletedCapturedImage(testMe: String, imagePriority: String) {
 //        let fileManager = FileManager.default
-//        let filename1 = getDocumentsDirectory().appendingPathComponent("2020_\(riderFlagNumber)_\(self.activeBonus.code)_1.jpg")
-//        let filename2 = getDocumentsDirectory().appendingPathComponent("2020_\(riderFlagNumber)_\(self.activeBonus.code)_2.jpg")
-//        print("Deleting image named \"2020_\(riderFlagNumber)_\(self.activeBonus.code)_*.jpg")
+//        let filename1 = getDocumentsDirectory().appendingPathComponent("2021_\(riderFlagNumber)_\(self.activeBonus.code)_1.jpg")
+//        let filename2 = getDocumentsDirectory().appendingPathComponent("2021_\(riderFlagNumber)_\(self.activeBonus.code)_2.jpg")
+//        print("Deleting image named \"2021_\(riderFlagNumber)_\(self.activeBonus.code)_*.jpg")
 //        try? fileManager.removeItem(at: filename1)
 //        try? fileManager.removeItem(at: filename2)
 //    }

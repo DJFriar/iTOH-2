@@ -29,6 +29,9 @@ struct UserDefaultsConfig {
     
     @UserDefault("useGoogleMaps", defaultValue: false)
     static var useGoogleMaps: Bool
+    
+    @UserDefault("hasPillion", defaultValue: false)
+    static var hasPillion: Bool
         
 }
 

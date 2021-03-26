@@ -44,7 +44,7 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
         } else {
             imageSaver.writeToPhotoAlbum(image: uiImage)
         }
-        let filename = "2020_\(UserDefaultsConfig.riderFlagNumber)_\(testMe)_\(imagePriority).jpg"
+        let filename = "2021_\(UserDefaultsConfig.riderFlagNumber)_\(testMe)_\(imagePriority).jpg"
         switch imagePriority {
         case "1":
 //            print("Reached case 1")

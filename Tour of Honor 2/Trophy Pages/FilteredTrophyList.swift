@@ -94,7 +94,7 @@ struct FilteredTrophyList: View {
     
     func showBonusImage(code: String) -> UIImage?{
         var documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        documentsPath.append("/2020\(code).jpg")
+        documentsPath.append("/2021\(code).jpg")
         let url = URL(fileURLWithPath: documentsPath)
         do {
             let imageData = try Data.init(contentsOf: url)

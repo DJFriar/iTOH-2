@@ -20,14 +20,14 @@ class ImageWriter: NSObject {
     
     func writeToAppData(image: UIImage, testMe: String, imagePriority: String) {
         if let data = image.jpegData(compressionQuality: 0.8) {
-            let filename = getDocumentsDirectory().appendingPathComponent("2020_\(riderFlagNumber)_\(testMe)_\(imagePriority).jpg")
+            let filename = getDocumentsDirectory().appendingPathComponent("2021_\(riderFlagNumber)_\(testMe)_\(imagePriority).jpg")
             try? data.write(to: filename)
         }
     }
     
     func deleteFromAppData(image: UIImage, testMe: String, imagePriority: String) {
         let fileManager = FileManager.default
-        let filename = getDocumentsDirectory().appendingPathComponent("2020_\(riderFlagNumber)_\(testMe)_\(imagePriority).jpg")
+        let filename = getDocumentsDirectory().appendingPathComponent("2021_\(riderFlagNumber)_\(testMe)_\(imagePriority).jpg")
         try? fileManager.removeItem(at: filename)
     }
     
