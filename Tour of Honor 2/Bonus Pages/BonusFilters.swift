@@ -26,7 +26,7 @@ struct BonusFilters: View {
                         ForEach([
                             ["All",""],
                             ["Tour of Honor","Tour of Honor"],
-                            ["9/11 Memorials","911"],
+                            ["9/11 Memorials","9/11"],
                             ["Doughboys","Doughboys"],
                             ["Gold Star Family","Gold Star Family"],
                             ["Hueys","Hueys"],

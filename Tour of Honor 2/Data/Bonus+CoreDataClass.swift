@@ -103,7 +103,7 @@ public class Bonus: NSManagedObject, Identifiable {
     
     class func countSubmitted911() -> Int {
         let countSubmitted911etch = NSFetchRequest<NSFetchRequestResult>(entityName: "Bonus")
-        countSubmitted911etch.predicate = NSPredicate(format: "submitted == %@ AND category == '911'", NSNumber(value: true))
+        countSubmitted911etch.predicate = NSPredicate(format: "submitted == %@ AND category == '9/11'", NSNumber(value: true))
         do {
             let count = try CoreData.stack.backgroundContext.count(for: countSubmitted911etch)
             return count
