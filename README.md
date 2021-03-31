@@ -7,10 +7,12 @@ This is the official iOS app for the Tour of Honor. It is used to assist rally p
 ## Screenshots
 
 Main Interface
-![IMG_1817](https://user-images.githubusercontent.com/38347315/113077187-48f3ef00-9196-11eb-8e96-07bf24018e98.jpeg)
+
+<img src="https://user-images.githubusercontent.com/38347315/113077187-48f3ef00-9196-11eb-8e96-07bf24018e98.jpeg" alt="Tour of Honor screenshot" width="250"/>
 
 Settings Page
-![IMG_1818](https://user-images.githubusercontent.com/38347315/113077229-5c06bf00-9196-11eb-97d1-d6bbff170439.jpeg)
+
+<img src="https://user-images.githubusercontent.com/38347315/113077229-5c06bf00-9196-11eb-97d1-d6bbff170439.jpeg" alt="Tour of Honor screenshot" width="250"/>
 
 ## Usage
 
