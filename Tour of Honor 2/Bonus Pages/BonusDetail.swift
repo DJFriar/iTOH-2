@@ -31,7 +31,7 @@ struct BonusDetail: View {
     @State private var primaryImage: Image? = nil
     @State private var optionalImage: Image? = nil
     @State private var showPhotoModal: Bool = false
-    @State private var testMe: String = ""
+    @State private var memorialCode: String = ""
     @State private var imagePriority: String = ""
     @Environment(\.presentationMode) var presentationMode
     
@@ -113,7 +113,7 @@ struct BonusDetail: View {
                 VStack {
                     Divider()
 //                    Toggle("Include Pillion", isOn: $hasPillion)
-                    Text("My Bonus Images")
+                    Text("My Memorial Images")
                         .font(.headline)
                         .padding(.top, 4)
                 }
@@ -123,11 +123,11 @@ struct BonusDetail: View {
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)
                         .gesture(TapGesture()
-                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "1"; self.testMe = self.activeBonus.code; }))
+                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "1"; self.memorialCode = self.activeBonus.code; }))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
-                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.imagePriority = "1"; self.testMe = self.activeBonus.code; }))
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.imagePriority = "1"; self.memorialCode = self.activeBonus.code; }))
                         .sheet(isPresented: self.$showImagePicker, onDismiss: {self.checkForSavedPhoto() }) {
-                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage, testMe: self.$testMe, imagePriority: self.$imagePriority)
+                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage, memorialCode: self.$memorialCode, imagePriority: self.$imagePriority)
                                 .modifier(SystemServices())
                             
                     }
@@ -136,11 +136,11 @@ struct BonusDetail: View {
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)
                         .gesture(TapGesture()
-                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "2"; self.testMe = self.activeBonus.code;}))
+                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "2"; self.memorialCode = self.activeBonus.code;}))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
-                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.imagePriority = "2"; self.testMe = self.activeBonus.code;}))
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.imagePriority = "2"; self.memorialCode = self.activeBonus.code;}))
                         .sheet(isPresented: self.$showImagePicker, onDismiss: {self.checkForSavedPhoto() }) {
-                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage, testMe: self.$testMe,  imagePriority: self.$imagePriority)
+                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage, memorialCode: self.$memorialCode,  imagePriority: self.$imagePriority)
                                 .modifier(SystemServices())
                     }
                 }
@@ -148,7 +148,7 @@ struct BonusDetail: View {
                     Button(action: {
                         self.removeCapturedBonus()
                     }) {
-                        Text("Reset Bonus")
+                        Text("Reset Memorial")
                             .multilineTextAlignment(.center)
                     }
                     Spacer()
@@ -167,12 +167,12 @@ struct BonusDetail: View {
     }
     
     func checkForSavedPhoto(){
-        if (ImageReader.getImageFromDocDir(named: "2021_\(self.riderFlagNumber)_\(self.testMe)_\(self.imagePriority).jpg") != nil) {
+        if (ImageReader.getImageFromDocDir(named: "2021_\(self.riderFlagNumber)_\(self.memorialCode)_\(self.imagePriority).jpg") != nil) {
             if self.imagePriority == "1" {
-                self.activeBonus.primaryImage = "2021_\(self.riderFlagNumber)_\(self.testMe)_\(self.imagePriority).jpg"
+                self.activeBonus.primaryImage = "2021_\(self.riderFlagNumber)_\(self.memorialCode)_\(self.imagePriority).jpg"
                 self.primaryChanged = true
             } else if self.imagePriority == "2" {
-                self.activeBonus.alternateImage = "2021_\(self.riderFlagNumber)_\(self.testMe)_\(self.imagePriority).jpg"
+                self.activeBonus.alternateImage = "2021_\(self.riderFlagNumber)_\(self.memorialCode)_\(self.imagePriority).jpg"
                 self.alternateChanged = true
             } else {
                 print("checkForSavedPhoto caught an invalid number.")
@@ -194,7 +194,7 @@ struct BonusDetail: View {
         self.answerResetButton.toggle()
     }
     
-//    func deletedCapturedImage(testMe: String, imagePriority: String) {
+//    func deletedCapturedImage(memorialCode: String, imagePriority: String) {
 //        let fileManager = FileManager.default
 //        let filename1 = getDocumentsDirectory().appendingPathComponent("2021_\(riderFlagNumber)_\(self.activeBonus.code)_1.jpg")
 //        let filename2 = getDocumentsDirectory().appendingPathComponent("2021_\(riderFlagNumber)_\(self.activeBonus.code)_2.jpg")
@@ -213,7 +213,7 @@ struct BonusDetail: View {
             self.markBonusSubmitted()
             self.answerSubmitButton.toggle()
         }) {
-            Text("Submit Bonus")
+            Text("Submit Memorial")
         }
     }
     

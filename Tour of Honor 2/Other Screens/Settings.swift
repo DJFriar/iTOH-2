@@ -61,7 +61,7 @@ struct Settings: View {
                     }
                     
                     HStack {
-                        Text("Pillion Number")
+                        Text("Passenger Number")
                         Spacer()
                         TextField("000", text: $pillionFlagNumber)
                             .frame(width: 70.0, height: 0.0)

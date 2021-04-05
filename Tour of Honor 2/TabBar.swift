@@ -43,7 +43,7 @@ struct TabBar : View {
             BonusList()
                 .tabItem({
                     Image(systemName: "flag")
-                    Text("Bonuses")
+                    Text("Memorials")
                 })
                 .tag(4)
         }

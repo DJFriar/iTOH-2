@@ -16,14 +16,14 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
     @Binding var isShown: Bool
     @Binding var image: Image?
     @Binding var useExistingPhoto: Bool
-    var testMe: String
+    var memorialCode: String
     var imagePriority: String
     
-    init(isShown: Binding<Bool>, image: Binding<Image?>, useExistingPhoto: Binding<Bool>, testMe: String, imagePriority: String) {
+    init(isShown: Binding<Bool>, image: Binding<Image?>, useExistingPhoto: Binding<Bool>, memorialCode: String, imagePriority: String) {
         _isShown = isShown
         _image = image
         _useExistingPhoto = useExistingPhoto
-        self.testMe = testMe
+        self.memorialCode = memorialCode
         self.imagePriority = imagePriority
     }
     
@@ -32,27 +32,22 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
         let uiImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         image = Image(uiImage: uiImage)
         isShown = false
-//        print("-----")
-//        print(self.testMe)
-//        print("-----")
         
         let imageSaver = ImageWriter()
-        imageSaver.writeToAppData(image: uiImage, testMe: testMe, imagePriority: imagePriority)
-        Bonus.updateCapturedFlag(state: true, code: testMe)
+        imageSaver.writeToAppData(image: uiImage, memorialCode: memorialCode, imagePriority: imagePriority)
+        Bonus.updateCapturedFlag(state: true, code: memorialCode)
         if useExistingPhoto {
             print("Existing Image Chosen")
         } else {
             imageSaver.writeToPhotoAlbum(image: uiImage)
         }
-        let filename = "2021_\(UserDefaultsConfig.riderFlagNumber)_\(testMe)_\(imagePriority).jpg"
+        let filename = "2021_\(UserDefaultsConfig.riderFlagNumber)_\(memorialCode)_\(imagePriority).jpg"
         switch imagePriority {
         case "1":
-//            print("Reached case 1")
-            Bonus.updateBonusKey(code: testMe, key: "primaryImage", newVal: filename )
+            Bonus.updateBonusKey(code: memorialCode, key: "primaryImage", newVal: filename )
             
         case "2":
-//            print("Reached case 2")
-            Bonus.updateBonusKey(code: testMe, key: "alternateImage", newVal: filename )
+            Bonus.updateBonusKey(code: memorialCode, key: "alternateImage", newVal: filename )
             
         default:
             print("not sure which image that was...")
@@ -72,7 +67,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     @Binding var useExistingPhoto: Bool
     @Binding var isShown: Bool
     @Binding var image: Image?
-    @Binding var testMe: String
+    @Binding var memorialCode: String
     @Binding var imagePriority: String
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
@@ -80,7 +75,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
     
     func makeCoordinator() -> ImagePickerCoordinator {
-        return ImagePickerCoordinator(isShown: $isShown, image: $image, useExistingPhoto: $useExistingPhoto, testMe: testMe, imagePriority: imagePriority)
+        return ImagePickerCoordinator(isShown: $isShown, image: $image, useExistingPhoto: $useExistingPhoto, memorialCode: memorialCode, imagePriority: imagePriority)
     }
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {

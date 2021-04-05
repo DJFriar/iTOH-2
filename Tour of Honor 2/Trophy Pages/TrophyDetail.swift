@@ -27,7 +27,7 @@ struct TrophyDetail: View {
     @State private var primaryImage: Image? = nil
     @State private var optionalImage: Image? = nil
     @State private var showPhotoModal: Bool = false
-    @State private var testMe: String = ""
+    @State private var memorialCode: String = ""
     @State private var imagePriority: String = ""
     @Environment(\.presentationMode) var presentationMode
     
@@ -110,11 +110,11 @@ struct TrophyDetail: View {
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)
                         .gesture(TapGesture()
-                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "1"; self.testMe = self.activeBonus.code; }))
+                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "1"; self.memorialCode = self.activeBonus.code; }))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
-                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code; }))
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.memorialCode = self.activeBonus.code; }))
                         .sheet(isPresented: self.$showImagePicker, onDismiss: {self.primaryChanged = true; print("primaryImage is now: \(self.activeBonus.primaryImage)")}) {
-                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage, testMe: self.$testMe, imagePriority: self.$imagePriority)
+                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$primaryImage, memorialCode: self.$memorialCode, imagePriority: self.$imagePriority)
                                 .modifier(SystemServices())
                             
                     }
@@ -123,11 +123,11 @@ struct TrophyDetail: View {
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(10)
                         .gesture(TapGesture()
-                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "2"; self.testMe = self.activeBonus.code;}))
+                            .onEnded({self.useExistingPhoto = false; self.showImagePicker = true; self.imagePriority = "2"; self.memorialCode = self.activeBonus.code;}))
                         .gesture(LongPressGesture(minimumDuration: 0.5)
-                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.testMe = self.activeBonus.code;}))
+                            .onEnded({_ in self.useExistingPhoto = true; self.showImagePicker = true; self.memorialCode = self.activeBonus.code;}))
                         .sheet(isPresented: self.$showImagePicker, onDismiss: {self.alternateChanged = true; print("alternateChanged is now: \(self.alternateChanged)")}) {
-                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage, testMe: self.$testMe,  imagePriority: self.$imagePriority)
+                            PhotoCaptureView(useExistingPhoto: self.$useExistingPhoto, showImagePicker: self.$showImagePicker, image: self.$optionalImage, memorialCode: self.$memorialCode,  imagePriority: self.$imagePriority)
                                 .modifier(SystemServices())
                             
                     }
