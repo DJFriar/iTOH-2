@@ -134,23 +134,20 @@ struct FilteredBonusList: View {
         }
     }
     
-
-    
     init(categoryFilter: String, stateFilter: String) {
         if (categoryFilter.count > 0 && stateFilter.count > 0){
-            let predicate = NSPredicate(format: "category == %@ AND state == %@", categoryFilter, stateFilter)
-            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "code", ascending: true)], predicate: predicate)
+            let predicate = NSPredicate(format: "category == %@ AND state == %@ AND category != 'National Parks'", categoryFilter, stateFilter)
+            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "city", ascending: true)], predicate: predicate)
             
         } else if (categoryFilter.count > 0 && stateFilter.count <= 0){
-            let predicate = NSPredicate(format: "category == %@", categoryFilter)
-            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "code", ascending: true)], predicate: predicate)
+            let predicate = NSPredicate(format: "category == %@ AND category != 'National Parks'", categoryFilter)
+            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "city", ascending: true)], predicate: predicate)
         } else if (categoryFilter.count <= 0 && stateFilter.count > 0){
-            let predicate = NSPredicate(format: "state == %@", stateFilter)
-            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "code", ascending: true)], predicate: predicate)
+            let predicate = NSPredicate(format: "state == %@ AND category != 'National Parks'", stateFilter)
+            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "city", ascending: true)], predicate: predicate)
         } else {
-            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "code", ascending: true)])
-            
+            let predicate = NSPredicate(format: "category != 'National Parks'")
+            fetchRequest = FetchRequest<Bonus>(entity: Bonus.entity(), sortDescriptors: [NSSortDescriptor(key: "city", ascending: true)], predicate: predicate)
         }
-        
     }
 }

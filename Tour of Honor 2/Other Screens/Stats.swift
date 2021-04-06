@@ -47,8 +47,8 @@ struct Stats: View {
                         .padding(.leading, 8)
                     Text("Gold Star Families (GSF)")
                         .padding(.leading, 8)
-                    //                    Text("National Parks (NP)")
-                    //                        .padding(.leading, 8)
+//                                        Text("National Parks (NP)")
+//                                            .padding(.leading, 8)
                 }
                 .padding(8)
                 Spacer()
