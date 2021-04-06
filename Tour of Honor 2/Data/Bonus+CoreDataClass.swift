@@ -148,10 +148,7 @@ public class Bonus: NSManagedObject, Identifiable {
         bonus.submitted = false
         
         do {
-            try CoreData.stack.save()
-        } catch let error as NSError {
-            //fatalError("Unresolved error \(error), \(error.userInfo)")
-            print("bonus did not save")
+            CoreData.stack.save()
         }
         return bonus
     }

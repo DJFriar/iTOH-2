@@ -26,20 +26,17 @@ struct BonusDetail: View {
     @State var showFilterPicker = false
     @State var gpsPressed = false
     @State public var useExistingPhoto: Bool = false
-//    @State public var hasPillion: Bool = false
     @State private var showImagePicker: Bool = false
     @State private var primaryImage: Image? = nil
     @State private var optionalImage: Image? = nil
     @State private var showPhotoModal: Bool = false
     @State private var memorialCode: String = ""
     @State private var imagePriority: String = ""
+    @AppStorage("includePassenger") var includePassenger: Bool = false
     @Environment(\.presentationMode) var presentationMode
     
     var riderFlagNumber = UserDefaultsConfig.riderFlagNumber
-    @State var hasPillion = UserDefaultsConfig.hasPillion
     var sampleImageMissing = ImageReader.getImageFromDocDir(named: "sample_image_missing.png")
-    //    var primaryImageMissing = ImageReader.getImageFromDocDir(named: "no_image_taken.png")
-    //    var optionalImageMissing = ImageReader.getImageFromDocDir(named: "optional_2nd_Image.png")
     
     var body: some View {
         
@@ -112,7 +109,7 @@ struct BonusDetail: View {
                 
                 VStack {
                     Divider()
-//                    Toggle("Include Pillion", isOn: $hasPillion)
+                    Toggle("Include Passenger", isOn: $includePassenger)
                     Text("My Memorial Images")
                         .font(.headline)
                         .padding(.top, 4)
@@ -155,7 +152,7 @@ struct BonusDetail: View {
                     SubmitButton()
                         .disabled(!MFMailComposeViewController.canSendMail())
                         .sheet(isPresented: $answerSubmitButton) {
-                                MailView(result: self.$result)
+                            MailView(result: self.$result, includePassenger: $includePassenger)
                                     .modifier(SystemServices())
                     }
                 }

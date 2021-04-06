@@ -17,7 +17,7 @@ struct MailView: UIViewControllerRepresentable {
     @Binding var result: Result<MFMailComposeResult, Error>?
     @State var riderFlagNumber = UserDefaultsConfig.riderFlagNumber
     @State var pillionFlagNumber = UserDefaultsConfig.pillionFlagNumber
-    @State var hasPillion = UserDefaultsConfig.hasPillion
+    @Binding var includePassenger: Bool
     @EnvironmentObject var activeBonus: ActiveBonus
 
     class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
@@ -53,7 +53,7 @@ struct MailView: UIViewControllerRepresentable {
     func makeUIViewController(context: UIViewControllerRepresentableContext<MailView>) -> MFMailComposeViewController {
         let vc = MFMailComposeViewController()
         vc.setToRecipients(["photos@tourofhonor.com"])
-        if pillionFlagNumber != "" {
+        if includePassenger {
             vc.setSubject("2021_\(riderFlagNumber)_\(pillionFlagNumber)_\(activeBonus.category)_\(activeBonus.state)_\(activeBonus.city)_\(activeBonus.code)")
         } else {
             vc.setSubject("2021_\(riderFlagNumber)_\(activeBonus.category)_\(activeBonus.state)_\(activeBonus.city)_\(activeBonus.code)")

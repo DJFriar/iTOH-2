@@ -29,6 +29,7 @@ struct TrophyDetail: View {
     @State private var showPhotoModal: Bool = false
     @State private var memorialCode: String = ""
     @State private var imagePriority: String = ""
+    @AppStorage("includePassenger") var includePassenger: Bool = false
     @Environment(\.presentationMode) var presentationMode
     
     var sampleImageMissing = ImageReader.getImageFromDocDir(named: "sample_image_missing.png")
@@ -146,7 +147,7 @@ struct TrophyDetail: View {
                     }
                     .disabled(!MFMailComposeViewController.canSendMail())
                     .sheet(isPresented: $isShowingMailView) {
-                        MailView(result: self.$result)
+                        MailView(result: self.$result, includePassenger: $includePassenger )
                             .modifier(SystemServices())
                     }
                 }
